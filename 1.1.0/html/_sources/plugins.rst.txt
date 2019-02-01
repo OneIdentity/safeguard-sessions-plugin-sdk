@@ -1,0 +1,29 @@
+Plugin development
+==================
+
+.. contents:: :local:
+
+AAPlugin
+--------
+.. automodule:: safeguard.sessions.plugin.aa_plugin
+
+Plugin response
+---------------
+.. automodule:: safeguard.sessions.plugin.plugin_response
+    :members:
+
+Connection information
+----------------------
+.. automodule:: safeguard.sessions.plugin.connection_info
+    :members:
+
+Plugin base functions
+---------------------
+.. automodule:: safeguard.sessions.plugin.plugin_base
+    :members:
+
+Details of AAPlugin
+-------------------
+.. autoclass:: safeguard.sessions.plugin.aa_plugin.AAPlugin
+    :members:
+    :private-members:

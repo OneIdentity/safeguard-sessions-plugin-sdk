@@ -1,0 +1,307 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Fake services for testing &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Plugin-sdk services" href="services.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="services.html" title="Plugin-sdk services"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fake-services-for-testing">
+<h1>Fake services for testing<a class="headerlink" href="#fake-services-for-testing" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-safeguard.sessions.plugin_fakes.credential_store">
+<span id="credentialstore-data-injection"></span><h2>CredentialStore data injection<a class="headerlink" href="#module-safeguard.sessions.plugin_fakes.credential_store" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-safeguard.sessions.plugin_impl.credential_store"></span><p>To inject a user defined CredentialStore database into the <a class="reference internal" href="services.html#safeguard.sessions.plugin.credential_store.CredentialStore" title="safeguard.sessions.plugin.credential_store.CredentialStore"><code class="xref py py-class docutils literal"><span class="pre">CredentialStore</span></code></a> API when testing outside the SPS box.</p>
+<p>Patch/overwrite the <code class="docutils literal"><span class="pre">safeguard.sessions.plugin_impl.credential_store.credential_stores</span></code> with your own dictionary.</p>
+<p>Note that for x509 certificates, the fake credential_store does not decrypt password protected private keys.</p>
+<p>The <code class="docutils literal"><span class="pre">credential_stores</span></code> is a dictionary where the key is the name of the local Credential Store policy to define.
+Inside a policy the data is keyed with user name first, then host name and then as value a list of passwords, private
+keys or X509 credentials. Passwords are encoded as a simple sequence of strings. Private keys and X509 credentials are
+encoded as maps where “type” indicates the kind of data present in the map.</p>
+<p>See the examples bellow for more information.</p>
+<div class="section" id="example-usage">
+<h3>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.credential_store</span> <span class="kn">import</span> <span class="n">CredentialStore</span> <span class="k">as</span> <span class="n">CredStore</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.plugin_configuration</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.credential_store</span> <span class="kn">import</span> <span class="n">credential_stores</span>
+
+<span class="c1"># Data injection</span>
+<span class="n">credential_stores</span><span class="p">[</span><span class="s1">&#39;local&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;password&quot;</span><span class="p">,)]},</span>
+    <span class="s2">&quot;user1&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;host1&quot;</span><span class="p">:</span> <span class="p">[({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ssh-rsa&quot;</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;theKey&quot;</span><span class="p">},)]},</span>
+    <span class="s2">&quot;user2&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;host2&quot;</span><span class="p">:</span> <span class="p">[({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;x509v3-sign-rsa&quot;</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;theKey&quot;</span><span class="p">,</span> <span class="s2">&quot;cert&quot;</span><span class="p">:</span> <span class="s2">&quot;theCert&quot;</span><span class="p">},)],</span>
+<span class="p">}</span>
+
+<span class="c1"># Test the injected data</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">[credential_store]</span>
+<span class="s1">name=local</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">cs</span> <span class="o">=</span> <span class="n">CredStore</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">cs</span><span class="o">.</span><span class="n">get_passwords</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-usage-with-pytest-and-monkeypatch">
+<h3>Example usage with pytest and monkeypatch<a class="headerlink" href="#example-usage-with-pytest-and-monkeypatch" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.credential_store</span> <span class="kn">import</span> <span class="n">CredentialStore</span> <span class="k">as</span> <span class="n">CredStore</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.plugin_configuration</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.credential_store</span> <span class="kn">import</span> <span class="n">credential_stores</span>
+
+<span class="k">def</span> <span class="nf">test_credential_store</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="c1"># Data injection</span>
+    <span class="n">testdb</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># This user has a password and a private key as well</span>
+        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;password&quot;</span><span class="p">,),</span> <span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ssh-rsa&quot;</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;theKey&quot;</span><span class="p">},)]},</span>
+    <span class="p">}</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setitem</span><span class="p">(</span><span class="n">credential_stores</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="n">testdb</span><span class="p">)</span>
+
+    <span class="c1"># Test the injected data</span>
+    <span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    [credential_store]</span>
+<span class="s1">    name=local</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">CredStore</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">cs</span><span class="o">.</span><span class="n">get_passwords</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-safeguard.sessions.plugin_fakes.ldap_server">
+<span id="ldapserver-data-injection"></span><h2>LDAPServer data injection<a class="headerlink" href="#module-safeguard.sessions.plugin_fakes.ldap_server" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-safeguard.sessions.plugin_impl.ldap_server"></span><p>To inject user defined LDAP database into the <a class="reference internal" href="services.html#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a> API when testing outside the SPS box.</p>
+<p>Patch/overwrite the <code class="docutils literal"><span class="pre">safeguard.sessions.plugin_impl.ldap_server.ldap_servers</span></code> with your own LDAP like database.</p>
+<p>The <code class="docutils literal"><span class="pre">ldap_servers</span></code> is a dictionary where the key is the name of the LDAP Server policy to define, and the value
+itself is a dictionary where “users”, “groups” keys define users and groups respectively. See the example
+for more detail.</p>
+<div class="section" id="id1">
+<h3>Example usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">LDAPServer</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.ldap_server</span> <span class="kn">import</span> <span class="n">ldap_servers</span>
+
+<span class="c1"># Data injection of an LDAP database under the LDAP Server policy &quot;adserver&quot;</span>
+<span class="n">ldap_servers</span><span class="p">[</span><span class="s1">&#39;adserver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;users&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;root&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;adminuser&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cn&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;multivalue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;numeric&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;wsmith&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cn&#39;</span><span class="p">:</span> <span class="s1">&#39;wsmith&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;multivalue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;admins&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;dbuser&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wsmith&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="c1"># Test the injected data</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">[ldap_server]</span>
+<span class="s1">name=adserver</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">ls</span> <span class="o">=</span> <span class="n">LDAPServer</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_user_string_attribute</span><span class="p">(</span><span class="s1">&#39;numeric&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;1000&#39;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">ls</span><span class="o">.</span><span class="n">filter_user_groups</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;admins&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;admins&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Example usage with pytest and monkeypatch<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">LDAPServer</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.ldap_server</span> <span class="kn">import</span> <span class="n">ldap_servers</span>
+
+<span class="k">def</span> <span class="nf">test_user_list</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="c1"># Data injection</span>
+    <span class="n">testdb</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;users&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;root&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;adminuser&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cn&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;multivalue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;numeric&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;wsmith&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cn&#39;</span><span class="p">:</span> <span class="s1">&#39;wsmith&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;multivalue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;admins&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;dbuser&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wsmith&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setitem</span><span class="p">(</span><span class="n">ldap_servers</span><span class="p">,</span> <span class="s1">&#39;adserver&#39;</span><span class="p">,</span> <span class="n">testdb</span><span class="p">)</span>
+
+    <span class="c1"># Test the injected data</span>
+    <span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    [ldap_server]</span>
+<span class="s1">    name=adserver</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">ls</span> <span class="o">=</span> <span class="n">LDAPServer</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_user_string_attribute</span><span class="p">(</span><span class="s1">&#39;numeric&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;1000&#39;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">ls</span><span class="o">.</span><span class="n">filter_user_groups</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;admins&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;admins&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-safeguard.sessions.plugin_fakes.user_list">
+<span id="userlist-data-injection"></span><h2>UserList data injection<a class="headerlink" href="#module-safeguard.sessions.plugin_fakes.user_list" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-safeguard.sessions.plugin_impl.user_list"></span><p>To inject user defined User List policies database into the <a class="reference internal" href="services.html#safeguard.sessions.plugin.user_list.UserList" title="safeguard.sessions.plugin.user_list.UserList"><code class="xref py py-class docutils literal"><span class="pre">UserList</span></code></a> API when testing outside the SPS box.</p>
+<p>Patch/overwrite the <code class="docutils literal"><span class="pre">safeguard.sessions.plugin_impl.user_list.user_lists</span></code> with your own database. The <code class="docutils literal"><span class="pre">user_lists</span></code>
+is a dictionary where the key is the name of the User List policy to define, and the value is itself a dictionary with
+keys “allow” and “except” that define the default mode and exceptions for the User List - like on the Web interface.</p>
+<div class="section" id="id3">
+<h3>Example usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">UserList</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.user_list</span> <span class="kn">import</span> <span class="n">user_lists</span>
+
+<span class="c1"># Data injection of a list called user_whitelist</span>
+<span class="n">user_lists</span><span class="p">[</span><span class="s2">&quot;user_whitelist&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;allow&quot;</span><span class="p">:</span> <span class="s2">&quot;no_user&quot;</span><span class="p">,</span> <span class="s2">&quot;except&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1&quot;</span><span class="p">]}</span>
+
+<span class="c1"># Test the injected data</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">[user_list]</span>
+<span class="s1">name=user_whitelist</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">ul</span> <span class="o">=</span> <span class="n">UserList</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;user1&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;other_user&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Example usage with pytest and monkeypatch<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">UserList</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.user_list</span> <span class="kn">import</span> <span class="n">user_lists</span>
+
+<span class="k">def</span> <span class="nf">test_user_list</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="c1"># Data injection</span>
+    <span class="n">testdb</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;allow&quot;</span><span class="p">:</span> <span class="s2">&quot;no_user&quot;</span><span class="p">,</span> <span class="s2">&quot;except&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setitem</span><span class="p">(</span><span class="n">user_lists</span><span class="p">,</span> <span class="s1">&#39;user_whitelist&#39;</span><span class="p">,</span> <span class="n">testdb</span><span class="p">)</span>
+
+    <span class="c1"># Test the injected data</span>
+    <span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    [user_list]</span>
+<span class="s1">    name=user_whitelist</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">ul</span> <span class="o">=</span> <span class="n">UserList</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;user1&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span>
+    <span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;other_user&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="services.html"
+                        title="previous chapter">Plugin-sdk services</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="services.html" title="Plugin-sdk services"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, PAM Integration Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>
