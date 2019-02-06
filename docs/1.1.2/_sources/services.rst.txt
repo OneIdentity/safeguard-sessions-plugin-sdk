@@ -1,0 +1,57 @@
+Plugin-sdk services
+===================
+
+PluginConfiguration
+-------------------
+.. automodule:: safeguard.sessions.plugin.plugin_configuration
+   :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.plugin_configuration_exceptions
+   :members:
+
+Logging
+-------
+.. automodule:: safeguard.sessions.plugin.logging
+   :members:
+
+CredentialStore
+---------------
+.. automodule:: safeguard.sessions.plugin.credential_store
+   :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.credential_store_exceptions
+   :members:
+
+LDAPServer
+----------
+.. automodule:: safeguard.sessions.plugin.ldap_server
+   :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.ldap_server_exceptions
+   :members:
+
+Base class for exceptions
+-------------------------
+.. automodule:: safeguard.sessions.plugin.exceptions
+    :members:
+
+UserList
+--------
+.. automodule:: safeguard.sessions.plugin.user_list
+    :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.user_list_exceptions
+    :members:
+
+HostResolver
+------------
+.. automodule:: safeguard.sessions.plugin.host_resolver
+    :members:

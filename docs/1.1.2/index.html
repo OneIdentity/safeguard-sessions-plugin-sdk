@@ -1,0 +1,218 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Safeguard for Privileged Sessions Plugin SDK’s documentation! &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. History of releases" href="history.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="history.html" title="1. History of releases"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-safeguard-for-privileged-sessions-plugin-sdk-s-documentation">
+<h1>Welcome to Safeguard for Privileged Sessions Plugin SDK’s documentation!<a class="headerlink" href="#welcome-to-safeguard-for-privileged-sessions-plugin-sdk-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">2. Plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#module-safeguard.sessions.plugin.aa_plugin">2.1. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#configuration-example">2.1.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#id1">2.1.2. Plugin development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#administrative-tasks">2.1.2.1. Administrative tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#basic-functionality">2.1.2.2. Basic functionality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#pre-defined-attributes-on-self">2.1.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#asking-the-end-user">2.1.2.4. Asking the end-user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#using-cookies">2.1.2.5. Using cookies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#setting-gateway-user-and-groups">2.1.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#setting-additional-meta-data">2.1.2.7. Setting additional meta data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#avoiding-costly-calculations">2.1.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#adding-to-the-constructor">2.1.2.9. Adding to the constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#authentication-cache">2.1.2.10. Authentication cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#aaplugin-internal-way-of-working">2.1.2.11. AAPlugin internal way of working</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.html#altering-the-steps">2.1.2.12. Altering the steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#module-safeguard.sessions.plugin.plugin_response">2.2. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#module-safeguard.sessions.plugin.connection_info">2.3. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#module-safeguard.sessions.plugin.plugin_base">2.4. Plugin base functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#details-of-aaplugin">2.5. Details of AAPlugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">3. Plugin-sdk services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.plugin_configuration">3.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">3.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.logging">3.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services.html#logging-service">3.2.1. Logging service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services.html#configuration-example">3.2.1.1. Configuration example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="services.html#configuring-the-logger-service">3.2.1.2. Configuring the logger service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="services.html#acquiring-a-logger">3.2.1.3. Acquiring a logger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="services.html#usage-example">3.2.1.4. Usage example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.credential_store">3.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services.html#id1">3.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services.html#acquiring-a-credentialstore">3.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services.html#id2">3.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.ldap_server">3.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services.html#id3">3.4.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services.html#acquiring-a-user-attribute">3.4.1.1. Acquiring a user attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services.html#id4">3.4.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.exceptions">3.5. Base class for exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.user_list">3.6. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services.html#id5">3.6.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services.html#checking-whether-a-user-name-matches-a-user-list">3.6.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services.html#id6">3.6.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html#module-safeguard.sessions.plugin.host_resolver">3.7. HostResolver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">4. Fake services for testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fakes.html#module-safeguard.sessions.plugin_fakes.credential_store">4.1. CredentialStore data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fakes.html#example-usage">4.1.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fakes.html#example-usage-with-pytest-and-monkeypatch">4.1.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fakes.html#module-safeguard.sessions.plugin_fakes.ldap_server">4.2. LDAPServer data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fakes.html#id1">4.2.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fakes.html#id2">4.2.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fakes.html#module-safeguard.sessions.plugin_fakes.user_list">4.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fakes.html#id3">4.3.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fakes.html#id4">4.3.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">5. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">6. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">7. Technical support resources</a></li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="#">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">2. Plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">3. Plugin-sdk services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">4. Fake services for testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">5. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">6. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">7. Technical support resources</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="history.html"
+                        title="next chapter">1. History of releases</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="history.html" title="1. History of releases"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>
