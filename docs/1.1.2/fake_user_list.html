@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5.3. UserList data injection &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. About us" href="about.html" />
+    <link rel="prev" title="5.2. LDAPServer data injection" href="fake_ldap_server.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="about.html" title="6. About us"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fake_ldap_server.html" title="5.2. LDAPServer data injection"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="fakes.html" accesskey="U">5. Fake services for testing</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-safeguard.sessions.plugin_fakes.user_list">
+<span id="userlist-data-injection"></span><h1>5.3. UserList data injection<a class="headerlink" href="#module-safeguard.sessions.plugin_fakes.user_list" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-safeguard.sessions.plugin_impl.user_list"></span><p>To inject user defined User List policies database into the <a class="reference internal" href="service_user_list.html#safeguard.sessions.plugin.user_list.UserList" title="safeguard.sessions.plugin.user_list.UserList"><code class="xref py py-class docutils literal"><span class="pre">UserList</span></code></a> API when testing outside the SPS box.</p>
+<p>Patch/overwrite the <code class="docutils literal"><span class="pre">safeguard.sessions.plugin_impl.user_list.user_lists</span></code> with your own database. The <code class="docutils literal"><span class="pre">user_lists</span></code>
+is a dictionary where the key is the name of the User List policy to define, and the value is itself a dictionary with
+keys “allow” and “except” that define the default mode and exceptions for the User List - like on the Web interface.</p>
+<div class="section" id="example-usage">
+<h2>5.3.1. Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">UserList</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.user_list</span> <span class="kn">import</span> <span class="n">user_lists</span>
+
+<span class="c1"># Data injection of a list called user_whitelist</span>
+<span class="n">user_lists</span><span class="p">[</span><span class="s2">&quot;user_whitelist&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;allow&quot;</span><span class="p">:</span> <span class="s2">&quot;no_user&quot;</span><span class="p">,</span> <span class="s2">&quot;except&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1&quot;</span><span class="p">]}</span>
+
+<span class="c1"># Test the injected data</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">[user_list]</span>
+<span class="s1">name=user_whitelist</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">ul</span> <span class="o">=</span> <span class="n">UserList</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;user1&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;other_user&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-usage-with-pytest-and-monkeypatch">
+<h2>5.3.2. Example usage with pytest and monkeypatch<a class="headerlink" href="#example-usage-with-pytest-and-monkeypatch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">UserList</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span> <span class="k">as</span> <span class="n">PluginConfig</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin_impl.user_list</span> <span class="kn">import</span> <span class="n">user_lists</span>
+
+<span class="k">def</span> <span class="nf">test_user_list</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="c1"># Data injection</span>
+    <span class="n">testdb</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;allow&quot;</span><span class="p">:</span> <span class="s2">&quot;no_user&quot;</span><span class="p">,</span> <span class="s2">&quot;except&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setitem</span><span class="p">(</span><span class="n">user_lists</span><span class="p">,</span> <span class="s1">&#39;user_whitelist&#39;</span><span class="p">,</span> <span class="n">testdb</span><span class="p">)</span>
+
+    <span class="c1"># Test the injected data</span>
+    <span class="n">pc</span> <span class="o">=</span> <span class="n">PluginConfig</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    [user_list]</span>
+<span class="s1">    name=user_whitelist</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">ul</span> <span class="o">=</span> <span class="n">UserList</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;user1&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span>
+    <span class="k">assert</span> <span class="n">ul</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;other_user&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">4. Plugin-sdk services</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="fakes.html">5. Fake services for testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fake_credential_store.html">5.1. CredentialStore data injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fake_ldap_server.html">5.2. LDAPServer data injection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage">5.3.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage-with-pytest-and-monkeypatch">5.3.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fake_ldap_server.html"
+                        title="previous chapter">5.2. LDAPServer data injection</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="about.html"
+                        title="next chapter">6. About us</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="about.html" title="6. About us"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fake_ldap_server.html" title="5.2. LDAPServer data injection"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="fakes.html" >5. Fake services for testing</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>

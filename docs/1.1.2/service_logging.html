@@ -1,0 +1,243 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4.2. Logging &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.3. CredentialStore" href="service_credential_store.html" />
+    <link rel="prev" title="4.1. PluginConfiguration" href="service_plugin_configuration.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="service_credential_store.html" title="4.3. CredentialStore"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="service_plugin_configuration.html" title="4.1. PluginConfiguration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="services.html" accesskey="U">4. Plugin-sdk services</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-safeguard.sessions.plugin.logging">
+<span id="logging"></span><h1>4.2. Logging<a class="headerlink" href="#module-safeguard.sessions.plugin.logging" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-safeguard.sessions.plugin.logging"></span><div class="section" id="configuration-example">
+<h2>4.2.1. Configuration example<a class="headerlink" href="#configuration-example" title="Permalink to this headline">¶</a></h2>
+<p>With this option one can set the verbosity of the logging. By default all the logs on info level will be logged to
+standard error. On Safeguard for privileged sessions, the standard error will be forwarded to the system logs.</p>
+<p>Possible log levels are the following:</p>
+<ul class="simple">
+<li>debug</li>
+<li>info</li>
+<li>warning</li>
+<li>error</li>
+<li>critical</li>
+</ul>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[logging]</span>
+<span class="c1"># One of &#39;debug&#39;, &#39;info&#39;, &#39;warning&#39;, &#39;error&#39;, &#39;critical&#39;</span>
+<span class="na">log_level</span> <span class="o">=</span> <span class="s">info</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-the-logger-service">
+<h2>4.2.2. Configuring the logger service<a class="headerlink" href="#configuring-the-logger-service" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
+
+<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="acquiring-a-logger">
+<h2>4.2.3. Acquiring a logger<a class="headerlink" href="#acquiring-a-logger" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.logging</span> <span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-example">
+<h2>4.2.4. Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
+
+<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">do_some_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug level log&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;This is an info level log&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;This is a warning level log&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;This is an error level log&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;This is a critical level log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="safeguard.sessions.plugin.logging.get_logger">
+<code class="descclassname">safeguard.sessions.plugin.logging.</code><code class="descname">get_logger</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.logging.get_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.logging.get_logger" title="safeguard.sessions.plugin.logging.get_logger"><code class="xref py py-meth docutils literal"><span class="pre">get_logger()</span></code></a> method acquires a Python Logger object of the given name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – name of the logger</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">logger with specific name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">logger.RootLogger or logger.Logger</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="safeguard.sessions.plugin.logging.configure">
+<code class="descclassname">safeguard.sessions.plugin.logging.</code><code class="descname">configure</code><span class="sig-paren">(</span><em>configuration</em>, <em>log_level=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.logging.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.logging.configure" title="safeguard.sessions.plugin.logging.configure"><code class="xref py py-meth docutils literal"><span class="pre">configure()</span></code></a> method sets the log level of root logger from the given plugin configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>configuration</strong> (<code class="xref py py-class docutils literal"><span class="pre">safeguard.sessions.plugin.pluginconfig.PluginConfig</span></code>) – Configuration containing the desired log level</li>
+<li><strong>log_level</strong> (<em>str</em>) – log level to set on the root logger</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">NoneType</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="services.html">4. Plugin-sdk services</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-example">4.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-logger-service">4.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acquiring-a-logger">4.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-example">4.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_ldap_server.html">4.4. LDAPServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="service_plugin_configuration.html"
+                        title="previous chapter">4.1. PluginConfiguration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="service_credential_store.html"
+                        title="next chapter">4.3. CredentialStore</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="service_credential_store.html" title="4.3. CredentialStore"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="service_plugin_configuration.html" title="4.1. PluginConfiguration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="services.html" >4. Plugin-sdk services</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>

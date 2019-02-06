@@ -1,0 +1,9 @@
+UserList
+--------
+.. automodule:: safeguard.sessions.plugin.user_list
+    :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.user_list_exceptions
+    :members:

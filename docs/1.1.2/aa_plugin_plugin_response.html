@@ -1,0 +1,275 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3.3. Plugin response &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.4. Connection information" href="aa_plugin_connection_information.html" />
+    <link rel="prev" title="3.2. Plugin development" href="aa_plugin_development.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aa_plugin_connection_information.html" title="3.4. Connection information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="aa_plugin_development.html" title="3.2. Plugin development"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="aa_plugins.html" accesskey="U">3. AA plugin development</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-safeguard.sessions.plugin.plugin_response">
+<span id="plugin-response"></span><h1>3.3. Plugin response<a class="headerlink" href="#module-safeguard.sessions.plugin.plugin_response" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-safeguard.sessions.plugin.plugin_response"></span><dl class="class">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse">
+<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.plugin_response.</code><code class="descname">AAResponse</code><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a> class represents an AA plugin response and provides methods for creating and modifying such
+responses.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAResponse</span>
+
+<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gateway_user</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_on_whitelist</span><span class="p">(</span><span class="n">gateway_user</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">AAResponse</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">is_on_blacklist</span><span class="p">(</span><span class="n">gateway_user</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">AAResponse</span><span class="o">.</span><span class="n">deny</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">AAResponse</span><span class="o">.</span><span class="n">need_info</span><span class="p">(</span><span class="s2">&quot;Who are you?&quot;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="classmethod">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.accept">
+<em class="property">classmethod </em><code class="descname">accept</code><span class="sig-paren">(</span><em>reason=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new ACCEPT response.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reason</strong> (<em>str</em>) – will be placed in the metadata as <code class="docutils literal"><span class="pre">{&quot;reason&quot;:</span> <span class="pre">reason}</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.deny">
+<em class="property">classmethod </em><code class="descname">deny</code><span class="sig-paren">(</span><em>reason=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.deny" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new DENY response.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reason</strong> (<em>str</em>) – will be placed in the metadata as <code class="docutils literal"><span class="pre">{&quot;reason&quot;:</span> <span class="pre">reason}</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.need_info">
+<em class="property">classmethod </em><code class="descname">need_info</code><span class="sig-paren">(</span><em>question</em>, <em>key</em>, <em>echo_off=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.need_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new NEEDINFO response.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>question</strong> (<em>str</em>) – question (or prompt) to display for the user</li>
+<li><strong>key</strong> (<em>str</em>) – identifier key for the response (this will key the response in <code class="docutils literal"><span class="pre">key_value_pairs</span></code> parameter)</li>
+<li><strong>echo_off</strong> (<em>bool</em>) – turn echo off for the user input (useful for e.g. password input); default: False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata">
+<code class="descname">with_additional_metadata</code><span class="sig-paren">(</span><em>additional_metadata</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the additional metadata field in the response. Overwrites previous reason given in <a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse.accept" title="safeguard.sessions.plugin.plugin_response.AAResponse.accept"><code class="xref py py-meth docutils literal"><span class="pre">accept()</span></code></a>,
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse.deny" title="safeguard.sessions.plugin.plugin_response.AAResponse.deny"><code class="xref py py-meth docutils literal"><span class="pre">deny()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>additional_metadata</strong> – this value will be stored a JSON in the <em>Additional metadata</em> column of the meta
+database.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie">
+<code class="descname">with_cookie</code><span class="sig-paren">(</span><em>cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the response with a cookie.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cookie</strong> (<em>dict</em>) – this value will be passed to the next call of the plugin in the <code class="docutils literal"><span class="pre">cookie</span></code> parameter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user">
+<code class="descname">with_gateway_user</code><span class="sig-paren">(</span><em>gateway_user</em>, <em>gateway_groups=()</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the response with a gateway username and its groups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>gateway_user</strong> (<em>str</em>) – this value will override the current gateway user</li>
+<li><strong>gateway_groups</strong> (<em>seq</em>) – these will override the current gateway user’s groups; default: empty</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.plugin_response.AAResponse.with_session_cookie">
+<code class="descname">with_session_cookie</code><span class="sig-paren">(</span><em>session_cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse.with_session_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the response with a session cookie.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session_cookie</strong> (<em>dict</em>) – this value will be passed to other plugins’ (e.g. credstore) calls in their
+<code class="docutils literal"><span class="pre">session_cookie</span></code> parameter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal"><span class="pre">AAResponse</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">3.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">3.2. Plugin development</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">3.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">3.5. AAPlugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">4. Plugin-sdk services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aa_plugin_development.html"
+                        title="previous chapter">3.2. Plugin development</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aa_plugin_connection_information.html"
+                        title="next chapter">3.4. Connection information</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aa_plugin_connection_information.html" title="3.4. Connection information"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="aa_plugin_development.html" title="3.2. Plugin development"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="aa_plugins.html" >3. AA plugin development</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>

@@ -2,20 +2,8 @@ Fake services for testing
 =========================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :includehidden:
 
-
-CredentialStore data injection
-------------------------------
-.. automodule:: safeguard.sessions.plugin_fakes.credential_store
-   :members:
-
-LDAPServer data injection
--------------------------
-.. automodule:: safeguard.sessions.plugin_fakes.ldap_server
-    :members:
-
-UserList data injection
------------------------
-.. automodule:: safeguard.sessions.plugin_fakes.user_list
+    fake_credential_store
+    fake_ldap_server
+    fake_user_list

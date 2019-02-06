@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>3. Plugin-sdk services &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
+    <title>4. Plugin-sdk services &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Fake services for testing" href="fakes.html" />
-    <link rel="prev" title="2. Plugin development" href="plugins.html" /> 
+    <link rel="next" title="4.1. PluginConfiguration" href="service_plugin_configuration.html" />
+    <link rel="prev" title="3.5. AAPlugin" href="aa_plugin_aa_plugin.html" /> 
   </head>
   <body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -38,10 +38,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="fakes.html" title="4. Fake services for testing"
+          <a href="service_plugin_configuration.html" title="4.1. PluginConfiguration"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="plugins.html" title="2. Plugin development"
+          <a href="aa_plugin_aa_plugin.html" title="3.5. AAPlugin"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li> 
       </ul>
@@ -53,969 +53,47 @@
           <div class="body" role="main">
             
   <div class="section" id="plugin-sdk-services">
-<h1>3. Plugin-sdk services<a class="headerlink" href="#plugin-sdk-services" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-safeguard.sessions.plugin.plugin_configuration">
-<span id="pluginconfiguration"></span><h2>3.1. PluginConfiguration<a class="headerlink" href="#module-safeguard.sessions.plugin.plugin_configuration" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.plugin_configuration"></span><p>The PluginConfiguration service implements parsing and accessing the textual configuration set for plugin instances.
-The API is built on Python configparser.ConfigParser module with some additional functionality.</p>
-<dl class="class">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration">
-<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.plugin_configuration.</code><code class="descname">PluginConfiguration</code><span class="sig-paren">(</span><em>configuration</em>, <em>defaults=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="Permalink to this definition">¶</a></dt>
-<dd><p>The PluginConfiguration class represents the plugin configuration service.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>configuration</strong> (<em>str</em>) – runtime configuration</li>
-<li><strong>defaults</strong> (<em>str</em>) – design time configuration defaults</li>
+<h1>4. Plugin-sdk services<a class="headerlink" href="#plugin-sdk-services" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">4.1.1. Exceptions</a></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>section</em>, <em>option</em>, <em>default=None</em>, <em>required=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> method returns a configuration option as a string value.
-If the value of the option is <cite>$</cite> the secret identified by the section and option pair
-is retrieved from the configured credential store</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>section</strong> (<em>str</em>) – which [section] to search</li>
-<li><strong>option</strong> (<em>str</em>) – which option to get</li>
-<li><strong>default</strong> – return value if section or option is not present</li>
-<li><strong>required</strong> (<em>boolean</em>) – whether to throw an exception on missing option</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service_logging.html">4.2. Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html#configuration-example">4.2.1. Configuration example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html#configuring-the-logger-service">4.2.2. Configuring the logger service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html#acquiring-a-logger">4.2.3. Acquiring a logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html#usage-example">4.2.4. Usage example</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the value of the option or None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_certificate">
-<code class="descname">get_certificate</code><span class="sig-paren">(</span><em>section</em>, <em>option</em>, <em>required=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_certificate" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_certificate" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_certificate"><code class="xref py py-meth docutils literal"><span class="pre">get_certificate()</span></code></a> method returns a configuration option as a dict value.
-If the value of the option is <cite>$</cite> the certificate identified by the section and option pair
-is retrieved from the configured credential store
-When the certificate and private key is given in the configuration it should be in PEM format
-and all the new lines must be indentet with one whitespace</p>
-<p>Example configuration:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[foo]</span>
-<span class="na">certificate</span> <span class="o">=</span> <span class="s">-----BEGIN CERTIFICATE-----</span>
-<span class="s"> cert</span>
-<span class="s"> -----END CERTIFICATE-----</span>
-<span class="s"> -----BEGIN RSA PRIVATE KEY-----</span>
-<span class="s"> key</span>
-<span class="s"> -----END RSA PRIVATE KEY-----</span>
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>section</strong> (<em>str</em>) – which [section] to search</li>
-<li><strong>option</strong> (<em>str</em>) – which option to get</li>
-<li><strong>required</strong> (<em>boolean</em>) – whether to throw an exception on missing option</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html#configuration-example">4.3.1. Configuration example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#acquiring-a-credentialstore">4.3.1.1. Acquiring a CredentialStore</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">private key and certificate parsed as dict</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getboolean">
-<code class="descname">getboolean</code><span class="sig-paren">(</span><em>section</em>, <em>option</em>, <em>default=None</em>, <em>required=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getboolean" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getboolean" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getboolean"><code class="xref py py-meth docutils literal"><span class="pre">getboolean()</span></code></a> method returns the boolean value of a configuration option. The configuration option may
-have the values “yes” and “no” or their upper case variants. In case of invalid value, a
-<code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code> exception is raised.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>section</strong> (<em>str</em>) – which [section] to search</li>
-<li><strong>option</strong> (<em>str</em>) – which option to get</li>
-<li><strong>default</strong> – value if section or option is not present</li>
-<li><strong>required</strong> (<em>boolean</em>) – whether to throw exception on missing option</li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">4.3.2. Exceptions</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the value of the option or None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">boolean</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getint">
-<code class="descname">getint</code><span class="sig-paren">(</span><em>section</em>, <em>option</em>, <em>default=None</em>, <em>required=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getint" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getint" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getint"><code class="xref py py-meth docutils literal"><span class="pre">getint()</span></code></a> method returns the integer value of a configuration option. If the configuration option
-cannot be converted to an integer value, then a <code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code> exception is raised.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>section</strong> (<em>str</em>) – which [section] to search</li>
-<li><strong>option</strong> (<em>str</em>) – which option to get</li>
-<li><strong>default</strong> – value if section or option is not present</li>
-<li><strong>required</strong> (<em>boolean</em>) – whether to throw exception on missing option</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service_ldap_server.html">4.4. LDAPServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_ldap_server.html#configuration-example">4.4.1. Configuration example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_ldap_server.html#acquiring-a-user-attribute">4.4.1.1. Acquiring a user attribute</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the value of the option or None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">int</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getfloat">
-<code class="descname">getfloat</code><span class="sig-paren">(</span><em>section</em>, <em>option</em>, <em>default=None</em>, <em>required=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getfloat" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getfloat" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getfloat"><code class="xref py py-meth docutils literal"><span class="pre">getfloat()</span></code></a> method returns the floating point value of a configuration option. If the configuration
-option cannot be converted to a floating point value, then a <code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code> exception is raised.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>section</strong> (<em>str</em>) – which [section] to search</li>
-<li><strong>option</strong> (<em>str</em>) – which option to get</li>
-<li><strong>default</strong> – value if section or option is not present</li>
-<li><strong>required</strong> (<em>boolean</em>) – whether to throw exception on missing option</li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">4.4.2. Exceptions</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the value of the option or None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">float</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getienum">
-<code class="descname">getienum</code><span class="sig-paren">(</span><em>section</em>, <em>option</em>, <em>value_set</em>, <em>default=None</em>, <em>required=False</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getienum" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getienum" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getienum"><code class="xref py py-meth docutils literal"><span class="pre">getienum()</span></code></a> method returns the value of an option that may only assume certain lower case string
-values. In other words the lower case value of the configuration option is checked against a list of possible
-values. In case the configuration value is not one of the allowed values, then a <code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code>
-exception is raised.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                      [foobar]</span>
-<span class="s2">                      color1 = LightGreen</span>
-<span class="s2">                      color2 = LightBlue</span>
-<span class="s2">                       &quot;&quot;&quot;</span><span class="p">)</span>
-
-<span class="c1"># next line is ok, returns &#39;lightgreen&#39;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">getienum</span><span class="p">(</span><span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="s1">&#39;color1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">))</span>
-
-<span class="c1"># next line throws PluginSDKValueError exception</span>
-<span class="n">config</span><span class="o">.</span><span class="n">getienum</span><span class="p">(</span><span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="s1">&#39;color2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>section</strong> (<em>str</em>) – which [section] to search</li>
-<li><strong>option</strong> (<em>str</em>) – which option to get</li>
-<li><strong>value_set</strong> (<em>seq</em>) – a container of possible lower case values (the container should implement the <strong>in</strong>
-operator)</li>
-<li><strong>default</strong> (<em>str</em>) – value if section or option is not present</li>
-<li><strong>required</strong> (<em>boolean</em>) – whether to throw exception on missing option</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service_user_list.html">4.5. UserList</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html#configuration-example">4.5.1. Configuration example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#checking-whether-a-user-name-matches-a-user-list">4.5.1.1. Checking whether a user name matches a User List</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the value of the option or None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<div class="section" id="module-safeguard.sessions.plugin.plugin_configuration_exceptions">
-<span id="exceptions"></span><h3>3.1.1. Exceptions<a class="headerlink" href="#module-safeguard.sessions.plugin.plugin_configuration_exceptions" title="Permalink to this headline">¶</a></h3>
-<dl class="exception">
-<dt id="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.plugin_configuration_exceptions.</code><code class="descname">RequiredConfigurationSettingNotFound</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a> excpetion is raised when a required configuration option is not
-present when requested by the plugin.</p>
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="module-safeguard.sessions.plugin.logging">
-<span id="logging"></span><h2>3.2. Logging<a class="headerlink" href="#module-safeguard.sessions.plugin.logging" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.logging"></span><div class="section" id="logging-service">
-<h3>3.2.1. Logging service<a class="headerlink" href="#logging-service" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="configuration-example">
-<h4>3.2.1.1. Configuration example<a class="headerlink" href="#configuration-example" title="Permalink to this headline">¶</a></h4>
-<p>With this option one can set the verbosity of the logging. By default all the logs on info level will be logged to
-standard error. On Safeguard for privileged sessions, the standard error will be forwarded to the system logs.</p>
-<p>Possible log levels are the following:</p>
-<ul class="simple">
-<li>debug</li>
-<li>info</li>
-<li>warning</li>
-<li>error</li>
-<li>critical</li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">4.5.2. Exceptions</a></li>
 </ul>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[logging]</span>
-<span class="c1"># One of &#39;debug&#39;, &#39;info&#39;, &#39;warning&#39;, &#39;error&#39;, &#39;critical&#39;</span>
-<span class="na">log_level</span> <span class="o">=</span> <span class="s">info</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="configuring-the-logger-service">
-<h4>3.2.1.2. Configuring the logger service<a class="headerlink" href="#configuring-the-logger-service" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">logging</span>
-<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
-
-<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="acquiring-a-logger">
-<h4>3.2.1.3. Acquiring a logger<a class="headerlink" href="#acquiring-a-logger" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.logging</span> <span class="kn">import</span> <span class="n">get_logger</span>
-
-<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="usage-example">
-<h4>3.2.1.4. Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">logging</span>
-<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
-
-<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugin_config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">do_some_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This is a debug level log&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;This is an info level log&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;This is a warning level log&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;This is an error level log&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;This is a critical level log&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="function">
-<dt id="safeguard.sessions.plugin.logging.get_logger">
-<code class="descclassname">safeguard.sessions.plugin.logging.</code><code class="descname">get_logger</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.logging.get_logger" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.logging.get_logger" title="safeguard.sessions.plugin.logging.get_logger"><code class="xref py py-meth docutils literal"><span class="pre">get_logger()</span></code></a> method acquires a Python Logger object of the given name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – name of the logger</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">logger with specific name</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">logger.RootLogger or logger.Logger</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="safeguard.sessions.plugin.logging.configure">
-<code class="descclassname">safeguard.sessions.plugin.logging.</code><code class="descname">configure</code><span class="sig-paren">(</span><em>configuration</em>, <em>log_level=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.logging.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.logging.configure" title="safeguard.sessions.plugin.logging.configure"><code class="xref py py-meth docutils literal"><span class="pre">configure()</span></code></a> method sets the log level of root logger from the given plugin configuration.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>configuration</strong> (<code class="xref py py-class docutils literal"><span class="pre">safeguard.sessions.plugin.pluginconfig.PluginConfig</span></code>) – Configuration containing the desired log level</li>
-<li><strong>log_level</strong> (<em>str</em>) – log level to set on the root logger</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">NoneType</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-</div>
-</div>
-<div class="section" id="module-safeguard.sessions.plugin.credential_store">
-<span id="credentialstore"></span><h2>3.3. CredentialStore<a class="headerlink" href="#module-safeguard.sessions.plugin.credential_store" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.credential_store"></span><p>The CredentialStore service implements retrieving and decrypting of credentials from a configured local credential
-store.</p>
-<div class="section" id="id1">
-<h3>3.3.1. Configuration example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[credential_store]</span>
-<span class="c1"># Name of the local credential store configured in SPS for hosting sensitive</span>
-<span class="c1"># configuration data. For more information, read the &quot;Store sensitive</span>
-<span class="c1"># plugin data securely&quot; section in the documentation.</span>
-<span class="c1">; name=&lt;name-of-credential-store-policy-that-hosts-sensitive-data&gt;</span>
-</pre></div>
-</div>
-<div class="section" id="acquiring-a-credentialstore">
-<h4>3.3.1.1. Acquiring a CredentialStore<a class="headerlink" href="#acquiring-a-credentialstore" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
-<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">CredentialStore</span>
-
-<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
-   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">__config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">__cred_store</span> <span class="o">=</span> <span class="n">CredentialStore</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore">
-<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.credential_store.</code><code class="descname">CredentialStore</code><span class="sig-paren">(</span><em>database</em>, <em>decryptor</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore" title="safeguard.sessions.plugin.credential_store.CredentialStore"><code class="xref py py-class docutils literal"><span class="pre">CredentialStore</span></code></a> class represents access to a local credential store.</p>
-<p>Do not instantiate a <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore" title="safeguard.sessions.plugin.credential_store.CredentialStore"><code class="xref py py-class docutils literal"><span class="pre">CredentialStore</span></code></a> with its constructor, rather use the <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.from_config" title="safeguard.sessions.plugin.credential_store.CredentialStore.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method.</p>
-<dl class="classmethod">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore.from_config">
-<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>plugin_configuration</em>, <em>section='credential_store'</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore.from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.from_config" title="safeguard.sessions.plugin.credential_store.CredentialStore.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> class method creates an instance of <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore" title="safeguard.sessions.plugin.credential_store.CredentialStore"><code class="xref py py-class docutils literal"><span class="pre">CredentialStore</span></code></a> from a given plugin
-configuration.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plugin_configuration</strong> (<a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="xref py py-class docutils literal"><span class="pre">PluginConfiguration</span></code></a>) – plugin configuration object</li>
-<li><strong>section</strong> (<em>str</em>) – name of the section where the credential store name is stored</li>
-<li><strong>name</strong> (<em>str</em>) – name of the credential store policy</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">credential store service instance</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore" title="safeguard.sessions.plugin.credential_store.CredentialStore"><code class="xref py py-class docutils literal"><span class="pre">CredentialStore</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_all" title="safeguard.sessions.plugin.credential_store.CredentialStore.get_all"><code class="xref py py-meth docutils literal"><span class="pre">get_all()</span></code></a> method retrieves all decrypted credentials from the credential store.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of tuples of members (user, host, credential)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore.get_credentials">
-<code class="descname">get_credentials</code><span class="sig-paren">(</span><em>host</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_credentials" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_credentials" title="safeguard.sessions.plugin.credential_store.CredentialStore.get_credentials"><code class="xref py py-meth docutils literal"><span class="pre">get_credentials()</span></code></a> method retrieves all the decrypted credentials for a given host and user pair.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>host</strong> (<em>str</em>) – host name to retrieve credentials for</li>
-<li><strong>user</strong> (<em>str</em>) – user name to retrieve credentials for</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of unfiltered, decrypted credentials</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore.get_passwords">
-<code class="descname">get_passwords</code><span class="sig-paren">(</span><em>host</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_passwords" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_passwords" title="safeguard.sessions.plugin.credential_store.CredentialStore.get_passwords"><code class="xref py py-meth docutils literal"><span class="pre">get_passwords()</span></code></a> method retrieves all the decrypted passwords for a given host and user pair.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>host</strong> (<em>str</em>) – host name retrieve passwords for</li>
-<li><strong>user</strong> (<em>str</em>) – user name retrieve passwords for</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of unfiltered, decrypted passwords</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore.get_keys">
-<code class="descname">get_keys</code><span class="sig-paren">(</span><em>host</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_keys" title="safeguard.sessions.plugin.credential_store.CredentialStore.get_keys"><code class="xref py py-meth docutils literal"><span class="pre">get_keys()</span></code></a> method retrieves all the decrypted SSH Keys for a given host and user pair.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>host</strong> (<em>str</em>) – host name retrieve SSH Keys for</li>
-<li><strong>user</strong> (<em>str</em>) – user name retrieve SSH Keys for</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of unfiltered, decrypted SSH Keys</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.credential_store.CredentialStore.get_certificates">
-<code class="descname">get_certificates</code><span class="sig-paren">(</span><em>host</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_certificates" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store.CredentialStore.get_certificates" title="safeguard.sessions.plugin.credential_store.CredentialStore.get_certificates"><code class="xref py py-meth docutils literal"><span class="pre">get_certificates()</span></code></a> method retrieves all the decrypted X509 Key for a given host and user pair.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>host</strong> (<em>str</em>) – host name retrieve X509 Key for</li>
-<li><strong>user</strong> (<em>str</em>) – user name retrieve X509 Key for</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of unfiltered, decrypted X509 Key</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="id2">
-<h3>3.3.2. Exceptions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-safeguard.sessions.plugin.credential_store_exceptions"></span><dl class="exception">
-<dt id="safeguard.sessions.plugin.credential_store_exceptions.LocalCredentialStoreNotFound">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.credential_store_exceptions.</code><code class="descname">LocalCredentialStoreNotFound</code><span class="sig-paren">(</span><em>credstore_name</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.credential_store_exceptions.LocalCredentialStoreNotFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.credential_store_exceptions.LocalCredentialStoreNotFound" title="safeguard.sessions.plugin.credential_store_exceptions.LocalCredentialStoreNotFound"><code class="xref py py-class docutils literal"><span class="pre">LocalCredentialStoreNotFound</span></code></a> exception is raised when the configured local credential store cannot be
-found.</p>
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="module-safeguard.sessions.plugin.ldap_server">
-<span id="ldapserver"></span><h2>3.4. LDAPServer<a class="headerlink" href="#module-safeguard.sessions.plugin.ldap_server" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.ldap_server"></span><p>The LDAPServer service implements retrieving a user attribute from preconfigured AD or unix LDAP servers.</p>
-<div class="section" id="id3">
-<h3>3.4.1. Configuration example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[ldap_server]</span>
-<span class="c1"># Name of the LDAP Server policy configured in SPS</span>
-<span class="c1">; name = &lt;ldap-server-policy-name&gt;</span>
-
-<span class="c1"># The LDAP attribute name which should be used.</span>
-<span class="c1"># Note that this may be different from the displayed name of the</span>
-<span class="c1"># attribute, especially in Microsoft Windows, for example</span>
-<span class="c1"># &quot;Office&quot; attribute is encoded in &quot;physicalDeliveryOfficeName&quot;.</span>
-<span class="na">user_attribute</span> <span class="o">=</span> <span class="s">description</span>
-</pre></div>
-</div>
-<div class="section" id="acquiring-a-user-attribute">
-<h4>3.4.1.1. Acquiring a user attribute<a class="headerlink" href="#acquiring-a-user-attribute" title="Permalink to this headline">¶</a></h4>
-<p>In this example we’ll use the following configuration to fetch the description attribute of the user administrator.</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[ldap_server]</span>
-<span class="c1"># Name of the LDAP Server policy configured in SPS</span>
-<span class="na">name</span> <span class="o">=</span> <span class="s">my_ad_policy</span>
-
-<span class="c1"># The LDAP attribute name which should be used.</span>
-<span class="c1"># Note that this may be different from the displayed name of the</span>
-<span class="c1"># attribute, especially in Microsoft Windows, where for example</span>
-<span class="c1"># &quot;Office&quot; attribute is encoded in &quot;physicalDeliveryOfficeName&quot;.</span>
-<span class="na">user_attribute</span> <span class="o">=</span> <span class="s">description</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
-<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">LDAPServer</span>
-
-<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
-   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">__config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">__ldap</span> <span class="o">=</span> <span class="n">LDAPServer</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">)</span>
-       <span class="n">attribute</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ldap</span><span class="o">.</span><span class="n">get_user_attribute</span><span class="p">(</span><span class="s1">&#39;administrator&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="safeguard.sessions.plugin.ldap_server.LDAPServer">
-<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.ldap_server.</code><code class="descname">LDAPServer</code><span class="sig-paren">(</span><em>ldap_service</em>, <em>user_attribute_factory</em>, <em>user_groups_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a> represent access to the LDAP Server configured in SPS.</p>
-<p>Do not instantiate LDAPServer service with its constructor, rather use the <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>plugin_configuration</strong> – configuration to use</li>
-<li><strong>section</strong> (<em>str</em>) – the section to get configuration options from</li>
-<li><strong>ldap_service</strong> – reference to internal implementation</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="classmethod">
-<dt id="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config">
-<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>plugin_configuration</em>, <em>section='ldap_server'</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> class method creates an <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a> instance from a given plugin configuration.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plugin_configuration</strong> (<a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="xref py py-class docutils literal"><span class="pre">PluginConfiguration</span></code></a>) – plugin configuration object</li>
-<li><strong>section</strong> (<em>str</em>) – name of the section where the LDAP parameters are stored</li>
-<li><strong>name</strong> (<em>str</em>) – name of the LDAP server policy</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">LDAPServer instance</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a> if there
-is no such section or “name” option in the section defined in the configuration.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute">
-<code class="descname">get_user_string_attribute</code><span class="sig-paren">(</span><em>username</em>, <em>attribute=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute" title="safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute"><code class="xref py py-meth docutils literal"><span class="pre">get_user_string_attribute()</span></code></a> method can retrieve a user’s string attribute from LDAP. Any string or
-numeric value that can be converted to a UTF-8 string  will be returned. On the other hand binary data will
-trigger an error, for example a JPEG photo cannot be fetched this way.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<em>str</em>) – </li>
-<li><strong>attribute</strong> (<em>str</em>) – </li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of values in the attribute</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a>
-if the attribute parameter is None but there is no “user_attribute” defined in the configuration.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal"><span class="pre">LDAPUserNotFound</span></code></a> if the
-user is not found in LDAP database.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal"><span class="pre">LDAPOperationError</span></code></a> on
-other LDAP related errors.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups">
-<code class="descname">filter_user_groups</code><span class="sig-paren">(</span><em>username</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups" title="safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups"><code class="xref py py-meth docutils literal"><span class="pre">filter_user_groups()</span></code></a> method can check whether a user is member of a list of predefined groups.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<em>str</em>) – </li>
-<li><strong>groups</strong> (<em>list</em>) – </li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the input groups reduced to those groups that the user is actually a member of</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a>
-if the groups parameter is None but there is no “user_groups” defined in the configuration.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal"><span class="pre">LDAPUserNotFound</span></code></a> if the
-user is not found in LDAP database.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal"><span class="pre">LDAPOperationError</span></code></a> on
-other LDAP related errors.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="id4">
-<h3>3.4.2. Exceptions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-safeguard.sessions.plugin.ldap_server_exceptions"></span><dl class="exception">
-<dt id="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.ldap_server_exceptions.</code><code class="descname">LDAPOperationError</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal"><span class="pre">LDAPOperationError</span></code></a> exception is raised when an LDAP error is detected.</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.ldap_server_exceptions.</code><code class="descname">LDAPUserNotFound</code><span class="sig-paren">(</span><em>variables</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal"><span class="pre">LDAPUserNotFound</span></code></a> exception is raised when a user is not found in the LDAP server.</p>
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="module-safeguard.sessions.plugin.exceptions">
-<span id="base-class-for-exceptions"></span><h2>3.5. Base class for exceptions<a class="headerlink" href="#module-safeguard.sessions.plugin.exceptions" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.exceptions"></span><dl class="class">
-<dt id="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter">
-<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.exceptions.</code><code class="descname">PluginSDKExceptionFormatter</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter" title="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKExceptionFormatter</span></code></a> is the base class for Plugin SDK exceptions.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>message</strong> (<em>str</em>) – free text without variables</li>
-<li><strong>variables</strong> (<em>dict</em>) – a dictionary of variables to format in the exception message or None</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Not to be used directly, the PluginSDKExceptionFormatter adds formatting of variables provided to an exception.</p>
-<dl class="method">
-<dt id="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter.append_variables">
-<code class="descname">append_variables</code><span class="sig-paren">(</span><em>variables</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter.append_variables" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter.append_variables" title="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter.append_variables"><code class="xref py py-meth docutils literal"><span class="pre">append_variables()</span></code></a> adds more details to an exception object. Does not overwrite previous details,
-even if the same key is used.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variables</strong> (<em>dict</em>) – additional variables</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">self</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="exception">
-<dt id="safeguard.sessions.plugin.exceptions.PluginSDKRuntimeError">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.exceptions.</code><code class="descname">PluginSDKRuntimeError</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeError" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeError" title="safeguard.sessions.plugin.exceptions.PluginSDKRuntimeError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKRuntimeError</span></code></a> is the base class for Python RuntimeError like exceptions with formatting,
-it is also a subclass of <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter" title="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKExceptionFormatter</span></code></a>.</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="safeguard.sessions.plugin.exceptions.PluginSDKRuntimeWarning">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.exceptions.</code><code class="descname">PluginSDKRuntimeWarning</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeWarning" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeWarning" title="safeguard.sessions.plugin.exceptions.PluginSDKRuntimeWarning"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKRuntimeWarning</span></code></a> is the base class for Python RuntimeError like exceptions with formatting,
-it is also a subclass of <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter" title="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKExceptionFormatter</span></code></a>.</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="safeguard.sessions.plugin.exceptions.PluginSDKValueError">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.exceptions.</code><code class="descname">PluginSDKValueError</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKValueError" title="safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKValueError</span></code></a> is the base class for Python RuntimeError like exceptions with formatting,
-it is also a subclass of <a class="reference internal" href="#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter" title="safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter"><code class="xref py py-class docutils literal"><span class="pre">PluginSDKExceptionFormatter</span></code></a>.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-safeguard.sessions.plugin.user_list">
-<span id="userlist"></span><h2>3.6. UserList<a class="headerlink" href="#module-safeguard.sessions.plugin.user_list" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.user_list"></span><p>The UserList implements checking whether a user name matches the given
-User List policy. Note that the match is case sensitive.</p>
-<div class="section" id="id5">
-<h3>3.6.1. Configuration example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[user_list]</span>
-<span class="c1"># Name of the User List policy configured in SPS (Policies -&gt; User Lists)</span>
-<span class="c1">; name = &lt;user-list-policy-name&gt;</span>
-</pre></div>
-</div>
-<div class="section" id="checking-whether-a-user-name-matches-a-user-list">
-<h4>3.6.1.1. Checking whether a user name matches a User List<a class="headerlink" href="#checking-whether-a-user-name-matches-a-user-list" title="Permalink to this headline">¶</a></h4>
-<p>In this example we’ll use the following configuration to check User List membership of user ‘administrator’</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[user_list]</span>
-<span class="c1"># Name of the User List policy configured in SPS (Policies -&gt; User Lists)</span>
-<span class="na">name</span> <span class="o">=</span> <span class="s">my_user_list_policy</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
-<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">UserList</span>
-
-<span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
-   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">__config</span> <span class="o">=</span> <span class="n">PluginConfiguration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">__user_list</span> <span class="o">=</span> <span class="n">UserList</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">)</span>
-       <span class="n">is_matched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__user_list</span><span class="o">.</span><span class="n">check_user</span><span class="p">(</span><span class="s1">&#39;administrator&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="safeguard.sessions.plugin.user_list.UserList">
-<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.user_list.</code><code class="descname">UserList</code><span class="sig-paren">(</span><em>users</em>, <em>default</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.user_list.UserList" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.user_list.UserList" title="safeguard.sessions.plugin.user_list.UserList"><code class="xref py py-class docutils literal"><span class="pre">UserList</span></code></a> represents access to the User List policy in SPS.</p>
-<p>Do not instantiate UserList service with its constructor, rather use the <a class="reference internal" href="#safeguard.sessions.plugin.user_list.UserList.from_config" title="safeguard.sessions.plugin.user_list.UserList.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>users</strong> (<em>list</em>) – a list of user names, corresponding to the except list in the policy</li>
-<li><strong>default</strong> – ‘all_users’ or ‘no_user’, corresponding to the allow setting in the policy</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="classmethod">
-<dt id="safeguard.sessions.plugin.user_list.UserList.from_config">
-<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>plugin_configuration</em>, <em>section='user_list'</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.user_list.UserList.from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.user_list.UserList.from_config" title="safeguard.sessions.plugin.user_list.UserList.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method creates a <a class="reference internal" href="#safeguard.sessions.plugin.user_list.UserList" title="safeguard.sessions.plugin.user_list.UserList"><code class="xref py py-class docutils literal"><span class="pre">UserList</span></code></a> instance from the given plugin configuration.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plugin_configuration</strong> (<a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="xref py py-class docutils literal"><span class="pre">PluginConfiguration</span></code></a>) – plugin configuration object</li>
-<li><strong>section</strong> (<em>str</em>) – name of the configuration section where the User List policy name is found</li>
-<li><strong>name</strong> (<em>str</em>) – name of the User List policy</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.user_list.UserList" title="safeguard.sessions.plugin.user_list.UserList"><code class="xref py py-class docutils literal"><span class="pre">UserList</span></code></a></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a> if there
-is no such section or “name” option in the section defined in the configuration.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound" title="safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound"><code class="xref py py-class docutils literal"><span class="pre">LocalUserListNotFound</span></code></a> if the given User List policy is not
-found.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.user_list.UserList.check_user">
-<code class="descname">check_user</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.user_list.UserList.check_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.user_list.UserList.check_user" title="safeguard.sessions.plugin.user_list.UserList.check_user"><code class="xref py py-meth docutils literal"><span class="pre">check_user()</span></code></a> will match the user name against a User List policy that contains an “allow” and
-“except” configuration option. The returned value is True in two cases:</p>
-<ol class="arabic simple">
-<li>the “allow” option equals <code class="docutils literal"><span class="pre">no_user</span></code> and the user name is in the “except” list (whitelist case)</li>
-<li>the “allow” option equals <code class="docutils literal"><span class="pre">all_users</span></code> and the user name is not in the “except” list (blacklist case)</li>
-</ol>
-<p>otherwise the return value is False.</p>
-<p><em>Note</em>: the check in the “except” list is case sensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>username</strong> (<em>str</em>) – the user name to check</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="id6">
-<h3>3.6.2. Exceptions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-safeguard.sessions.plugin.user_list_exceptions"></span><dl class="exception">
-<dt id="safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound">
-<em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.user_list_exceptions.</code><code class="descname">LocalUserListNotFound</code><span class="sig-paren">(</span><em>user_list_name</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound" title="safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound"><code class="xref py py-class docutils literal"><span class="pre">LocalUserListNotFound</span></code></a> exception is raised when the configured local user list cannot be found.</p>
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="module-safeguard.sessions.plugin.host_resolver">
-<span id="hostresolver"></span><h2>3.7. HostResolver<a class="headerlink" href="#module-safeguard.sessions.plugin.host_resolver" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-safeguard.sessions.plugin.host_resolver"></span><dl class="class">
-<dt id="safeguard.sessions.plugin.host_resolver.HostResolver">
-<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.host_resolver.</code><code class="descname">HostResolver</code><a class="headerlink" href="#safeguard.sessions.plugin.host_resolver.HostResolver" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.host_resolver.HostResolver" title="safeguard.sessions.plugin.host_resolver.HostResolver"><code class="xref py py-class docutils literal"><span class="pre">HostResolver</span></code></a> class represents a utility class to access DNS services.</p>
-<p>Do not instantiate <a class="reference internal" href="#safeguard.sessions.plugin.host_resolver.HostResolver" title="safeguard.sessions.plugin.host_resolver.HostResolver"><code class="xref py py-class docutils literal"><span class="pre">HostResolver</span></code></a> with its constructor, rather use the <a class="reference internal" href="#safeguard.sessions.plugin.host_resolver.HostResolver.from_config" title="safeguard.sessions.plugin.host_resolver.HostResolver.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method.</p>
-<dl class="classmethod">
-<dt id="safeguard.sessions.plugin.host_resolver.HostResolver.from_config">
-<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>plugin_configuration</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.host_resolver.HostResolver.from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.host_resolver.HostResolver.from_config" title="safeguard.sessions.plugin.host_resolver.HostResolver.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method creates an instance of HostResolver service.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>plugin_configuration</strong> (<a class="reference internal" href="#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="xref py py-class docutils literal"><span class="pre">PluginConfiguration</span></code></a>) – plugin configuration object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">HostResolver instance</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#safeguard.sessions.plugin.host_resolver.HostResolver" title="safeguard.sessions.plugin.host_resolver.HostResolver"><code class="xref py py-class docutils literal"><span class="pre">HostResolver</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="safeguard.sessions.plugin.host_resolver.HostResolver.resolve_hosts_by_ip">
-<code class="descname">resolve_hosts_by_ip</code><span class="sig-paren">(</span><em>ip_address</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.host_resolver.HostResolver.resolve_hosts_by_ip" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.host_resolver.HostResolver.resolve_hosts_by_ip" title="safeguard.sessions.plugin.host_resolver.HostResolver.resolve_hosts_by_ip"><code class="xref py py-meth docutils literal"><span class="pre">resolve_hosts_by_ip()</span></code></a> method uses the DNS service to resolve a given IP address into a list of the
-primary fully qualified domain name and possible alias names.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ip_address</strong> (<em>str</em>) – the IP address to resolve</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of host names</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">socket.error</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 </div>
 
@@ -1029,62 +107,30 @@ primary fully qualified domain name and possible alias names.</p>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plugins.html">2. Plugin development</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Plugin-sdk services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.plugin_configuration">3.1. PluginConfiguration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-safeguard.sessions.plugin.plugin_configuration_exceptions">3.1.1. Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Plugin-sdk services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html">4.2. Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_ldap_server.html">4.4. LDAPServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.logging">3.2. Logging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#logging-service">3.2.1. Logging service</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configuration-example">3.2.1.1. Configuration example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuring-the-logger-service">3.2.1.2. Configuring the logger service</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#acquiring-a-logger">3.2.1.3. Acquiring a logger</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#usage-example">3.2.1.4. Usage example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.credential_store">3.3. CredentialStore</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">3.3.1. Configuration example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#acquiring-a-credentialstore">3.3.1.1. Acquiring a CredentialStore</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">3.3.2. Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.ldap_server">3.4. LDAPServer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">3.4.1. Configuration example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#acquiring-a-user-attribute">3.4.1.1. Acquiring a user attribute</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">3.4.2. Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.exceptions">3.5. Base class for exceptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.user_list">3.6. UserList</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">3.6.1. Configuration example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#checking-whether-a-user-name-matches-a-user-list">3.6.1.1. Checking whether a user name matches a User List</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">3.6.2. Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-safeguard.sessions.plugin.host_resolver">3.7. HostResolver</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fakes.html">4. Fake services for testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">5. About us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">6. Contacting us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">7. Technical support resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="plugins.html"
-                        title="previous chapter">2. Plugin development</a></p>
+  <p class="topless"><a href="aa_plugin_aa_plugin.html"
+                        title="previous chapter">3.5. AAPlugin</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="fakes.html"
-                        title="next chapter">4. Fake services for testing</a></p>
+  <p class="topless"><a href="service_plugin_configuration.html"
+                        title="next chapter">4.1. PluginConfiguration</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -1109,10 +155,10 @@ primary fully qualified domain name and possible alias names.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="fakes.html" title="4. Fake services for testing"
+          <a href="service_plugin_configuration.html" title="4.1. PluginConfiguration"
              >next</a> |</li>
         <li class="right" >
-          <a href="plugins.html" title="2. Plugin development"
+          <a href="aa_plugin_aa_plugin.html" title="3.5. AAPlugin"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li> 
       </ul>
