@@ -4,61 +4,340 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
     <title>4.4. LDAPServer &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+
+    <link rel="stylesheet" href="_static/tether-1.3.1/css/tether.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.1.2',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-4.0.0-alpha3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinxbootstrap4.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/tether-1.3.1/js/tether.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-4.0.0-alpha3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxbootstrap4.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4.5. UserList" href="service_user_list.html" />
     <link rel="prev" title="4.3. CredentialStore" href="service_credential_store.html" /> 
-  </head>
-  <body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="service_user_list.html" title="4.5. UserList"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="service_credential_store.html" title="4.3. CredentialStore"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="services.html" accesskey="U">4. Plugin-sdk services</a> &#187;</li> 
-      </ul>
-    </div>  
+  </head><body>
+  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <div class="row container-fluid">
+           <a class="navbar-brand hidden-xs-down" href="index.html">
+                  Safeguard for Privileged Sessions Plugin SDK
+          </a>
+          <span class="navbar-text pull-xs-left navbar-version hidden-xs-down"><b>1.1.2</b></span>
+          <button class="navbar-toggler hidden-sm-up pull-xs-right bar-button" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+          &#9776;
+          </button>
+          <div class="hidden-xs-down">
+          <ul class="nav navbar-nav ">
+          
+              <li class="nav-item dropdown" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">3.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">3.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">3.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">3.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">3.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">3.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">3.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">3.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">3.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">3.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">3.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">3.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">3.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">3.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">3.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">3.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-way-of-working">3.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">3.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="services.html">4. Plugin-sdk services</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">4.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html">4.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuration-example">4.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuring-the-logger-service">4.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#acquiring-a-logger">4.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#usage-example">4.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#configuration-example">4.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_credential_store.html#acquiring-a-credentialstore">4.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">4.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-example">4.4.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acquiring-a-user-attribute">4.4.1.1. Acquiring a user attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-safeguard.sessions.plugin.ldap_server_exceptions">4.4.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#configuration-example">4.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_user_list.html#checking-whether-a-user-name-matches-a-user-list">4.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">4.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fake_credential_store.html">5.1. CredentialStore data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage">5.1.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage-with-pytest-and-monkeypatch">5.1.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_ldap_server.html">5.2. LDAPServer data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage">5.2.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage-with-pytest-and-monkeypatch">5.2.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_user_list.html">5.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage">5.3.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage-with-pytest-and-monkeypatch">5.3.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+                  </ul>
+              </li>
+          </ul>
+             
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>
+
+      <div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="index.html">
+                      Safeguard for Privileged Sessions Plugin SDK
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+    <div class="related container-fluid bg-faded" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb col-md-8">
+            <li class="breadcrumb-item"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a></li>
+                <li class="breadcrumb-item"><a href="services.html"
+                       
+                         accesskey="U"
+                         class="active"
+                       >4. Plugin-sdk services</a></li>
+            <li class="breadcrumb-item active">4.4. LDAPServer</li>
+        </ol>
+       <div class="relation col-md-4">
+           <div class="pull-xs-right">
+               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="service_credential_store.html" title="Previous Chapter: 4.3. CredentialStore" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; 4.3. CredentialStore
+               </a>
+               <a href="service_user_list.html" title="Next Chapter: 4.5. UserList" class="btn btn-primary" role="botton" accesskey="N">
+                   4.5. UserList &raquo;
+               </a>
+               </div>
+           </div>
+       </div>
+    </div>
+
+  <div class="main"> 
+      <div class="sphinxsidebar hidden-sm-down">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">3.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">3.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">3.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">3.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">3.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">3.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">3.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">3.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">3.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">3.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">3.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">3.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">3.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">3.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">3.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">3.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-way-of-working">3.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">3.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="services.html">4. Plugin-sdk services</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">4.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html">4.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuration-example">4.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuring-the-logger-service">4.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#acquiring-a-logger">4.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#usage-example">4.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#configuration-example">4.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_credential_store.html#acquiring-a-credentialstore">4.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">4.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-example">4.4.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acquiring-a-user-attribute">4.4.1.1. Acquiring a user attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-safeguard.sessions.plugin.ldap_server_exceptions">4.4.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#configuration-example">4.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_user_list.html#checking-whether-a-user-name-matches-a-user-list">4.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">4.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fake_credential_store.html">5.1. CredentialStore data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage">5.1.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage-with-pytest-and-monkeypatch">5.1.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_ldap_server.html">5.2. LDAPServer data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage">5.2.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage-with-pytest-and-monkeypatch">5.2.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_user_list.html">5.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage">5.3.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage-with-pytest-and-monkeypatch">5.3.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="service_credential_store.html"
+                        title="previous chapter">4.3. CredentialStore</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="service_user_list.html"
+                        title="next chapter">4.5. UserList</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled pull-xs-right">
+    <li><a  class="text-xs-right" href="_sources/service_ldap_server.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="module-safeguard.sessions.plugin.ldap_server">
 <span id="ldapserver"></span><h1>4.4. LDAPServer<a class="headerlink" href="#module-safeguard.sessions.plugin.ldap_server" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-safeguard.sessions.plugin.ldap_server"></span><p>The LDAPServer service implements retrieving a user attribute from preconfigured AD or unix LDAP servers.</p>
 <div class="section" id="configuration-example">
 <h2>4.4.1. Configuration example<a class="headerlink" href="#configuration-example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[ldap_server]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[ldap_server]</span>
 <span class="c1"># Name of the LDAP Server policy configured in SPS</span>
 <span class="c1">; name = &lt;ldap-server-policy-name&gt;</span>
 
@@ -72,7 +351,7 @@
 <div class="section" id="acquiring-a-user-attribute">
 <h3>4.4.1.1. Acquiring a user attribute<a class="headerlink" href="#acquiring-a-user-attribute" title="Permalink to this headline">¶</a></h3>
 <p>In this example we’ll use the following configuration to fetch the description attribute of the user administrator.</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[ldap_server]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[ldap_server]</span>
 <span class="c1"># Name of the LDAP Server policy configured in SPS</span>
 <span class="na">name</span> <span class="o">=</span> <span class="s">my_ad_policy</span>
 
@@ -83,7 +362,7 @@
 <span class="na">user_attribute</span> <span class="o">=</span> <span class="s">description</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">PluginConfiguration</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">LDAPServer</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
@@ -96,8 +375,8 @@
 <dl class="class">
 <dt id="safeguard.sessions.plugin.ldap_server.LDAPServer">
 <em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.ldap_server.</code><code class="descname">LDAPServer</code><span class="sig-paren">(</span><em>ldap_service</em>, <em>user_attribute_factory</em>, <em>user_groups_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a> represent access to the LDAP Server configured in SPS.</p>
-<p>Do not instantiate LDAPServer service with its constructor, rather use the <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> method.</p>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPServer</span></code></a> represent access to the LDAP Server configured in SPS.</p>
+<p>Do not instantiate LDAPServer service with its constructor, rather use the <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_config()</span></code></a> method.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -114,13 +393,13 @@
 <dl class="classmethod">
 <dt id="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config">
 <em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>plugin_configuration</em>, <em>section='ldap_server'</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="xref py py-meth docutils literal"><span class="pre">from_config()</span></code></a> class method creates an <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a> instance from a given plugin configuration.</p>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config" title="safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_config()</span></code></a> class method creates an <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPServer</span></code></a> instance from a given plugin configuration.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plugin_configuration</strong> (<a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="xref py py-class docutils literal"><span class="pre">PluginConfiguration</span></code></a>) – plugin configuration object</li>
+<li><strong>plugin_configuration</strong> (<a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration" title="safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginConfiguration</span></code></a>) – plugin configuration object</li>
 <li><strong>section</strong> (<em>str</em>) – name of the section where the LDAP parameters are stored</li>
 <li><strong>name</strong> (<em>str</em>) – name of the LDAP server policy</li>
 </ul>
@@ -129,10 +408,10 @@
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">LDAPServer instance</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal"><span class="pre">LDAPServer</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer" title="safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPServer</span></code></a></p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a> if there
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a> if there
 is no such section or “name” option in the section defined in the configuration.</p>
 </td>
 </tr>
@@ -143,7 +422,7 @@ is no such section or “name” option in the section defined in the configurat
 <dl class="method">
 <dt id="safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute">
 <code class="descname">get_user_string_attribute</code><span class="sig-paren">(</span><em>username</em>, <em>attribute=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute" title="safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute"><code class="xref py py-meth docutils literal"><span class="pre">get_user_string_attribute()</span></code></a> method can retrieve a user’s string attribute from LDAP. Any string or
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute" title="safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_user_string_attribute()</span></code></a> method can retrieve a user’s string attribute from LDAP. Any string or
 numeric value that can be converted to a UTF-8 string  will be returned. On the other hand binary data will
 trigger an error, for example a JPEG photo cannot be fetched this way.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -159,15 +438,15 @@ trigger an error, for example a JPEG photo cannot be fetched this way.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of values in the attribute</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a>
 if the attribute parameter is None but there is no “user_attribute” defined in the configuration.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal"><span class="pre">LDAPUserNotFound</span></code></a> if the
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPUserNotFound</span></code></a> if the
 user is not found in LDAP database.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal"><span class="pre">LDAPOperationError</span></code></a> on
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPOperationError</span></code></a> on
 other LDAP related errors.</p>
 </td>
 </tr>
@@ -178,7 +457,7 @@ other LDAP related errors.</p>
 <dl class="method">
 <dt id="safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups">
 <code class="descname">filter_user_groups</code><span class="sig-paren">(</span><em>username</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups" title="safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups"><code class="xref py py-meth docutils literal"><span class="pre">filter_user_groups()</span></code></a> method can check whether a user is member of a list of predefined groups.</p>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups" title="safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_user_groups()</span></code></a> method can check whether a user is member of a list of predefined groups.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -195,15 +474,15 @@ other LDAP related errors.</p>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound" title="safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a>
 if the groups parameter is None but there is no “user_groups” defined in the configuration.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal"><span class="pre">LDAPUserNotFound</span></code></a> if the
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPUserNotFound</span></code></a> if the
 user is not found in LDAP database.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal"><span class="pre">LDAPOperationError</span></code></a> on
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPOperationError</span></code></a> on
 other LDAP related errors.</p>
 </td>
 </tr>
@@ -220,13 +499,13 @@ other LDAP related errors.</p>
 <dl class="exception">
 <dt id="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError">
 <em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.ldap_server_exceptions.</code><code class="descname">LDAPOperationError</code><span class="sig-paren">(</span><em>message</em>, <em>variables=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal"><span class="pre">LDAPOperationError</span></code></a> exception is raised when an LDAP error is detected.</p>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPOperationError</span></code></a> exception is raised when an LDAP error is detected.</p>
 </dd></dl>
 
 <dl class="exception">
 <dt id="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound">
 <em class="property">exception </em><code class="descclassname">safeguard.sessions.plugin.ldap_server_exceptions.</code><code class="descname">LDAPUserNotFound</code><span class="sig-paren">(</span><em>variables</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal"><span class="pre">LDAPUserNotFound</span></code></a> exception is raised when a user is not found in the LDAP server.</p>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound" title="safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">LDAPUserNotFound</span></code></a> exception is raised when a user is not found in the LDAP server.</p>
 </dd></dl>
 
 </div>
@@ -236,79 +515,20 @@ other LDAP related errors.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table Of Contents</a></h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">2. Plugin base functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="services.html">4. Plugin-sdk services</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service_logging.html">4.2. Logging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. LDAPServer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-example">4.4.1. Configuration example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#acquiring-a-user-attribute">4.4.1.1. Acquiring a user attribute</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-safeguard.sessions.plugin.ldap_server_exceptions">4.4.2. Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="service_credential_store.html"
-                        title="previous chapter">4.3. CredentialStore</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="service_user_list.html"
-                        title="next chapter">4.5. UserList</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="service_user_list.html" title="4.5. UserList"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="service_credential_store.html" title="4.3. CredentialStore"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="services.html" >4. Plugin-sdk services</a> &#187;</li> 
-      </ul>
+  </div>
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="text-xs-left col-md-9 copyright">
+        <div>&copy; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.8.4 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.5.2.</div>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    <div class="pull-xs-right">
+        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
     </div>
+  </div>
+</footer>
   </body>
 </html>

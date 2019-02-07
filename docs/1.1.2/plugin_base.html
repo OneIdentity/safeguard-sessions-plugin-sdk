@@ -4,68 +4,343 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
     <title>2. Plugin base functions &#8212; Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+
+    <link rel="stylesheet" href="_static/tether-1.3.1/css/tether.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.1.2',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-4.0.0-alpha3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinxbootstrap4.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/tether-1.3.1/js/tether.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-4.0.0-alpha3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxbootstrap4.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. AA plugin development" href="aa_plugins.html" />
     <link rel="prev" title="1. History of releases" href="history.html" /> 
-  </head>
-  <body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="aa_plugins.html" title="3. AA plugin development"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="history.html" title="1. History of releases"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li> 
-      </ul>
-    </div>  
+  </head><body>
+  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <div class="row container-fluid">
+           <a class="navbar-brand hidden-xs-down" href="index.html">
+                  Safeguard for Privileged Sessions Plugin SDK
+          </a>
+          <span class="navbar-text pull-xs-left navbar-version hidden-xs-down"><b>1.1.2</b></span>
+          <button class="navbar-toggler hidden-sm-up pull-xs-right bar-button" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+          &#9776;
+          </button>
+          <div class="hidden-xs-down">
+          <ul class="nav navbar-nav ">
+          
+              <li class="nav-item dropdown" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">3.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">3.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">3.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">3.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">3.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">3.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">3.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">3.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">3.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">3.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">3.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">3.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">3.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">3.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">3.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">3.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-way-of-working">3.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">3.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">4. Plugin-sdk services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">4.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html">4.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuration-example">4.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuring-the-logger-service">4.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#acquiring-a-logger">4.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#usage-example">4.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#configuration-example">4.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_credential_store.html#acquiring-a-credentialstore">4.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">4.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_ldap_server.html">4.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_ldap_server.html#configuration-example">4.4.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_ldap_server.html#acquiring-a-user-attribute">4.4.1.1. Acquiring a user attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">4.4.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#configuration-example">4.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_user_list.html#checking-whether-a-user-name-matches-a-user-list">4.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">4.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fake_credential_store.html">5.1. CredentialStore data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage">5.1.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage-with-pytest-and-monkeypatch">5.1.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_ldap_server.html">5.2. LDAPServer data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage">5.2.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage-with-pytest-and-monkeypatch">5.2.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_user_list.html">5.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage">5.3.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage-with-pytest-and-monkeypatch">5.3.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+                  </ul>
+              </li>
+          </ul>
+             
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>
+
+      <div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="index.html">
+                      Safeguard for Privileged Sessions Plugin SDK
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+    <div class="related container-fluid bg-faded" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb col-md-8">
+            <li class="breadcrumb-item"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a></li>
+            <li class="breadcrumb-item active">2. Plugin base functions</li>
+        </ol>
+       <div class="relation col-md-4">
+           <div class="pull-xs-right">
+               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="history.html" title="Previous Chapter: 1. History of releases" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; 1. History of...
+               </a>
+               <a href="aa_plugins.html" title="Next Chapter: 3. AA plugin development" class="btn btn-primary" role="botton" accesskey="N">
+                   3. AA plugin ... &raquo;
+               </a>
+               </div>
+           </div>
+       </div>
+    </div>
+
+  <div class="main"> 
+      <div class="sphinxsidebar hidden-sm-down">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Plugin base functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">3.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">3.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">3.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">3.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">3.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">3.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">3.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">3.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">3.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">3.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">3.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">3.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">3.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">3.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">3.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">3.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-way-of-working">3.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">3.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">4. Plugin-sdk services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service_plugin_configuration.html">4.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">4.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_logging.html">4.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuration-example">4.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#configuring-the-logger-service">4.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#acquiring-a-logger">4.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service_logging.html#usage-example">4.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_credential_store.html">4.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#configuration-example">4.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_credential_store.html#acquiring-a-credentialstore">4.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">4.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_ldap_server.html">4.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_ldap_server.html#configuration-example">4.4.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_ldap_server.html#acquiring-a-user-attribute">4.4.1.1. Acquiring a user attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">4.4.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_user_list.html">4.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#configuration-example">4.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service_user_list.html#checking-whether-a-user-name-matches-a-user-list">4.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">4.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service_host_resolver.html">4.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_base_exceptions.html">4.7. Base class for exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fake_credential_store.html">5.1. CredentialStore data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage">5.1.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_credential_store.html#example-usage-with-pytest-and-monkeypatch">5.1.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_ldap_server.html">5.2. LDAPServer data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage">5.2.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_ldap_server.html#example-usage-with-pytest-and-monkeypatch">5.2.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fake_user_list.html">5.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage">5.3.1. Example usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake_user_list.html#example-usage-with-pytest-and-monkeypatch">5.3.2. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="history.html"
+                        title="previous chapter">1. History of releases</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aa_plugins.html"
+                        title="next chapter">3. AA plugin development</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled pull-xs-right">
+    <li><a  class="text-xs-right" href="_sources/plugin_base.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="module-safeguard.sessions.plugin.plugin_base">
 <span id="plugin-base-functions"></span><h1>2. Plugin base functions<a class="headerlink" href="#module-safeguard.sessions.plugin.plugin_base" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-safeguard.sessions.plugin.plugin_base"></span><p>The following decorators and the
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.PluginBase" title="safeguard.sessions.plugin.plugin_base.PluginBase"><code class="xref py py-class docutils literal"><span class="pre">PluginBase</span></code></a> class may be used in any Plugin SDK based plugin
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.PluginBase" title="safeguard.sessions.plugin.plugin_base.PluginBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginBase</span></code></a> class may be used in any Plugin SDK based plugin
 to get some basic functionality.</p>
 <dl class="function">
 <dt id="safeguard.sessions.plugin.plugin_base.lazy_property">
 <code class="descclassname">safeguard.sessions.plugin.plugin_base.</code><code class="descname">lazy_property</code><span class="sig-paren">(</span><em>factory</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;lazy_property</span></code></a> decorator is used to mark attributes that should be only evaluated when
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;lazy_property</span></code></a> decorator is used to mark attributes that should be only evaluated when
 accessed. This is useful when the calculation of the attribute is heavy, but not always necessary.</p>
 <p><strong>Usage</strong></p>
-<p>To use <code class="docutils literal"><span class="pre">self.foobar</span></code> as a lazy property, simply define it on the Plugin class, and decorate it with
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;lazy_property</span></code></a> decorator:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
+<p>To use <code class="docutils literal notranslate"><span class="pre">self.foobar</span></code> as a lazy property, simply define it on the Plugin class, and decorate it with
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;lazy_property</span></code></a> decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.plugin_base</span> <span class="kn">import</span> <span class="n">lazy_property</span>
 
 <span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
@@ -83,14 +358,14 @@ accessed. This is useful when the calculation of the attribute is heavy, but not
 <dl class="function">
 <dt id="safeguard.sessions.plugin.plugin_base.cookie_property">
 <code class="descclassname">safeguard.sessions.plugin.plugin_base.</code><code class="descname">cookie_property</code><span class="sig-paren">(</span><em>factory</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;cookie_property</span></code></a> decorator is used to mark attributes that should be passed in the
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> decorator is used to mark attributes that should be passed in the
 cookie between invocations of the same plugin. Setting up such property is an easy way to store and retrieve data
-in <code class="docutils literal"><span class="pre">self.cookie</span></code>. Similarly to <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;lazy_property</span></code></a> attributes, the evaulation of a
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;cookie_property</span></code></a> attribute is also delayed until usage.</p>
+in <code class="docutils literal notranslate"><span class="pre">self.cookie</span></code>. Similarly to <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;lazy_property</span></code></a> attributes, the evaulation of a
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> attribute is also delayed until usage.</p>
 <p><strong>Usage</strong></p>
-<p>To use <code class="docutils literal"><span class="pre">self.foobar</span></code> as a cookie property, simply define it on the Plugin class, and decorate it with
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;cookie_property</span></code></a> decorator:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
+<p>To use <code class="docutils literal notranslate"><span class="pre">self.foobar</span></code> as a cookie property, simply define it on the Plugin class, and decorate it with
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.plugin_base</span> <span class="kn">import</span> <span class="n">cookie_property</span>
 
 <span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
@@ -106,25 +381,25 @@ in <code class="docutils literal"><span class="pre">self.cookie</span></code>. S
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">foobar</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>The decorator <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;cookie_property</span></code></a> together with code in
-<code class="xref py py-class docutils literal"><span class="pre">AAPlugin</span></code> will ensure that <code class="docutils literal"><span class="pre">foobar</span></code> is stored and retrieved from
+<p>The decorator <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> together with code in
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AAPlugin</span></code> will ensure that <code class="docutils literal notranslate"><span class="pre">foobar</span></code> is stored and retrieved from
 the cookie passed to the plugin.</p>
 <p>The initial definition of foobar is 42 in this case, but it can be any function - this function is only called
 if foobar was not accessed before. To be more precise foobar is initialized with its factory function if it is
-being accessed and it is not present in <code class="docutils literal"><span class="pre">self.cookie</span></code>.</p>
+being accessed and it is not present in <code class="docutils literal notranslate"><span class="pre">self.cookie</span></code>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="safeguard.sessions.plugin.plugin_base.named_cookie_property">
 <code class="descclassname">safeguard.sessions.plugin.plugin_base.</code><code class="descname">named_cookie_property</code><span class="sig-paren">(</span><em>key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_base.named_cookie_property" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.named_cookie_property" title="safeguard.sessions.plugin.plugin_base.named_cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;named_cookie_property</span></code></a> decorator is working similarly to the
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;cookie_property</span></code></a> decorator.
-The only difference is you can specify the key you want to save value in the <code class="docutils literal"><span class="pre">self.cookie</span></code>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.named_cookie_property" title="safeguard.sessions.plugin.plugin_base.named_cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;named_cookie_property</span></code></a> decorator is working similarly to the
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> decorator.
+The only difference is you can specify the key you want to save value in the <code class="docutils literal notranslate"><span class="pre">self.cookie</span></code>
 It is important that you have to call the decorator with the desired key name, see usage.</p>
 <p><strong>Usage</strong></p>
-<p>To use <code class="docutils literal"><span class="pre">self.my_custom_key</span></code> as a cookie property, simply define it on the Plugin class, and decorate it with
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.named_cookie_property" title="safeguard.sessions.plugin.plugin_base.named_cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;named_cookie_property(key=my_custom_key)</span></code></a> decorator:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
+<p>To use <code class="docutils literal notranslate"><span class="pre">self.my_custom_key</span></code> as a cookie property, simply define it on the Plugin class, and decorate it with
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.named_cookie_property" title="safeguard.sessions.plugin.plugin_base.named_cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;named_cookie_property(key=my_custom_key)</span></code></a> decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.plugin_base</span> <span class="kn">import</span> <span class="n">named_cookie_property</span>
 
 <span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
@@ -141,15 +416,15 @@ It is important that you have to call the decorator with the desired key name, s
 <dl class="function">
 <dt id="safeguard.sessions.plugin.plugin_base.session_cookie_property">
 <code class="descclassname">safeguard.sessions.plugin.plugin_base.</code><code class="descname">session_cookie_property</code><span class="sig-paren">(</span><em>factory</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;session_cookie_property</span></code></a> decorator is used to mark attributes that should be
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;session_cookie_property</span></code></a> decorator is used to mark attributes that should be
 passed in the session cookie between invocations of all plugins relevant to the session.
-Setting up such property is an easy way to store and retrieve data in <code class="docutils literal"><span class="pre">self.session_cookie</span></code>.
-Similarly to <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;lazy_property</span></code></a> attributes, the evaulation of a
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;session_cookie_property</span></code></a> attribute is also delayed until usage.</p>
+Setting up such property is an easy way to store and retrieve data in <code class="docutils literal notranslate"><span class="pre">self.session_cookie</span></code>.
+Similarly to <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.lazy_property" title="safeguard.sessions.plugin.plugin_base.lazy_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;lazy_property</span></code></a> attributes, the evaulation of a
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;session_cookie_property</span></code></a> attribute is also delayed until usage.</p>
 <p><strong>Usage</strong></p>
-<p>To use <code class="docutils literal"><span class="pre">self.foobar</span></code> as a session cookie property, simply define it on the Plugin class, and decorate it with
-<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;session_cookie_property</span></code></a> decorator:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
+<p>To use <code class="docutils literal notranslate"><span class="pre">self.foobar</span></code> as a session cookie property, simply define it on the Plugin class, and decorate it with
+<a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;session_cookie_property</span></code></a> decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.plugin_base</span> <span class="kn">import</span> <span class="n">session_cookie_property</span>
 
 <span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
@@ -165,18 +440,18 @@ Similarly to <a class="reference internal" href="#safeguard.sessions.plugin.plug
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">foobar</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>The decorator <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal"><span class="pre">&#64;session_cookie_property</span></code></a> together with code in
-<code class="xref py py-class docutils literal"><span class="pre">AAPlugin</span></code> will ensure that <code class="docutils literal"><span class="pre">foobar</span></code> is stored and retrieved from
+<p>The decorator <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.session_cookie_property" title="safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;session_cookie_property</span></code></a> together with code in
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AAPlugin</span></code> will ensure that <code class="docutils literal notranslate"><span class="pre">foobar</span></code> is stored and retrieved from
 the session cookie passed to the plugin.</p>
 <p>The initial definition of foobar is 42 in this case, but it can be any function - this function is only called
 if foobar was not accessed before. To be more precise foobar is initialized with its factory function if it is
-being accessed and it is not present in <code class="docutils literal"><span class="pre">self.session_cookie</span></code>.</p>
+being accessed and it is not present in <code class="docutils literal notranslate"><span class="pre">self.session_cookie</span></code>.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="safeguard.sessions.plugin.plugin_base.PluginBase">
 <em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.plugin_base.</code><code class="descname">PluginBase</code><span class="sig-paren">(</span><em>configuration</em>, <em>defaults=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.plugin_base.PluginBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.PluginBase" title="safeguard.sessions.plugin.plugin_base.PluginBase"><code class="xref py py-class docutils literal"><span class="pre">PluginBase</span></code></a> implements:</p>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_base.PluginBase" title="safeguard.sessions.plugin.plugin_base.PluginBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginBase</span></code></a> implements:</p>
 <ul class="simple">
 <li>parsing the textual plugin configuration</li>
 <li>setting the log level</li>
@@ -190,62 +465,20 @@ being accessed and it is not present in <code class="docutils literal"><span cla
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table Of Contents</a></h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Plugin base functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">3. AA plugin development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">4. Plugin-sdk services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fakes.html">5. Fake services for testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">6. About us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">7. Contacting us</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">8. Technical support resources</a></li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="history.html"
-                        title="previous chapter">1. History of releases</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="aa_plugins.html"
-                        title="next chapter">3. AA plugin development</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="aa_plugins.html" title="3. AA plugin development"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="history.html" title="1. History of releases"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Safeguard for Privileged Sessions Plugin SDK 1.1.2 documentation</a> &#187;</li> 
-      </ul>
+  </div>
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="text-xs-left col-md-9 copyright">
+        <div>&copy; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.8.4 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.5.2.</div>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    <div class="pull-xs-right">
+        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
     </div>
+  </div>
+</footer>
   </body>
 </html>
