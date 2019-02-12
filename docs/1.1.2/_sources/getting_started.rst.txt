@@ -1,0 +1,49 @@
+Getting started
+===============
+
+To begin developing with the Plugin SDK the following components are required:
+
+* working `Pipenv <https://pipenv.readthedocs.io/en/latest/>`_ tool,
+* working Python 3.6+ interpreter,
+* a downloaded copy of the Plugin SDK development package.
+
+To download the Plugin SDK, visit the `Download software <https://support.oneidentity.com/download-product-select/>`_
+page on the One Identity home page. Note that to download software you need to have a registered support account.
+
+Starting from scratch
+---------------------
+
+Create a Pipfile that contains at least these lines:
+
+.. code-block:: ini
+
+    [packages]
+
+    [dev-packages]
+    pytest = "*"
+    pytest-cov = "*"
+
+    [requires]
+    python-version = "3.6"
+
+Build a python virtual environment which will be used to develop and test the plugin:
+
+.. code-block:: bash
+
+    pipenv install
+
+To (re)install the Plugin SDK replace ``<path-to-plugin-sdk-tar-gz>`` with the actual location of the downloaded Plugin
+SDK package and run the following command:
+
+.. code-block:: bash
+
+    pipenv run pip install -U <path-to-plugin-sdk-tar-gz>
+
+Create the necessary ``MANIFEST`` file for the plugin and add a source file, for example ``main.py``.
+
+The code in main.py is now usable together with the Plugin SDK inside the virtual environment:
+
+.. code-block:: bash
+
+    pipenv shell
+    python main.py

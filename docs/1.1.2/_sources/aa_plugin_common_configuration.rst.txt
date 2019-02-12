@@ -1,3 +1,5 @@
+.. _aa-plugin-config-label:
+
 Common configuration options
 ----------------------------
 
@@ -33,7 +35,7 @@ The common AA plugin functionality can be configured by the following configurat
     # For better security, you can hide the characters (OTP or password) that the
     # user types after the prompt.
     # To hide the characters, set 'disable_echo' to 'yes'.
-    ; disable_echo=yes
+    ; disable_echo=no
 
     [connection_limit by=client_ip_gateway_user]
     # To limit the number of parallel sessions the gateway user can start from a
@@ -65,14 +67,14 @@ The common AA plugin functionality can be configured by the following configurat
 
     # Use case #1: To allow specific users to connect without providing 2FA/MFA
     # credentials, the User List policy should have the following settings:
-    # Set 'Allow' to 'No user' and list the users in 'Except' list. Then type the
-    # name of this User List policy as the value of the 'name' parameter here.
+    # Set 'Allow' to 'No user' and list the users in the 'Except' list. Then type
+    # the name of this User List policy as the value of the 'name' parameter here.
     ; name=<name-of-user-list-policy>
 
     # Use case #2: To enforce 2FA/MFA authentication for selected users, the User
     # List policy should have the following settings: Set 'Allow' to 'All users' and
-    # list the users in 'Except' list. Then type the name of this User List policy
-    # as the value of the 'name' parameter here.
+    # list the users in the 'Except' list. Then type the name of this User List
+    # policy as the value of the 'name' parameter here.
     ; name=<name-of-user-list-policy>
 
     [whitelist source=ldap_server_group]

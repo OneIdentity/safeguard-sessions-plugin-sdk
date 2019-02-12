@@ -11,10 +11,13 @@ Welcome to Safeguard for Privileged Sessions Plugin SDK's documentation!
    :caption: Contents:
 
    history
-   plugin_base
+   intro
+   getting_started
    aa_plugins
+   mfa_client
    services
    fakes
+   plugin_base
    about
 
 

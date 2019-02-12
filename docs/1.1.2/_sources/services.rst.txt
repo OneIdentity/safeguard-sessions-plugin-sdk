@@ -1,4 +1,6 @@
-Plugin-sdk services
+.. _services-label:
+
+Plugin SDK services
 ===================
 
 .. toctree::

@@ -9,11 +9,13 @@ Administrative tasks
 
 Update the following files with information correct for your plugin:
 
-``MANIFEST``: plugin name, descriptions, etc.
+``MANIFEST``: plugin name, descriptions, etc. For details consult the *Creating custom Authentication and Authorization
+plugins* developer's guide.
 
 ``Pipfile``: describes what additional Python3 PIP packages to package in the eventual plugin and also what packages to
 use at development time. Note that the Plugin SDK should *not* be listed in the [packages] directive, as the Plugin SDK
-is pre-installed on SPS, on the other hand make sure that the correct Plugin SDK version is selected in [dev-packages].
+is pre-installed on Safeguard for Privileges Sessions, on the other hand make sure that the correct Plugin SDK version
+is selected in [dev-packages].
 
 ``setup.py`` (optional): not needed if the python code is organized such that the plugin's root directory contains only
 the 'main.py' and all other code is directly under a 'lib' directory. Otherwise it should enable installing the plugin
@@ -94,7 +96,7 @@ Asking the end-user
 If the plugin needs extra information such as reponse to a challenge question, then the
 :meth:`AAPlugin.do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>`
 method should return a value created by
-:meth:`AAResponse.needinfo <safeguard.sessions.plugin.plugin_response.AAResponse.need_info>` function.
+:meth:`AAResponse.need_info <safeguard.sessions.plugin.plugin_response.AAResponse.need_info>` function.
 
 .. code-block:: python
 
@@ -103,7 +105,7 @@ method should return a value created by
     class Plugin(AAPlugin):
         def do_authenticate(self):
             if 'magic' not in self.connection.key_value_pairs:
-                return AAResponse.needinfo("What's the magic word?", "magic")
+                return AAResponse.need_info("What's the magic word?", "magic")
 
             if self.connection.key_value_pairs['magic'] == "please":
                 return AAResponse.accept()

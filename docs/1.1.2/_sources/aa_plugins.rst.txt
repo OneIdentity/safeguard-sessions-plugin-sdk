@@ -1,12 +1,10 @@
 AA plugin development
 =====================
 
-The AA plugin skeleton enables rapid AA plugin development by providing a base class that implements common plugin
-functionality that any plugin should possess. There are also helper functions and Python decorators for simplifying
+The :class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>` base class enables rapid authentication and
+authorization  plugin development by providing a base class that implements common AA plugin
+functionality that any AA plugin should possess. There are also helper functions and Python decorators for simplifying
 frequent tasks.
-
-The functionality that is implemented supports the requirements set out in the technical document
-*Creating custom Authentication and Authorization plugins*, which can be found on the One Identity web site.
 
 .. toctree::
     :includehidden:

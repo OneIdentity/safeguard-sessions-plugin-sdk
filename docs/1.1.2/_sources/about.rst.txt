@@ -26,7 +26,7 @@ The Support Portal provides self-help tools you can use to solve problems quickl
 * View Knowledge Base articles
 * Sign up for product notifications
 * Download software and technical documentation
-* View how-to-videos at www.YouTube.com/OneIdentity
+* View how-to-videos at `www.YouTube.com/OneIdentity <https://www.youtube.com/OneIdentity>`_
 * Engage in community discussions
 * Chat with support engineers online
 * View services to assist you with your product

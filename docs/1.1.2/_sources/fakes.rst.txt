@@ -1,3 +1,5 @@
+.. _fake-services-label:
+
 Fake services for testing
 =========================
 
