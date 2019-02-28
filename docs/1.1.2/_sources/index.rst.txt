@@ -8,7 +8,6 @@ Welcome to Safeguard for Privileged Sessions Plugin SDK's documentation!
 
 .. toctree::
    :numbered:
-   :caption: Contents:
 
    history
    intro
