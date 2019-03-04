@@ -361,7 +361,9 @@
 <em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.plugin_response.</code><code class="descname">AAResponse</code><a class="headerlink" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">AAResponse</span></code></a> class represents an AA plugin response and provides methods for creating and modifying such
 responses.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAResponse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAResponse</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gateway_user</span><span class="p">):</span>

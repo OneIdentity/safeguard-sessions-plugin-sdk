@@ -353,7 +353,9 @@
 <span id="mfa-client"></span><h1>5. MFA Client<a class="headerlink" href="#module-safeguard.sessions.plugin.mfa_client" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-safeguard.sessions.plugin.mfa_client"></span><p>The <a class="reference internal" href="#safeguard.sessions.plugin.mfa_client.MFAClient" title="safeguard.sessions.plugin.mfa_client.MFAClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">MFAClient</span></code></a> class can be used to implement simple multi factor authentication (MFA) service clients. The
 following example shows the outline of a plugin for an imaginary “Acme” MFA that provides its services over HTTP/REST.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
 <span class="kn">from</span> <span class="nn">safeguard.sessions.plugin.mfa_client</span> <span class="kn">import</span> <span class="n">MFAClient</span>
 

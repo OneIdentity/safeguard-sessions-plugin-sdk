@@ -1,8 +1,9 @@
 Plugin development
 ------------------
 
-Currently the easiest way to develop a plugin is to clone the pam plugins repo in https://git.balabit/pam/plugins.git.
-There is an sps-skeleton plugin that can be copied and changed.
+Follow the steps in :ref:`gettingstarted-label` to set up the correct Python environment. There are some administrative
+steps bellow to describe the plugin. After adding some code to the plugin, the directory can be packaged in a ZIP file
+and uploaded to SPS.
 
 Administrative tasks
 ^^^^^^^^^^^^^^^^^^^^
@@ -16,17 +17,6 @@ plugins* developer's guide.
 use at development time. Note that the Plugin SDK should *not* be listed in the [packages] directive, as the Plugin SDK
 is pre-installed on Safeguard for Privileges Sessions, on the other hand make sure that the correct Plugin SDK version
 is selected in [dev-packages].
-
-``setup.py`` (optional): not needed if the python code is organized such that the plugin's root directory contains only
-the 'main.py' and all other code is directly under a 'lib' directory. Otherwise it should enable installing the plugin
-source code with ``pip install`` command.
-
-To create an installable ZIP file execute the command ``make dist-<plugin-folder>`` in the project root where
-plugin-folder is your directory containing the plugin.
-
-To create a Python virtual environment in order to run for example tests, execute ``make venv-<plugin-folder>``, to
-activate this virtual environment, execute ``make shell``. Inside the shell one can use ``pytest`` command to run the
-plugin tests.
 
 Basic functionality
 ^^^^^^^^^^^^^^^^^^^
@@ -44,6 +34,8 @@ plugins*. For simplicity one can use :class:`AAResponse <safeguard.sessions.plug
 to create the return value.
 
 .. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
 
     from safeguard.sessions.plugin import AAPlugin, AAResponse
 
@@ -100,6 +92,8 @@ method should return a value created by
 
 .. code-block:: python
 
+    #!/usr/bin/env pluginwrapper3
+
     from safeguard.sessions.plugin import AAPlugin, AAResponse
 
     class Plugin(AAPlugin):
@@ -125,6 +119,8 @@ or :meth:`AAPlugin.do_authorize <safeguard.sessions.plugin.aa_plugin.AAPlugin.do
 :meth:`AAResponse.with_cookie <safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie>` method:
 
 .. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
 
     from safeguard.sessions.plugin import AAPlugin, AAResponse
 
@@ -156,6 +152,8 @@ method overwrites the automatic gateway user setting.
 
 .. code-block:: python
 
+    #!/usr/bin/env pluginwrapper3
+
     from safeguard.sessions.plugin import AAPlugin, AAResponse
 
     class Plugin(AAPlugin):
@@ -170,6 +168,8 @@ In order to set the additional meta data which is stored beside the session, use
 <safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata>` method.
 
 .. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
 
     from safeguard.sessions.plugin import AAPlugin, AAResponse
 

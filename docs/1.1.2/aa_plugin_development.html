@@ -356,8 +356,9 @@
             
   <div class="section" id="plugin-development">
 <h1>4.2. Plugin development<a class="headerlink" href="#plugin-development" title="Permalink to this headline">¶</a></h1>
-<p>Currently the easiest way to develop a plugin is to clone the pam plugins repo in <a class="reference external" href="https://git.balabit/pam/plugins.git">https://git.balabit/pam/plugins.git</a>.
-There is an sps-skeleton plugin that can be copied and changed.</p>
+<p>Follow the steps in <a class="reference internal" href="getting_started.html#gettingstarted-label"><span class="std std-ref">Getting started</span></a> to set up the correct Python environment. There are some administrative
+steps bellow to describe the plugin. After adding some code to the plugin, the directory can be packaged in a ZIP file
+and uploaded to SPS.</p>
 <div class="section" id="administrative-tasks">
 <h2>4.2.1. Administrative tasks<a class="headerlink" href="#administrative-tasks" title="Permalink to this headline">¶</a></h2>
 <p>Update the following files with information correct for your plugin:</p>
@@ -367,14 +368,6 @@ plugins</em> developer’s guide.</p>
 use at development time. Note that the Plugin SDK should <em>not</em> be listed in the [packages] directive, as the Plugin SDK
 is pre-installed on Safeguard for Privileges Sessions, on the other hand make sure that the correct Plugin SDK version
 is selected in [dev-packages].</p>
-<p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code> (optional): not needed if the python code is organized such that the plugin’s root directory contains only
-the ‘main.py’ and all other code is directly under a ‘lib’ directory. Otherwise it should enable installing the plugin
-source code with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> command.</p>
-<p>To create an installable ZIP file execute the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dist-&lt;plugin-folder&gt;</span></code> in the project root where
-plugin-folder is your directory containing the plugin.</p>
-<p>To create a Python virtual environment in order to run for example tests, execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">venv-&lt;plugin-folder&gt;</span></code>, to
-activate this virtual environment, execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">shell</span></code>. Inside the shell one can use <code class="docutils literal notranslate"><span class="pre">pytest</span></code> command to run the
-plugin tests.</p>
 </div>
 <div class="section" id="basic-functionality">
 <h2>4.2.2. Basic functionality<a class="headerlink" href="#basic-functionality" title="Permalink to this headline">¶</a></h2>
@@ -388,7 +381,9 @@ connection and pre-processing will be presented as attributes on <code class="do
 <p>The expected return values are defined in the technical document <em>Creating custom Authentication and Authorization
 plugins</em>. For simplicity one can use <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse" title="safeguard.sessions.plugin.plugin_response.AAResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">AAResponse</span></code></a> class
 to create the return value.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -432,7 +427,9 @@ Note: only available in <a class="reference internal" href="aa_plugin_aa_plugin.
 <a class="reference internal" href="aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin.do_authenticate</span></code></a>
 method should return a value created by
 <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.need_info" title="safeguard.sessions.plugin.plugin_response.AAResponse.need_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.need_info</span></code></a> function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -454,7 +451,9 @@ dictionary. The contents will be retained between invocations of the plugin.</p>
 <a class="reference internal" href="aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin.do_authenticate</span></code></a>
 or <a class="reference internal" href="aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin.do_authorize</span></code></a> by using the
 <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie" title="safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.with_cookie</span></code></a> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -477,7 +476,9 @@ overwrites the SPS gateway user.</p>
 <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user" title="safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.with_gateway_user</span></code></a> method.
 Using <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user" title="safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.with_gateway_user</span></code></a>
 method overwrites the automatic gateway user setting.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -489,7 +490,9 @@ method overwrites the automatic gateway user setting.</p>
 <h2>4.2.7. Setting additional meta data<a class="headerlink" href="#setting-additional-meta-data" title="Permalink to this headline">¶</a></h2>
 <p>In order to set the additional meta data which is stored beside the session, use
 <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata" title="safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.with_additional_metadata</span> </code></a> method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env pluginwrapper3</span>
+
+<span class="kn">from</span> <span class="nn">safeguard.sessions.plugin</span> <span class="kn">import</span> <span class="n">AAPlugin</span><span class="p">,</span> <span class="n">AAResponse</span>
 
 <span class="k">class</span> <span class="nc">Plugin</span><span class="p">(</span><span class="n">AAPlugin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
