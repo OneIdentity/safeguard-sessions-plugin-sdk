@@ -1,0 +1,170 @@
+.. _aa-plugin-config-label:
+
+Common configuration options
+----------------------------
+
+The common AA plugin functionality can be configured by the following configuration options.
+
+.. code-block:: ini
+
+    ###### Common plugin options ######
+    # To enable or change a parameter, uncomment its line by removing the ';'
+    # character and replacing the right side of '=' with the desired value.
+    # If the parameter has the following structure
+    # ; name=<value>
+    # then the related option is turned off until you replace '<value>'.
+    #
+    # If the parameter has the following structure
+    # ; name=value
+    # then the related option is is automatically turned on with the default value
+    # of 'value'.
+    #
+    # To handle sensitive data, you can use a local Credential Store to retrieve
+    # parameters from.
+    # Enter the name of the local Credential Store (Policies > Credential Store) as
+    # the value of the 'name' parameter in section [credential_store]. To retrieve a
+    # parameter from this Credential Store, type the $ character as the value of
+    # a parameter in this configuration file. To use the $ character as value,
+    # type $$ instead. For more information, read the "Store sensitive plugin data
+    # securely" section in the Tutorial document.
+
+    [auth]
+    # To override the prompt when using 2FA/MFA, enter the new prompt below.
+    ; prompt=Press Enter for push notification or type one-time password:
+
+    # For better security, you can hide the characters (OTP or password) that the
+    # user types after the prompt.
+    # To hide the characters, set 'disable_echo' to 'yes'.
+    ; disable_echo=no
+
+    [connection_limit by=client_ip_gateway_user]
+    # To limit the number of parallel sessions the gateway user can start from a
+    # given client IP address, configure 'limit'. For an unlimited number of
+    # sessions, type '0'.
+    ; limit=0
+
+    [authentication_cache]
+    # CAUTION: Do not configure this section unless you know exactly what you are
+    # doing. For more information, read the "[authentication_cache]" section in the
+    # Tutorial document.
+    ; hard_timeout=90
+    ; soft_timeout=15
+    ; reuse_limit=0
+
+    ######[WHITELIST]######
+    # The [whitelist source=user_list] and [whitelist source=ldap_server_group]
+    # sections allow configuring authentication whitelists based on a User List
+    # policy or an LDAP Server policy. These two sections are independent, any of
+    # the two can be configured and can allow the user to bypass 2FA/MFA
+    # authentication.
+
+    [whitelist source=user_list]
+    # The [whitelist source=user_list] section allows whitelisting users based on a
+    # User List policy configured in SPS (Policies > User Lists). To enable this
+    # whitelist, configure one of the use cases below.
+    # IMPORTANT: the user names are compared to the User List in a case-sensitive
+    # manner.
+
+    # Use case #1: To allow specific users to connect without providing 2FA/MFA
+    # credentials, the User List policy should have the following settings:
+    # Set 'Allow' to 'No user' and list the users in the 'Except' list. Then type
+    # the name of this User List policy as the value of the 'name' parameter here.
+    ; name=<name-of-user-list-policy>
+
+    # Use case #2: To enforce 2FA/MFA authentication for selected users, the User
+    # List policy should have the following settings: Set 'Allow' to 'All users' and
+    # list the users in the 'Except' list. Then type the name of this User List
+    # policy as the value of the 'name' parameter here.
+    ; name=<name-of-user-list-policy>
+
+    [whitelist source=ldap_server_group]
+    # The [whitelist source=ldap_server_group] section allows whitelisting users
+    # based on LDAP Server group membership, To enable this whitelist, configure one
+    # of the use cases below.
+    # IMPORTANT: the user names and groups are compared in LDAP in a
+    # case-insensitive manner.
+
+    # Use case #1: To allow members of specific LDAP/AD group(s) to connect without
+    # providing 2FA/MFA credentials, type the names of these LDAP/AD groups as
+    # values of the 'except' parameter and set the 'allow' parameter to 'no_user':
+    ; allow=no_user
+    ; except=<group-1>,<group-2>,...
+
+    # Use case #2: To enforce 2FA/MFA authentication only on members of specific
+    # LDAP/AD groups, type the names of these LDAP/AD groups as values of the
+    # 'except' parameter and set the 'allow' parameter to 'all_users'.
+    ; allow=all_users
+    ; except=<group-1>,<group-2>,...
+
+    ######[USERMAPPING]######
+    # Usually the gateway user and the external 2FA/MFA identity are different.
+    # Because the authentication is based on the 2FA/MFA identity, to be able to
+    # authenticate with the gateway user, you will have to map these two to each
+    # other. The following methods are possible: explicit and LDAP server.
+    #
+    # The explicit method has priority over the LDAP server method.
+    # If there is no [USERMAPPING] and no [username_transform], then the 2FA/MFA
+    # identity will be the same as the gateway user name.
+
+    [usermapping source=explicit]
+    # To map the gateway user name to an external 2FA/MFA identity, configure the
+    # following name-value pairs.
+    # NOTE: Type the user names in lowercase.
+    ; <user-name-1>=<id-1>
+    ; <user-name-2>=<id-2>
+
+    [usermapping source=ldap_server]
+    # To map the gateway user name (that is in LDAP/AD and has a non-empty UTF8
+    # attribute string) to an external 2FA/MFA identity, configure the
+    # 'user_attribute' parameter the following way:
+    # It must be an LDAP/AD user attribute that contains the external identity.
+    # Example: description, cn, mail. For a complete list consult
+    # https://docs.microsoft.com/en-gb/windows/desktop/ADSchema/c-user.
+    # IMPORTANT: you must configure the name of the LDAP/AD server policy in
+    # the [ldap_server] section.
+    ; user_attribute=description
+
+    [username_transform]
+    # If the 2FA/MFA service requires the use of domain name in the external
+    # 2FA/MFA identity, configure the 'append_domain' parameter. This will append
+    # the domain name after the external 2FA/MFA identity with a '@' character.
+    # For example, if 'append_domain' is set to 'foobar.com', then '@foobar.com'
+    # will be appended to the external identity.
+    # If you have configured [USERMAPPING], the [username_transform] process will
+    # run after the [usermapping] process.
+    ; append_domain=<domain-without-at-sign>
+
+    [ldap_server]
+    # Required if you have configured [whitelist source=ldap_server_group] or
+    # [usermapping source=ldap_server].
+    # The name of the LDAP server policy (Policies > LDAP Servers).
+    ; name=<name-of-LDAP-server-policy>
+
+    [credential_store]
+    # Name of the local credential store configured in SPS for hosting sensitive
+    # configuration data. For more information, read the "Store sensitive
+    # plugin data securely" section in the Tutorial document.
+    ; name=<name-of-credential-store-policy-that-hosts-sensitive-data>
+
+    [logging]
+    # To configure the log level, enter one of the following values:
+    # 'debug', 'info', 'warning', 'error', 'critical'
+    ; log_level=info
+
+    [https_proxy]
+    # To set the HTTPS proxy environment for the plugin, configure the following.
+    ; server=<proxy-server-name-or-ip>
+    ; port=3128
+
+    [question_1]
+    # IMPORTANT: To configure this optional section, contact our Support Team.
+    # To request additional information from the user (for example, ticket number)
+    # define one or more [question_] section (for example, [question_1],
+    # [question_2]). The user input will be stored under the value of 'key' in the
+    # 'questions' section of the session cookie.
+    ; prompt=<prompt-to-show-to-the-user>
+    ; key=<target-key-for-the-answer>
+
+    # For better security, you can hide the characters that the user types after the
+    # prompt. To hide the characters, set 'disable_echo' to 'yes'.
+    ; disable_echo=yes

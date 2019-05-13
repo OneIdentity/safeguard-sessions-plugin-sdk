@@ -1,0 +1,58 @@
+pluginv build script
+====================
+
+The ``pluginv`` build script is available in the development environment after the environment is set up according to
+:ref:`gettingstarted-label` section. This section lists the main options and tasks provided by the pluginv script.
+
+Every command is to be executed in the virtual environment created by pipenv, that is after ``pipenv shell`` is invoked
+to activate the virtual environment.
+
+
+Version of Plugin SDK
+---------------------
+
+To get the Plugin SDK version on the command line, execute the following command:
+
+.. code-block:: bash
+
+    pluginv -V
+
+Snapshot build
+--------------
+
+To build a snapshot version of the plugin, use the command
+
+.. code-block:: bash
+
+    pluginv dist
+
+which checks the consistency of administrative data for the plugin, add the current time to the version in MANIFEST and
+create the plugin ZIP package. See the next section for details about the ZIP build.
+
+Release build
+-------------
+
+To build a release version of the plugin, use the command
+
+.. code-block:: bash
+
+    pluginv release
+
+which checks the consistency of administrative data for the plugin and create the plugin ZIP package. The ZIP package
+creation involves invoking several tools from the pipenv tool chain such as ``pipenv``, ``virtualenv`` and ``pip``.
+During the build a new virtual environment is created in the ``build`` directory while the final ZIP package is
+placed in ``dist`` directory. The name of the distributable ZIP package is the name of the plugin plus the version
+number followed by the zip extension.
+
+Run test scenarios
+------------------
+
+If you want to test your plugin, use the ``run-scenario`` subcommand to run a basic RDP with gateway
+authentication scenario.
+The ``config-file`` parameter is the name of a pre-written config file the plugin will use. You can also
+provide the gateway and target username with the ``gateway-username`` and ``target-username`` parameters
+respectively.
+
+.. code-block:: bash
+
+    pluginv run-scenario --config-file=config.ini --gateway-username=gateway --target-username=target

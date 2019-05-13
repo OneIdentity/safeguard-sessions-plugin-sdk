@@ -1,0 +1,4 @@
+Plugin base functions
+---------------------
+.. automodule:: safeguard.sessions.plugin.plugin_base
+    :members:
