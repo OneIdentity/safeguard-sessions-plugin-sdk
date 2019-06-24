@@ -1,0 +1,11 @@
+.. _fake-services-label:
+
+Fake services for testing
+=========================
+
+.. toctree::
+    :includehidden:
+
+    fake_credential_store
+    fake_ldap_server
+    fake_user_list

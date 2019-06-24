@@ -1,0 +1,15 @@
+.. _services-label:
+
+Plugin SDK services
+===================
+
+.. toctree::
+    :includehidden:
+
+    service_plugin_configuration
+    service_logging
+    service_credential_store
+    service_ldap_server
+    service_user_list
+    service_host_resolver
+    service_base_exceptions

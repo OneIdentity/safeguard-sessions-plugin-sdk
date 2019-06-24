@@ -1,0 +1,3 @@
+UserList data injection
+-----------------------
+.. automodule:: safeguard.sessions.plugin_fakes.user_list

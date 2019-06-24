@@ -1,0 +1,16 @@
+AA plugin development
+=====================
+
+The :class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>` base class enables rapid authentication and
+authorization  plugin development by providing a base class that implements common AA plugin
+functionality that any AA plugin should possess. There are also helper functions and Python decorators for simplifying
+frequent tasks.
+
+.. toctree::
+    :includehidden:
+
+    aa_plugin_common_configuration
+    aa_plugin_development
+    aa_plugin_plugin_response
+    aa_plugin_connection_information
+    aa_plugin_aa_plugin
