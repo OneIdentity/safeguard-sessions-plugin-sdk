@@ -26,7 +26,7 @@ Create a Pipfile that contains at least these lines:
     pytest-cov = "*"
 
     [requires]
-    python-version = "3.6"
+    python_version = "3.6"
 
 Build a python virtual environment which will be used to develop and test the plugin:
 

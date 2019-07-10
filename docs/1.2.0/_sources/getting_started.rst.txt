@@ -32,7 +32,7 @@ If you prefer to start from scratch, create a Pipfile that contains at least the
     [dev-packages]
 
     [requires]
-    python-version = "3.6"
+    python_version = "3.6"
 
 Preparing the python environment
 --------------------------------
