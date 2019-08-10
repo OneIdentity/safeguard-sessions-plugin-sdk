@@ -1,0 +1,23 @@
+Introduction
+============
+
+The One Identity Safeguard for Privileged Sessions Plugin Software Development Kit (Plugin SDK) provides base classes
+and services to enable rapid development of Python 3 plugins for the Safeguard for Privileged Sessions product.
+The Plugin SDK helps implement the requirements stated in the documents
+
+* Creating custom Authentication and Authorization plugins developer's guide,
+* Creating custom Credential Store plugins developer's guide.
+
+The documents above are part of the `One Identity technical documentation \
+<https://support.oneidentity.com/one-identity-safeguard-for-privileged-sessions/technical-documents>`_.
+
+The :class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>` base class can be used as starting point to create
+an Authentication and Authorization plugin. The :class:`MFAClient <safeguard.sessions.plugin.mfa_client.MFAClient>` base
+class can be used together with :class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>` for simple integration
+with multi factor authentication services where the user identity and password is enough for a successful
+authentication.
+
+The services described in section :ref:`services-label` implement various generic functions as well as functions
+specific to Safeguard for Privileged Sessions. Even the Safeguard for Privileged Sessions specific functions can be
+invoked in any Python development environment. To populate the Safeguard for Privileged Sessions specific functions with
+test data outside the product, use the "fake" services listed in section :ref:`fake-services-label`.

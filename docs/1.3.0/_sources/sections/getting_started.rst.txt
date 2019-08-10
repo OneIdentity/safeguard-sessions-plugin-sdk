@@ -1,0 +1,70 @@
+.. _gettingstarted-label:
+
+Getting started
+===============
+
+To begin developing with the Plugin SDK the following components are required:
+
+* working `Pipenv <https://pipenv.readthedocs.io/en/latest/>`_ tool,
+* working Python 3.6 interpreter,
+* a downloaded copy of the Plugin SDK development package.
+
+To download the Plugin SDK, visit the `Download software <https://support.oneidentity.com/download-product-select/>`_
+page on the One Identity home page. Note that to download software you need to have a registered support account.
+
+Starting from a plugin skeleton
+-------------------------------
+
+There is a basic AA plugin skeleton on GitHub.com:
+`https://github.com/OneIdentity/safeguard-sessions-plugin-skeleton-aa \
+<https://github.com/OneIdentity/safeguard-sessions-plugin-skeleton-aa>`_ that can be used as a starting point for the
+next steps.
+
+Starting from scratch
+---------------------
+
+If you prefer to start from scratch, create a Pipfile that contains at least these lines:
+
+.. code-block:: ini
+
+    [packages]
+
+    [dev-packages]
+
+    [requires]
+    python_version = "3.6"
+
+Preparing the python environment
+--------------------------------
+
+Build a python virtual environment which will be used to develop and test the plugin:
+
+.. code-block:: bash
+
+    pipenv install -d
+
+To (re)install the Plugin SDK replace ``<path-to-plugin-sdk-tar-gz>`` with the actual location of the downloaded Plugin
+SDK package and run the following command:
+
+.. code-block:: bash
+
+    pipenv run pip install -U <path-to-plugin-sdk-tar-gz>
+
+Note that by installing the Plugin SDK it will install its dependencies as well, including selected Python packages
+with the same version as found on a the SPS appliance.
+
+This step need not be repeated unless a new Plugin SDK is installed or the dependencies of the plugin change.
+
+Using the python environment
+----------------------------
+
+Create the necessary ``MANIFEST`` file for the plugin and add a source file, for example ``main.py``.
+
+The code in main.py is now usable together with the Plugin SDK inside the virtual environment. To build a snapshot
+plugin ZIP package, execute the following commands:
+
+.. code-block:: bash
+
+    pipenv run pluginv dist
+
+The resulting file will be in the ``dist`` directory, ready for upload to a Safeguard for Privileged Sessions appliance.

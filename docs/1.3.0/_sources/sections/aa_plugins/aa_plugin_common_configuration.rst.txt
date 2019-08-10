@@ -1,0 +1,9 @@
+.. _aa-plugin-config-label:
+
+Common configuration options
+----------------------------
+
+The common AA plugin functionality can be configured by the following configuration options.
+
+.. literalinclude:: ../../../build/aa_plugin_config.cfg
+    :language: ini
