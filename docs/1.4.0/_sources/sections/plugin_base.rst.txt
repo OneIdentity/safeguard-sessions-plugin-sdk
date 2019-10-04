@@ -1,0 +1,30 @@
+Plugin base functions
+---------------------
+
+cookie_property
+^^^^^^^^^^^^^^^
+
+.. automethod:: safeguard.sessions.plugin.plugin_base.cookie_property
+
+session_cookie_property
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automethod:: safeguard.sessions.plugin.plugin_base.session_cookie_property
+
+lazy_property
+^^^^^^^^^^^^^
+
+.. automethod:: safeguard.sessions.plugin.plugin_base.lazy_property
+
+named_cookie_property
+^^^^^^^^^^^^^^^^^^^^^
+
+.. automethod:: safeguard.sessions.plugin.plugin_base.named_cookie_property
+
+.. _pluginbase-section-label:
+
+PluginBase
+^^^^^^^^^^
+
+.. autoclass:: safeguard.sessions.plugin.plugin_base.PluginBase
+    :members:

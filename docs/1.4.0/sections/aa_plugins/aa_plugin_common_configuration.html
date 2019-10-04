@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>6.1. Common configuration options &#8212; Safeguard for Privileged Sessions Plugin SDK 1.4.0 documentation</title>
+
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinxbootstrap4.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/sphinxbootstrap4.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.2. Plugin development" href="aa_plugin_development.html" />
+    <link rel="prev" title="6. AA plugin development" href="../aa_plugins.html" />
+    <link rel="stylesheet" href="_static/css/oi.css" type="text/css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84081903-18"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-84081903-18');
+    </script>
+     
+
+  </head><body>
+  <nav class="navbar navbar-expand-md  fixed-top navbar-dark bg-dark flex-wrap">
+    <button class="navbar-toggler ml-auto py-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+      <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+           <a class="navbar-brand py-1" href="../../index.html">
+                  Safeguard for Privileged Sessions Plugin SDK
+          </a>
+          <span class="navbar-text navbar-version pb-0 pt-1"><b>1.4.0</b></span>
+          <ul class="navbar-nav mr-auto">
+          
+              <li class="nav-item dropdown d-none d-sm-block" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-0">2.1. Changes in version 1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-1">2.2. Changes in version 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-0">2.3. Changes in version 1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-1">2.4. Changes in version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-0">2.5. Changes in version 1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-4">2.6. Changes in version 1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-3">2.7. Changes in version 1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-2">2.8. Changes in version 1.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">3. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">4. Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-a-plugin-skeleton">4.1. Starting from a plugin skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-scratch">4.2. Starting from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#preparing-the-python-environment">4.3. Preparing the python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#using-the-python-environment">4.4. Using the python environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pluginv.html">5. pluginv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#version-information">5.1. Version information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#snapshot-build">5.2. Snapshot build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#release-build">5.3. Release build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-unit-and-integration-tests">5.4. Run unit and integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-test-scenarios">5.5. Run test scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../aa_plugins.html">6. AA plugin development</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">6.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">6.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">6.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">6.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">6.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">6.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">6.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">6.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">6.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">6.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">6.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">6.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">6.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">6.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">6.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-way-of-working">6.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">6.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mfa_client.html">7. MFA Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credentialstore_plugins.html">8. Credential Store plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_common_configuration.html">8.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html">8.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#administrative-tasks">8.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#basic-functionality">8.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#pre-defined-attributes-on-self">8.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#adding-to-the-constructor">8.2.4. Adding to the constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html">8.3. CredentialStorePlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-way-of-working">8.3.1. CredentialStorePlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-methods-and-attributes">8.3.2. CredentialStorePlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../services.html">9. Plugin SDK services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_plugin_configuration.html">9.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">9.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_logging.html">9.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuration-example">9.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuring-the-logger-service">9.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#acquiring-a-logger">9.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#usage-example">9.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_credential_store.html">9.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#configuration-example">9.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_credential_store.html#acquiring-a-credentialstore">9.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">9.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_ldap_server.html">9.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#configuration-example">9.4.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#acquiring-a-user-attribute">9.4.2. Acquiring a user attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">9.4.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_user_list.html">9.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#configuration-example">9.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_user_list.html#checking-whether-a-user-name-matches-a-user-list">9.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">9.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_host_resolver.html">9.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_base_exceptions.html">9.7. Base class for exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_requests_tls.html">9.8. Requests TLS Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#configuration-example">9.8.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#getting-a-session-object">9.8.2. Getting a Session object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_memory_cache.html">9.9. MemoryCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#configuration-example">9.9.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#setting-and-getting-values">9.9.2. Setting and getting values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">10. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#unit-tests">10.1. Unit tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#integration-tests">10.2. Integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin_base.html">11. Plugin base functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#cookie-property">11.1. cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#session-cookie-property">11.2. session_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#lazy-property">11.3. lazy_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#named-cookie-property">11.4. named_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#pluginbase">11.5. PluginBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">12. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#contacting-us">13. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#technical-support-resources">14. Technical support resources</a></li>
+</ul>
+
+                  </ul>
+              </li>
+          </ul>
+          <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+             
+<form class="form-inline" action="../../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <!--<div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="../../index.html">
+                      Safeguard for Privileged Sessions Plugin SDK
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline" action="../../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>-->
+    </nav>
+  </div>
+
+    <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.html">Safeguard for Privileged Sessions Plugin SDK 1.4.0 documentation</a></li>
+                <li class="breadcrumb-item"><a href="../aa_plugins.html"
+                       
+                         accesskey="U"
+                         class="active"
+                       >6. AA plugin development</a></li>
+            <li class="breadcrumb-item active">6.1. Common configuration options</li>
+        </ol>
+       <div>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="../aa_plugins.html" title="Previous Chapter: 6. AA plugin development" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; 6. AA plugin ...
+               </a>
+               <a href="aa_plugin_development.html" title="Next Chapter: 6.2. Plugin development" class="btn btn-primary" role="botton" accesskey="N">
+                   6.2. Plugin d... &raquo;
+               </a>
+           </div>
+       </div>
+    </div>
+
+  <div class="main container-fluid">
+    <div class="row"> 
+      <div class="sphinxsidebar d-none d-md-block">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-0">2.1. Changes in version 1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-1">2.2. Changes in version 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-0">2.3. Changes in version 1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-1">2.4. Changes in version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-0">2.5. Changes in version 1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-4">2.6. Changes in version 1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-3">2.7. Changes in version 1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-2">2.8. Changes in version 1.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">3. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">4. Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-a-plugin-skeleton">4.1. Starting from a plugin skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-scratch">4.2. Starting from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#preparing-the-python-environment">4.3. Preparing the python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#using-the-python-environment">4.4. Using the python environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pluginv.html">5. pluginv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#version-information">5.1. Version information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#snapshot-build">5.2. Snapshot build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#release-build">5.3. Release build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-unit-and-integration-tests">5.4. Run unit and integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-test-scenarios">5.5. Run test scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../aa_plugins.html">6. AA plugin development</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">6.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">6.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">6.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">6.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">6.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">6.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">6.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">6.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">6.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">6.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">6.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">6.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">6.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">6.4. Connection information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_aa_plugin.html">6.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-way-of-working">6.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">6.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mfa_client.html">7. MFA Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credentialstore_plugins.html">8. Credential Store plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_common_configuration.html">8.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html">8.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#administrative-tasks">8.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#basic-functionality">8.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#pre-defined-attributes-on-self">8.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#adding-to-the-constructor">8.2.4. Adding to the constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html">8.3. CredentialStorePlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-way-of-working">8.3.1. CredentialStorePlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-methods-and-attributes">8.3.2. CredentialStorePlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../services.html">9. Plugin SDK services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_plugin_configuration.html">9.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">9.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_logging.html">9.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuration-example">9.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuring-the-logger-service">9.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#acquiring-a-logger">9.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#usage-example">9.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_credential_store.html">9.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#configuration-example">9.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_credential_store.html#acquiring-a-credentialstore">9.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">9.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_ldap_server.html">9.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#configuration-example">9.4.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#acquiring-a-user-attribute">9.4.2. Acquiring a user attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">9.4.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_user_list.html">9.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#configuration-example">9.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_user_list.html#checking-whether-a-user-name-matches-a-user-list">9.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">9.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_host_resolver.html">9.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_base_exceptions.html">9.7. Base class for exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_requests_tls.html">9.8. Requests TLS Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#configuration-example">9.8.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#getting-a-session-object">9.8.2. Getting a Session object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_memory_cache.html">9.9. MemoryCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#configuration-example">9.9.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#setting-and-getting-values">9.9.2. Setting and getting values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">10. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#unit-tests">10.1. Unit tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#integration-tests">10.2. Integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin_base.html">11. Plugin base functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#cookie-property">11.1. cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#session-cookie-property">11.2. session_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#lazy-property">11.3. lazy_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#named-cookie-property">11.4. named_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#pluginbase">11.5. PluginBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">12. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#contacting-us">13. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#technical-support-resources">14. Technical support resources</a></li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../aa_plugins.html"
+                        title="previous chapter">6. AA plugin development</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aa_plugin_development.html"
+                        title="next chapter">6.2. Plugin development</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="../../search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled text-right">
+    <li><a href="../../_sources/sections/aa_plugins/aa_plugin_common_configuration.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
+
+      <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="common-configuration-options">
+<span id="aa-plugin-config-label"></span><h1>6.1. Common configuration options<a class="headerlink" href="#common-configuration-options" title="Permalink to this headline">¶</a></h1>
+<p>The common AA plugin functionality can be configured by the following configuration options.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Common plugin options ######</span>
+<span class="c1"># To enable or change a parameter, uncomment its line by removing the &#39;;&#39;</span>
+<span class="c1"># character and replacing the right side of &#39;=&#39; with the desired value.</span>
+<span class="c1"># If the parameter has the following structure</span>
+<span class="c1"># ; name=&lt;value&gt;</span>
+<span class="c1"># then the related option is turned off until you replace &#39;&lt;value&gt;&#39;.</span>
+<span class="c1">#</span>
+<span class="c1"># If the parameter has the following structure</span>
+<span class="c1"># ; name=value</span>
+<span class="c1"># then the related option is is automatically turned on with the default value</span>
+<span class="c1"># of &#39;value&#39;.</span>
+<span class="c1">#</span>
+<span class="c1"># To handle sensitive data, you can use a local Credential Store to retrieve</span>
+<span class="c1"># parameters from.</span>
+<span class="c1"># Enter the name of the local Credential Store (Policies &gt; Credential Store) as</span>
+<span class="c1"># the value of the &#39;name&#39; parameter in section [credential_store]. To retrieve a</span>
+<span class="c1"># parameter from this Credential Store, type the $ character as the value of</span>
+<span class="c1"># a parameter in this configuration file. To use the $ character as value,</span>
+<span class="c1"># type $$ instead. For more information, read the &quot;Store sensitive plugin data</span>
+<span class="c1"># securely&quot; section in the Tutorial document.</span>
+
+<span class="k">[credential_store]</span>
+<span class="c1"># Name of the local credential store configured in SPS for hosting sensitive</span>
+<span class="c1"># configuration data. For more information, read the &quot;Store sensitive</span>
+<span class="c1"># plugin data securely&quot; section in the Tutorial document.</span>
+<span class="c1">; name=&lt;name-of-credential-store-policy-that-hosts-sensitive-data&gt;</span>
+
+<span class="k">[logging]</span>
+<span class="c1"># To configure the log level, enter one of the following values:</span>
+<span class="c1"># &#39;debug&#39;, &#39;info&#39;, &#39;warning&#39;, &#39;error&#39;, &#39;critical&#39;</span>
+<span class="c1">; log_level=info</span>
+
+<span class="k">[https-proxy]</span>
+<span class="c1"># To set the HTTPS proxy environment for the plugin, configure the following.</span>
+<span class="c1">; server=&lt;proxy-server-name-or-ip&gt;</span>
+<span class="c1">; port=3128</span>
+<span class="c1">; username=&lt;proxy-server-username&gt;</span>
+<span class="c1">; password=&lt;proxy-server-password&gt;</span>
+
+<span class="k">[auth]</span>
+<span class="c1"># To override the prompt when using 2FA/MFA, enter the new prompt below.</span>
+<span class="c1">; prompt=Press Enter for push notification or type one-time password:</span>
+
+<span class="c1"># For better security, you can hide the characters (OTP or password) that the</span>
+<span class="c1"># user types after the prompt.</span>
+<span class="c1"># To hide the characters, set &#39;disable_echo&#39; to &#39;yes&#39;.</span>
+<span class="c1">; disable_echo=no</span>
+
+<span class="k">[connection_limit by=client_ip_gateway_user]</span>
+<span class="c1"># To limit the number of parallel sessions the gateway user can start from a</span>
+<span class="c1"># given client IP address, configure &#39;limit&#39;. For an unlimited number of</span>
+<span class="c1"># sessions, type &#39;0&#39;.</span>
+<span class="c1">; limit=0</span>
+
+<span class="k">[authentication_cache]</span>
+<span class="c1"># CAUTION: Do not configure this section unless you know exactly what you are</span>
+<span class="c1"># doing. For more information, read the &quot;[authentication_cache]&quot; section in the</span>
+<span class="c1"># Tutorial document.</span>
+<span class="c1">; hard_timeout=90</span>
+<span class="c1">; soft_timeout=15</span>
+<span class="c1">; reuse_limit=0</span>
+
+<span class="c1">######[WHITELIST]######</span>
+<span class="c1"># The [whitelist source=user_list] and [whitelist source=ldap_server_group]</span>
+<span class="c1"># sections allow configuring authentication whitelists based on a User List</span>
+<span class="c1"># policy or an LDAP Server policy. These two sections are independent, any of</span>
+<span class="c1"># the two can be configured and can allow the user to bypass 2FA/MFA</span>
+<span class="c1"># authentication.</span>
+
+<span class="k">[whitelist source=user_list]</span>
+<span class="c1"># The [whitelist source=user_list] section allows whitelisting users based on a</span>
+<span class="c1"># User List policy configured in SPS (Policies &gt; User Lists). To enable this</span>
+<span class="c1"># whitelist, configure one of the use cases below.</span>
+<span class="c1"># IMPORTANT: the user names are compared to the User List in a case-sensitive</span>
+<span class="c1"># manner.</span>
+
+<span class="c1"># Use case #1: To allow specific users to connect without providing 2FA/MFA</span>
+<span class="c1"># credentials, the User List policy should have the following settings:</span>
+<span class="c1"># Set &#39;Allow&#39; to &#39;No user&#39; and list the users in the &#39;Except&#39; list. Then type</span>
+<span class="c1"># the name of this User List policy as the value of the &#39;name&#39; parameter here.</span>
+<span class="c1">; name=&lt;name-of-user-list-policy&gt;</span>
+
+<span class="c1"># Use case #2: To enforce 2FA/MFA authentication for selected users, the User</span>
+<span class="c1"># List policy should have the following settings: Set &#39;Allow&#39; to &#39;All users&#39; and</span>
+<span class="c1"># list the users in the &#39;Except&#39; list. Then type the name of this User List</span>
+<span class="c1"># policy as the value of the &#39;name&#39; parameter here.</span>
+<span class="c1">; name=&lt;name-of-user-list-policy&gt;</span>
+
+<span class="k">[whitelist source=ldap_server_group]</span>
+<span class="c1"># The [whitelist source=ldap_server_group] section allows whitelisting users</span>
+<span class="c1"># based on LDAP Server group membership, To enable this whitelist, configure one</span>
+<span class="c1"># of the use cases below.</span>
+<span class="c1"># IMPORTANT: the user names and groups are compared in LDAP in a</span>
+<span class="c1"># case-insensitive manner.</span>
+
+<span class="c1"># Use case #1: To allow members of specific LDAP/AD group(s) to connect without</span>
+<span class="c1"># providing 2FA/MFA credentials, type the names of these LDAP/AD groups as</span>
+<span class="c1"># values of the &#39;except&#39; parameter and set the &#39;allow&#39; parameter to &#39;no_user&#39;:</span>
+<span class="c1">; allow=no_user</span>
+<span class="c1">; except=&lt;group-1&gt;,&lt;group-2&gt;,...</span>
+
+<span class="c1"># Use case #2: To enforce 2FA/MFA authentication only on members of specific</span>
+<span class="c1"># LDAP/AD groups, type the names of these LDAP/AD groups as values of the</span>
+<span class="c1"># &#39;except&#39; parameter and set the &#39;allow&#39; parameter to &#39;all_users&#39;.</span>
+<span class="c1">; allow=all_users</span>
+<span class="c1">; except=&lt;group-1&gt;,&lt;group-2&gt;,...</span>
+
+<span class="c1">######[USERMAPPING]######</span>
+<span class="c1"># Usually the gateway user and the external 2FA/MFA identity are different.</span>
+<span class="c1"># Because the authentication is based on the 2FA/MFA identity, to be able to</span>
+<span class="c1"># authenticate with the gateway user, you will have to map these two to each</span>
+<span class="c1"># other. The following methods are possible: explicit and LDAP server.</span>
+<span class="c1">#</span>
+<span class="c1"># The explicit method has priority over the LDAP server method.</span>
+<span class="c1"># If there is no [USERMAPPING] and no [username_transform], then the 2FA/MFA</span>
+<span class="c1"># identity will be the same as the gateway user name.</span>
+
+<span class="k">[usermapping source=explicit]</span>
+<span class="c1"># To map the gateway user name to an external 2FA/MFA identity, configure the</span>
+<span class="c1"># following name-value pairs.</span>
+<span class="c1"># NOTE: Type the user names in lowercase.</span>
+<span class="c1">; &lt;user-name-1&gt;=&lt;id-1&gt;</span>
+<span class="c1">; &lt;user-name-2&gt;=&lt;id-2&gt;</span>
+
+<span class="k">[usermapping source=ldap_server]</span>
+<span class="c1"># To map the gateway user name (that is in LDAP/AD and has a non-empty UTF8</span>
+<span class="c1"># attribute string) to an external 2FA/MFA identity, configure the</span>
+<span class="c1"># &#39;user_attribute&#39; parameter the following way:</span>
+<span class="c1"># It must be an LDAP/AD user attribute that contains the external identity.</span>
+<span class="c1"># Example: description, cn, mail. For a complete list consult</span>
+<span class="c1"># https://docs.microsoft.com/en-gb/windows/desktop/ADSchema/c-user.</span>
+<span class="c1"># IMPORTANT: you must configure the name of the LDAP/AD server policy in</span>
+<span class="c1"># the [ldap_server] section.</span>
+<span class="c1">; user_attribute=description</span>
+
+<span class="k">[username_transform]</span>
+<span class="c1"># If the 2FA/MFA service requires the use of domain name in the external</span>
+<span class="c1"># 2FA/MFA identity, configure the &#39;append_domain&#39; parameter. This will append</span>
+<span class="c1"># the domain name after the external 2FA/MFA identity with a &#39;@&#39; character.</span>
+<span class="c1"># For example, if &#39;append_domain&#39; is set to &#39;foobar.com&#39;, then &#39;@foobar.com&#39;</span>
+<span class="c1"># will be appended to the external identity.</span>
+<span class="c1"># If you have configured [USERMAPPING], the [username_transform] process will</span>
+<span class="c1"># run after the [usermapping] process.</span>
+<span class="c1">; append_domain=&lt;domain-without-at-sign&gt;</span>
+
+<span class="k">[ldap_server]</span>
+<span class="c1"># Required if you have configured [whitelist source=ldap_server_group] or</span>
+<span class="c1"># [usermapping source=ldap_server].</span>
+<span class="c1"># The name of the LDAP server policy (Policies &gt; LDAP Servers).</span>
+<span class="c1">; name=&lt;name-of-LDAP-server-policy&gt;</span>
+
+<span class="k">[question_1]</span>
+<span class="c1"># IMPORTANT: To configure this optional section, contact our Support Team.</span>
+<span class="c1"># To request additional information from the user (for example, ticket number)</span>
+<span class="c1"># define one or more [question_] section (for example, [question_1],</span>
+<span class="c1"># [question_2]). The user input will be stored under the value of &#39;key&#39; in the</span>
+<span class="c1"># &#39;questions&#39; section of the session cookie.</span>
+<span class="c1">; prompt=&lt;prompt-to-show-to-the-user&gt;</span>
+<span class="c1">; key=&lt;target-key-for-the-answer&gt;</span>
+
+<span class="c1"># For better security, you can hide the characters that the user types after the</span>
+<span class="c1"># prompt. To hide the characters, set &#39;disable_echo&#39; to &#39;yes&#39;.</span>
+<span class="c1">; disable_echo=yes</span>
+</pre></div>
+</div>
+<p><em>New in version 1.4.0.</em> HTTPS proxy configuration can be overridden from plugin config, and
+password can be stored in a credential store.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+      </div>
+    </div>
+<footer class="footer d-flex justify-content-between flex-wrap">
+    <div class="copyright">
+        <div>&copy; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 2.0.1 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.6.0.</div>
+    </div>
+    <div>
+        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
+    </div>
+</footer>
+  </body>
+</html>
