@@ -1,0 +1,9 @@
+PluginConfiguration
+-------------------
+.. automodule:: safeguard.sessions.plugin.plugin_configuration
+   :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.plugin_configuration_exceptions
+   :members:

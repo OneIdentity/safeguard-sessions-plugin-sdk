@@ -1,0 +1,90 @@
+.. _testing-label:
+
+Testing
+=======
+
+Unit tests
+----------
+
+We encourage you to write automatic tests for your plugins. For unit testing, we recommend using pytest, and its mock
+module. These modules are already pre-installed in the pipenv environment if you followed the :ref:`gettingstarted-label`
+guide. Write the tests by usual means, and use the :ref:`pluginv-label` tool to run them.
+
+.. code-block:: bash
+
+    pluginv run-tests
+
+Refer to the pytest official documentation on how to write tests.
+
+`PyTest documentation <https://docs.pytest.org/en/latest/contents.html>`_
+
+`PyTest Mock project <https://pypi.org/project/pytest-mock/>`_
+
+To ease the testing, we provide fake services, with which you can fake out the services provided by SPS, and test your
+plugin without a real SPS.
+
+.. toctree::
+    :includehidden:
+
+    testing/fakes
+
+Integration tests
+-----------------
+
+If your plugin uses external services (2FA for example), it is beneficial to write integration tests. For this, we
+recommend using the `vcrpy <https://vcrpy.readthedocs.io/en/latest/>`_ module (pre-installed in the pipenv environment),
+with which you can record the communication (HTTP requests and responses) between your plugin and the external service,
+and later ``vcrpy`` can replay it without needing to access the service. Using this, your tests will be fast,
+deterministic, and can be run offline. Of course this test won't detect if the external service has had incompatible
+changes, so you may want to re-record the communication regularly.
+
+You don't need to use the ``vcr`` module directly, the :ref:`pluginv-label` tool handles it automatically. All you need
+to do is to use either the urllib or the requests library for HTTP communication. Then if you run the tests using the
+``pluginv run-recording-tests`` command, the communication will be recorded automatically, and will be put into YAML
+files in a folder named ``cassettes``. After this recording is done, every time you run the tests using the
+``pluginv run-tests`` command, ``vcr`` will replay the recorded communication from the YAML files.
+
+For example, put this code into a file, with a name starting with ``test_``.
+
+.. code-block:: python
+
+    import requests
+
+    def test_vcr_example():
+        response = requests.get('https://httpbin.org/')
+        assert response.ok
+        assert 'A simple HTTP Request &amp; Response Service.' in str(response.content)
+
+Then use :ref:`pluginv-label` to run it, and record the HTTP requests and responses
+
+.. code-block:: bash
+
+    pluginv run-recording-tests
+
+Notice how slow the test run was. You will also notice that a new ``cassettes`` directory will show up with a YAML file
+in it. After the recording, all you have to do is run the tests the usual way. This time it will run much faster, as
+``vcr`` will replay the previously recorded communication, without sending requests to the real service.
+
+.. code-block:: bash
+
+    pluginv run-tests
+
+If your plugin uses keyboard interactive input, and you want to test that also, you can use the
+``@pytest.mark.interactive`` decorator (to mark the tests) along with the ``interactive`` fixture (to ask for the input).
+For example:
+
+.. code-block:: python
+
+    @pytest.mark.interactive
+    def test_interactive_input(interactive):
+        password = interactive.askforinput('Please provide your password')
+        assert password == 'secret'
+
+The benefit of this is that you can record the keyboard inputs and replay them using the method described above, so you
+don't always need to enter the input interactively. However, if you want to run the tests and provide the inputs by
+hand, you can use the following subcommand. Note that in this case, the tests will communicate with the real services,
+the cassettes won't be replayed.
+
+.. code-block:: bash
+
+    pluginv run-interactive-tests

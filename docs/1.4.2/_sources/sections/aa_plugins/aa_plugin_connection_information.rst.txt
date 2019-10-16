@@ -1,0 +1,4 @@
+Connection information
+----------------------
+.. automodule:: safeguard.sessions.plugin.connection_info
+    :members:
