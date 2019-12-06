@@ -1,0 +1,4 @@
+Base class for exceptions
+-------------------------
+.. automodule:: safeguard.sessions.plugin.exceptions
+    :members:

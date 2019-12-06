@@ -1,0 +1,78 @@
+Changelog
+=========
+
+Changes in version 1.4.4
+^^^^^^^^^^^^^^^^^^^^^^^^
+If an AA plugin is used as first factor in SPS, allow setting a gateway user to authenticate via the "gu" key value.
+For example in RDP protocol when AA plugin is first factor, this allows setting gateway user by providing
+MYDOMAIN\\gu~gwuser%Administrator.
+
+Changes in version 1.4.3
+^^^^^^^^^^^^^^^^^^^^^^^^
+The plugin ZIP handling is now emitting errors that are consistent with the SPS REST API.
+
+Changes in version 1.4.2
+^^^^^^^^^^^^^^^^^^^^^^^^
+Revise administrative information of Plugin SDK for public release on pypi.org.
+
+Changes in version 1.4.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Warn user when pluginv dist/release generates zipfile that exceeds 20MB.
+Do not allow to package plugin with Plugin SDK as a runtime dependency.
+
+Changes in version 1.4.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+LDAPService has new method get_user_string_attributes to fetch multiple LDAP attributes at the same time.
+
+HTTPS proxy configuration can be overridden from plugin config, and password can be stored in a credential store. Also,
+the name of the section is changed to https-proxy (but https_proxy is also supported for backward compatibility).
+
+Allow signing CA plugin type to be built, tested, etc with pluginv script.
+
+Add MemoryCache service for using a local non-persistent Redis for cache.
+
+Do not remove metadata from python libraries bundled with a plugin by pluginv, unless requested by the developer.
+
+Fix pluginv run-recording-tests not printing interactive questions.
+
+Changes in version 1.3.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix issue with the pluginv packaging task where the generated default.cfg doesn't get packaged
+
+Changes in version 1.3.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix issue with BoxConfiguration overhead vs. HTTPS proxy settings.
+
+Add get_ca_certificates function to PluginConfiguration to have means to configure CA certificate chains.
+
+Add RequestsTLS class, which can instantiate Session objects from the requests library, preconfigured
+with TLS settings.
+
+If default.cfg of a plugin does not exist, let pluginv create it from default.cfg.plugin and plugin type defaults.
+
+Changes in version 1.2.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix issue in testing plugins outside SPS.
+
+Changes in version 1.2.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+Make it possible to configure SSH private key directly in plugin configuration, instead of via credential store -
+strictly for testing purposes.
+
+Add version-sdk and version-sps task to pluginv script to generate version information for plugin release.
+
+Add CredentialStorePlugin base class for credential store plugins.
+
+Changes in version 1.1.4
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix plugin distribution build on systems where Python2 is the default.
+
+Changes in version 1.1.3
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add pluginv script to the Plugin SDK for supporting design and build tasks.
+
+Changes in version 1.1.2
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Initial release.
