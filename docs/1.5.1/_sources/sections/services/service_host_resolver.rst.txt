@@ -1,0 +1,4 @@
+HostResolver
+------------
+.. automodule:: safeguard.sessions.plugin.host_resolver
+    :members:

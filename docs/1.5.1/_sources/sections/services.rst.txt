@@ -1,0 +1,22 @@
+.. _services-label:
+
+Plugin SDK services
+===================
+
+The services described in this section implement various generic functions as well as functions
+specific to Safeguard for Privileged Sessions. Even the Safeguard for Privileged Sessions specific functions can be
+invoked in any Python development environment. To populate the Safeguard for Privileged Sessions specific functions with
+test data outside the product, use the "fake" services listed in section :ref:`fake-services-label`.
+
+.. toctree::
+    :includehidden:
+
+    services/service_plugin_configuration
+    services/service_logging
+    services/service_credential_store
+    services/service_ldap_server
+    services/service_user_list
+    services/service_host_resolver
+    services/service_base_exceptions
+    services/service_requests_tls
+    services/service_memory_cache

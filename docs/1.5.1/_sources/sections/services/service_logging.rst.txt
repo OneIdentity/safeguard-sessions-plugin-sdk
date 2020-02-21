@@ -1,0 +1,4 @@
+Logging
+-------
+.. automodule:: safeguard.sessions.plugin.logging
+   :members:
