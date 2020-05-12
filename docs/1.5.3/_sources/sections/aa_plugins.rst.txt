@@ -1,0 +1,20 @@
+AA plugin development
+=====================
+
+The :class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>` base class enables rapid authentication and
+authorization plugin development by providing a base class that implements common AA plugin
+functionality that any AA plugin should possess. There are also helper functions and Python decorators for simplifying
+frequent tasks. The :class:`MFAClient <safeguard.sessions.plugin.mfa_client.MFAClient>` base
+class can be used together with :class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>` for simple integration
+with multi factor authentication services where the user identity and password is enough for a successful
+authentication.
+
+
+.. toctree::
+    :includehidden:
+
+    aa_plugins/aa_plugin_common_configuration
+    aa_plugins/aa_plugin_development
+    aa_plugins/aa_plugin_plugin_response
+    aa_plugins/aa_plugin_connection_information
+    aa_plugins/aa_plugin_aa_plugin
