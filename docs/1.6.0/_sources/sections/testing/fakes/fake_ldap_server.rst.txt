@@ -1,0 +1,4 @@
+LDAPServer data injection
+-------------------------
+.. automodule:: safeguard.sessions.plugin_fakes.ldap_server
+    :members:

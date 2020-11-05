@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>6.5. AAPlugin &#8212; Safeguard for Privileged Sessions Plugin SDK 1.6.0 documentation</title>
+
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinxbootstrap4.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/sphinxbootstrap4.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. MFA Client" href="../mfa_client.html" />
+    <link rel="prev" title="6.4. Connection information" href="aa_plugin_connection_information.html" />
+    <link rel="stylesheet" href="../../_static/css/oi.css" type="text/css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84081903-18"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-84081903-18');
+    </script>
+     
+
+  </head><body>
+  <nav class="navbar navbar-expand-md  fixed-top navbar-dark bg-dark flex-wrap">
+    <button class="navbar-toggler ml-auto py-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+      <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+           <a class="navbar-brand py-1" href="../../index.html">
+                  Safeguard for Privileged Sessions Plugin SDK
+          </a>
+          <span class="navbar-text navbar-version pb-0 pt-1"><b>1.6.0</b></span>
+          <ul class="navbar-nav mr-auto">
+          
+              <li class="nav-item dropdown d-none d-sm-block" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-6-0">2.1. Changes in version 1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-4">2.2. Changes in version 1.5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-3">2.3. Changes in version 1.5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-2">2.4. Changes in version 1.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-1">2.5. Changes in version 1.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-0">2.6. Changes in version 1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-4">2.7. Changes in version 1.4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-3">2.8. Changes in version 1.4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-2">2.9. Changes in version 1.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-1">2.10. Changes in version 1.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-0">2.11. Changes in version 1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-1">2.12. Changes in version 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-0">2.13. Changes in version 1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-1">2.14. Changes in version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-0">2.15. Changes in version 1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-4">2.16. Changes in version 1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-3">2.17. Changes in version 1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-2">2.18. Changes in version 1.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">3. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">4. Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-a-plugin-skeleton">4.1. Starting from a plugin skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-scratch">4.2. Starting from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#preparing-the-python-environment">4.3. Preparing the python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#using-the-python-environment">4.4. Using the python environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pluginv.html">5. pluginv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#version-information">5.1. Version information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#snapshot-build">5.2. Snapshot build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#release-build">5.3. Release build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-unit-and-integration-tests">5.4. Run unit and integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-test-scenarios">5.5. Run test scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../aa_plugins.html">6. AA plugin development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">6.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">6.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">6.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">6.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">6.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">6.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">6.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">6.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">6.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">6.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">6.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">6.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">6.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">6.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">6.4. Connection information</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aaplugin-way-of-working">6.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aaplugin-methods-and-attributes">6.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mfa_client.html">7. MFA Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credentialstore_plugins.html">8. Credential Store plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_common_configuration.html">8.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html">8.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#administrative-tasks">8.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#basic-functionality">8.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#pre-defined-attributes-on-self">8.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#adding-to-the-constructor">8.2.4. Adding to the constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html">8.3. CredentialStorePlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-way-of-working">8.3.1. CredentialStorePlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-methods-and-attributes">8.3.2. CredentialStorePlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../services.html">9. Plugin SDK services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_plugin_configuration.html">9.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">9.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_logging.html">9.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuration-example">9.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuring-the-logger-service">9.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#acquiring-a-logger">9.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#usage-example">9.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_credential_store.html">9.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#configuration-example">9.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_credential_store.html#acquiring-a-credentialstore">9.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">9.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_ldap_server.html">9.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#configuration-example">9.4.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#acquiring-a-user-attribute">9.4.2. Acquiring a user attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">9.4.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_user_list.html">9.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#configuration-example">9.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_user_list.html#checking-whether-a-user-name-matches-a-user-list">9.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">9.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_host_resolver.html">9.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_base_exceptions.html">9.7. Base class for exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_requests_tls.html">9.8. Requests TLS Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#configuration-example">9.8.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#getting-a-session-object">9.8.2. Getting a Session object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_memory_cache.html">9.9. MemoryCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#configuration-example">9.9.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#setting-and-getting-values">9.9.2. Setting and getting values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_endpoint_extractor.html">9.10. EndpointExtractor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">10. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#unit-tests">10.1. Unit tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#integration-tests">10.2. Integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin_base.html">11. Plugin base functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#cookie-property">11.1. cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#session-cookie-property">11.2. session_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#lazy-property">11.3. lazy_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#named-cookie-property">11.4. named_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#pluginbase">11.5. PluginBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">12. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#contacting-us">13. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#technical-support-resources">14. Technical support resources</a></li>
+</ul>
+
+                  </ul>
+              </li>
+          </ul>
+          <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+             
+<form class="form-inline" action="../../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <!--<div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="../../index.html">
+                      Safeguard for Privileged Sessions Plugin SDK
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline" action="../../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>-->
+    </nav>
+  </div>
+
+    <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.html">Safeguard for Privileged Sessions Plugin SDK 1.6.0 documentation</a></li>
+                <li class="breadcrumb-item"><a href="../aa_plugins.html"
+                       
+                         accesskey="U"
+                         class="active"
+                       >6. AA plugin development</a></li>
+            <li class="breadcrumb-item active">6.5. AAPlugin</li>
+        </ol>
+       <div>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="aa_plugin_connection_information.html" title="Previous Chapter: 6.4. Connection information" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; 6.4. Connecti...
+               </a>
+               <a href="../mfa_client.html" title="Next Chapter: 7. MFA Client" class="btn btn-primary" role="botton" accesskey="N">
+                   7. MFA Client &raquo;
+               </a>
+           </div>
+       </div>
+    </div>
+
+  <div class="main container-fluid">
+    <div class="row"> 
+      <div class="sphinxsidebar d-none d-md-block">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-6-0">2.1. Changes in version 1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-4">2.2. Changes in version 1.5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-3">2.3. Changes in version 1.5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-2">2.4. Changes in version 1.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-1">2.5. Changes in version 1.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-5-0">2.6. Changes in version 1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-4">2.7. Changes in version 1.4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-3">2.8. Changes in version 1.4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-2">2.9. Changes in version 1.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-1">2.10. Changes in version 1.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-4-0">2.11. Changes in version 1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-1">2.12. Changes in version 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-3-0">2.13. Changes in version 1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-1">2.14. Changes in version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-2-0">2.15. Changes in version 1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-4">2.16. Changes in version 1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-3">2.17. Changes in version 1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#changes-in-version-1-1-2">2.18. Changes in version 1.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">3. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">4. Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-a-plugin-skeleton">4.1. Starting from a plugin skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#starting-from-scratch">4.2. Starting from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#preparing-the-python-environment">4.3. Preparing the python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#using-the-python-environment">4.4. Using the python environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pluginv.html">5. pluginv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#version-information">5.1. Version information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#snapshot-build">5.2. Snapshot build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#release-build">5.3. Release build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-unit-and-integration-tests">5.4. Run unit and integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginv.html#run-test-scenarios">5.5. Run test scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../aa_plugins.html">6. AA plugin development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_common_configuration.html">6.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_development.html">6.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#administrative-tasks">6.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#basic-functionality">6.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#pre-defined-attributes-on-self">6.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#asking-the-end-user">6.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#using-cookies">6.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-gateway-user-and-groups">6.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#setting-additional-meta-data">6.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#avoiding-costly-calculations">6.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#adding-to-the-constructor">6.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#authentication-cache">6.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugin_development.html#altering-the-steps">6.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_plugin_response.html">6.3. Plugin response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugin_connection_information.html">6.4. Connection information</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aaplugin-way-of-working">6.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aaplugin-methods-and-attributes">6.5.2. AAPlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mfa_client.html">7. MFA Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credentialstore_plugins.html">8. Credential Store plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_common_configuration.html">8.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html">8.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#administrative-tasks">8.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#basic-functionality">8.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#pre-defined-attributes-on-self">8.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_development.html#adding-to-the-constructor">8.2.4. Adding to the constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html">8.3. CredentialStorePlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-way-of-working">8.3.1. CredentialStorePlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-methods-and-attributes">8.3.2. CredentialStorePlugin methods and attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../services.html">9. Plugin SDK services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_plugin_configuration.html">9.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">9.1.1. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_logging.html">9.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuration-example">9.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#configuring-the-logger-service">9.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#acquiring-a-logger">9.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_logging.html#usage-example">9.2.4. Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_credential_store.html">9.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#configuration-example">9.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_credential_store.html#acquiring-a-credentialstore">9.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">9.3.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_ldap_server.html">9.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#configuration-example">9.4.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#acquiring-a-user-attribute">9.4.2. Acquiring a user attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">9.4.3. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_user_list.html">9.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#configuration-example">9.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../services/service_user_list.html#checking-whether-a-user-name-matches-a-user-list">9.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">9.5.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_host_resolver.html">9.6. HostResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_base_exceptions.html">9.7. Base class for exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_requests_tls.html">9.8. Requests TLS Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#configuration-example">9.8.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_requests_tls.html#getting-a-session-object">9.8.2. Getting a Session object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_memory_cache.html">9.9. MemoryCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#configuration-example">9.9.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/service_memory_cache.html#setting-and-getting-values">9.9.2. Setting and getting values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../services/service_endpoint_extractor.html">9.10. EndpointExtractor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">10. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#unit-tests">10.1. Unit tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html#integration-tests">10.2. Integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin_base.html">11. Plugin base functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#cookie-property">11.1. cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#session-cookie-property">11.2. session_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#lazy-property">11.3. lazy_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#named-cookie-property">11.4. named_cookie_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin_base.html#pluginbase">11.5. PluginBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">12. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#contacting-us">13. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#technical-support-resources">14. Technical support resources</a></li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aa_plugin_connection_information.html"
+                        title="previous chapter">6.4. Connection information</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../mfa_client.html"
+                        title="next chapter">7. MFA Client</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="../../search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled text-right">
+    <li><a href="../../_sources/sections/aa_plugins/aa_plugin_aa_plugin.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
+
+      <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-safeguard.sessions.plugin.aa_plugin">
+<span id="aaplugin"></span><h1>6.5. AAPlugin<a class="headerlink" href="#module-safeguard.sessions.plugin.aa_plugin" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-safeguard.sessions.plugin.aa_plugin"></span><div class="section" id="aaplugin-way-of-working">
+<h2>6.5.1. AAPlugin way of working<a class="headerlink" href="#aaplugin-way-of-working" title="Permalink to this headline">¶</a></h2>
+<p>When SPS calls the AAPlugin, it does so by creating an AAPlugin (or more likely derived class) instance. The
+initialization of the instance processes the given plugin configuration and sets the logging level appropriately.</p>
+<p>On the new AAPlugin instance SPS will make a call to <code class="docutils literal notranslate"><span class="pre">authenticate</span></code>, <code class="docutils literal notranslate"><span class="pre">authorize</span></code> or <code class="docutils literal notranslate"><span class="pre">session_ended</span></code>. In all cases
+AAPlugin first collects the input parameters in
+<a class="reference internal" href="aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo" title="safeguard.sessions.plugin.connection_info.ConnectionInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">self.connection</span></code></a> and sets up
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.cookie</span></code></a> and <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.session_cookie</span></code></a> attributes.</p>
+<p>In case of <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> the prescribed steps in <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin._authentication_steps()</span></code></a> are executed, including
+the user defined <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin.do_authenticate()</span></code></a> and if all was successful then the steps in
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin._post_successful_authentication_steps()</span></code></a> are also executed.
+The later steps can ask further questions from the user and do other housekeeping tasks.</p>
+<p>In case of <code class="docutils literal notranslate"><span class="pre">authorize</span></code> the prescribed steps in <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin._authorization_steps()</span></code></a> are executed, where the last
+step is a call to the user defined <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin.do_authorize()</span></code></a>.</p>
+<p>In case of <code class="docutils literal notranslate"><span class="pre">session_ended</span></code> the prescribed steps in <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin._session_ended_steps()</span></code></a> are executed, where the last
+step is a call to the user defined <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAPlugin.do_session_ended()</span></code></a>.</p>
+<p>If a step returns with a verdict such as accept, deny or need info, then AAPlugin will add values stored in
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.cookie</span></code></a> and <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.session_cookie</span></code></a> to the verdict
+and return the result to SPS.</p>
+<p>If a step returns with None, then AAPlugin marks it as done, and does not call it again in case the plugin returns
+need info and the plugin is invoked again with the same callback.</p>
+</div>
+<div class="section" id="aaplugin-methods-and-attributes">
+<h2>6.5.2. AAPlugin methods and attributes<a class="headerlink" href="#aaplugin-methods-and-attributes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin">
+<em class="property">class </em><code class="descclassname">safeguard.sessions.plugin.aa_plugin.</code><code class="descname">AAPlugin</code><span class="sig-paren">(</span><em>configuration</em>, <em>defaults=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin" title="safeguard.sessions.plugin.aa_plugin.AAPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">AAPlugin</span></code></a> class implements the common functionality of AA plugins. The following methods and
+attributes are available outside the constructor - on top of the ones inherited from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PluginBase</span> <span class="pre">&lt;safeguard.sessions.plugin.plugin_base.PluginBase</span></code> class:</p>
+<dl class="attribute">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.connection">
+<code class="descname">connection</code><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo" title="safeguard.sessions.plugin.connection_info.ConnectionInfo"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.connection</span></code></a> provides a read-only
+view of the parameters passed to the currently executing plugin hook, e.g. <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authenticate()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie">
+<code class="descname">cookie</code><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.cookie</span></code></a> attribute is a dict that retains its contents between invocations of
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authenticate()</span></code></a>, <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authorize()</span></code></a> and <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_session_ended()</span></code></a>.
+This is the way to pass data between these functions.</p>
+<p>When the plugin returns the contents are automatically returned to SPS. Note that when
+<a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie" title="safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.with_cookie</span></code></a> is used, it
+takes precedence and updates <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.cookie</span></code></a> before returning to SPS.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie">
+<code class="descname">session_cookie</code><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.session_cookie</span></code></a> is similar to <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.cookie</span></code></a>, but it is
+also visible in other plugins in the same session. When the plugin returns the contents are automatically
+returned to SPS. Note that when <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_session_cookie" title="safeguard.sessions.plugin.plugin_response.AAResponse.with_session_cookie"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.with_session_cookie</span></code></a> is used, it takes precedence and
+updates <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.session_cookie</span></code></a> before returning to SPS.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.username">
+<code class="descname">username</code><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.username"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.username</span></code></a> is a
+<a class="reference internal" href="../plugin_base.html#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> which is equal to the gateway
+user name, or if not present, then the target user name, or finally the <code class="docutils literal notranslate"><span class="pre">username</span></code> value in the
+<code class="docutils literal notranslate"><span class="pre">key_value_pairs</span></code>. If none of these are present then the connection is automatically denied as we don’t have
+a user name to work with.</p>
+<p>The initial value of <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.username"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.username</span></code></a> is calculated by <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_extract_username()</span></code></a>. As a
+cookie property, the value of <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.username"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.username</span></code></a> is retained in subsequent invocations of the
+plugin.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity">
+<code class="descname">mfa_identity</code><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.mfa_identity</span></code> is a
+<a class="reference internal" href="../plugin_base.html#safeguard.sessions.plugin.plugin_base.cookie_property" title="safeguard.sessions.plugin.plugin_base.cookie_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">&#64;cookie_property</span></code></a> which is equal to
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.username"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.username</span></code></a> after mapping and transformations to the multi factor authentication
+identity.</p>
+<p>As a cookie property, the value of <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.mfa_identity</span></code></a> is retained in subsequent
+invocations of the plugin.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_password">
+<code class="descname">mfa_password</code><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.mfa_password</span></code> is read-only property that is implemented by <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_extract_mfa_password()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate">
+<code class="descname">do_authenticate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authenticate()</span></code></a> method should verify that the given MFA identity (<code class="docutils literal notranslate"><span class="pre">self.mfa_identity</span></code>) matches the
+given MFA password (<code class="docutils literal notranslate"><span class="pre">self.mfa_password</span></code>). In case the password is an empty string, the check should do a
+challenge-response or push notification or some other check. For details consult the <em>Creating custom
+Authentication and Authorization plugins</em> technical document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict with at least the key ‘verdict’ to indicate ‘ACCEPT’, ‘DENY’ or ‘NEEDINFO’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize">
+<code class="descname">do_authorize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authorize()</span></code></a> method should verify that the given MFA identity (<code class="docutils literal notranslate"><span class="pre">self.mfa_identity</span></code>)
+has authority (has the right) to access the given target asset (<code class="docutils literal notranslate"><span class="pre">self.connection.server_username</span></code>,
+<code class="docutils literal notranslate"><span class="pre">self.connection.server_ip</span></code>, etc). For details consult the <em>Creating custom Authentication and
+Authorization plugins</em> technical document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict with at least the key ‘verdict’ to indicate ‘ACCEPT’, ‘DENY’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended">
+<code class="descname">do_session_ended</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_session_ended()</span></code></a> hook can be used to send a log message related to the entire session or close the
+ticket related to the session if the plugin interacts with a ticketing system. For details consult the
+<em>Creating custom Authentication and Authorization plugins</em> technical document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps">
+<code class="descname">_authentication_steps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_authentication_steps()</span></code></a> function returns a list of other functions to be called to execute the
+authentication task. The default implementation is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">_authentication_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The :meth:`_authentication_steps` function returns a list of other functions to be called to execute the</span>
+<span class="sd">        authentication task. The default implementation is as follows:</span>
+
+<span class="sd">        .. literalinclude:: ../../../../src/safeguard/sessions/plugin/aa_plugin.py</span>
+<span class="sd">            :pyobject: AAPlugin._authentication_steps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_username</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_user_list_whitelist</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_ldap_group_whitelist</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_authentication_cache</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map_username_explicit</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map_username_ldap</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform_username</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ask_mfa_password</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_authenticate_calculated_mfa_identity</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_authenticate</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps">
+<code class="descname">_post_successful_authentication_steps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_post_successful_authentication_steps()</span></code></a> function returns a list of other functions to call be called
+after <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_authentication_steps()</span></code></a> in case of successful authentication. The functions listed here may only
+return <code class="docutils literal notranslate"><span class="pre">None</span></code> or a
+<a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.need_info" title="safeguard.sessions.plugin.plugin_response.AAResponse.need_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.need_info</span></code></a> reply.
+The default implementation is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">_post_successful_authentication_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The :meth:`_post_successful_authentication_steps` function returns a list of other functions to call be called</span>
+<span class="sd">        after :meth:`_authentication_steps` in case of successful authentication. The functions listed here may only</span>
+<span class="sd">        return ``None`` or a</span>
+<span class="sd">        :meth:`AAResponse.need_info &lt;safeguard.sessions.plugin.plugin_response.AAResponse.need_info&gt;` reply.</span>
+<span class="sd">        The default implementation is as follows:</span>
+
+<span class="sd">        .. literalinclude:: ../../../../src/safeguard/sessions/plugin/aa_plugin.py</span>
+<span class="sd">            :pyobject: AAPlugin._post_successful_authentication_steps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_authentication_cache</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ask_questions</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps">
+<code class="descname">_authorization_steps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_authorization_steps()</span></code></a> function returns a list of other functions to call to finish the authentication
+task. The default implementation is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">_authorization_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The :meth:`_authorization_steps` function returns a list of other functions to call to finish the authentication</span>
+<span class="sd">        task. The default implementation is as follows:</span>
+
+<span class="sd">        .. literalinclude:: ../../../../src/safeguard/sessions/plugin/aa_plugin.py</span>
+<span class="sd">            :pyobject: AAPlugin._authorization_steps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_authorize_calculated_mfa_identity</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_and_increase_client_connection_count</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_authorize</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps">
+<code class="descname">_session_ended_steps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_session_ended_steps()</span></code></a> function returns a list of other functions to call to finish the session_ended
+task. The functions in the list must return with None. The default implementation is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">_session_ended_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The :meth:`_session_ended_steps` function returns a list of other functions to call to finish the session_ended</span>
+<span class="sd">        task. The functions in the list must return with None. The default implementation is as follows:</span>
+
+<span class="sd">        .. literalinclude:: ../../../../src/safeguard/sessions/plugin/aa_plugin.py</span>
+<span class="sd">            :pyobject: AAPlugin._session_ended_steps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decrease_client_connection_count</span>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_session_ended</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username">
+<code class="descname">_extract_username</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_extract_username()</span></code></a> method may be overridden to modify the calculation of the gateway username. For
+example to introduce a new key_value_pair that can be the source of the username.</p>
+<p>If this method returns None, then AAPlugin automatically denies the connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_explicit">
+<code class="descname">_map_username_explicit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_explicit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_explicit" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_explicit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_map_username_explicit()</span></code></a> method is implementing the <code class="docutils literal notranslate"><span class="pre">[usermapping</span> <span class="pre">source=explicit]</span></code> section in the
+configuration. It may alter the value of <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.mfa_identity</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_ldap">
+<code class="descname">_map_username_ldap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_ldap" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_ldap" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_ldap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_map_username_ldap()</span></code></a> method is implementing the <code class="docutils literal notranslate"><span class="pre">[usermapping</span> <span class="pre">source=ldap_server]</span></code> section in the
+configuration. It may alter the value of <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.mfa_identity</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._transform_username">
+<code class="descname">_transform_username</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._transform_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._transform_username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._transform_username"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_transform_username()</span></code></a> method is implementing the <code class="docutils literal notranslate"><span class="pre">[username_transform]</span></code> section in the
+configuration. It may alter the value of <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity"><code class="xref py py-attr docutils literal notranslate"><span class="pre">self.mfa_identity</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._check_username">
+<code class="descname">_check_username</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._check_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._check_username" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._check_username"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_username()</span></code></a> method checks that the plugin received a user identity to work with. It should
+return <a class="reference internal" href="aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.deny" title="safeguard.sessions.plugin.plugin_response.AAResponse.deny"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AAResponse.deny</span></code></a> verdict if there
+is no username, otherwise None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password">
+<code class="descname">_extract_mfa_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_extract_mfa_password()</span></code></a> method returns the value of <code class="docutils literal notranslate"><span class="pre">self.connection.key_value_pairs['otp']</span></code>. The
+value is either specified as part of the user name or if not, then AAPlugin will ask the user for it
+interactively on interactive protocols such as SSH. On non-interactive protocols like MS SQL the code will
+assume push notification and return the empty string.</p>
+<p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password" title="safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_extract_mfa_password()</span></code></a> method may be overwritten to modify the calculation of the MFA password. For
+example to introduce a new key_value_pair that can be the source of the password.</p>
+<p>If this method returns None, then AAPlugin automatically asks for the password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.authenticate">
+<code class="descname">authenticate</code><span class="sig-paren">(</span><em>cookie</em>, <em>session_cookie</em>, <em>session_id</em>, <em>protocol</em>, <em>connection_name</em>, <em>client_ip</em>, <em>client_port</em>, <em>client_hostname</em>, <em>gateway_user</em>, <em>gateway_domain</em>, <em>server_username</em>, <em>server_domain</em>, <em>key_value_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Should not be modified.</strong></p>
+<p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">authenticate()</span></code></a> function is called by SPS directly. Should not be modified, see
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authenticate()</span></code></a> for customization.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.authorize">
+<code class="descname">authorize</code><span class="sig-paren">(</span><em>cookie</em>, <em>session_cookie</em>, <em>session_id</em>, <em>protocol</em>, <em>connection_name</em>, <em>client_ip</em>, <em>client_port</em>, <em>client_hostname</em>, <em>gateway_user</em>, <em>gateway_domain</em>, <em>gateway_groups</em>, <em>server_ip</em>, <em>server_port</em>, <em>server_hostname</em>, <em>server_username</em>, <em>server_domain</em>, <em>key_value_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.authorize" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Should not be modified.</strong></p>
+<p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.authorize" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.authorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">authorize()</span></code></a> function is called by SPS directly. Should not be modified, see
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_authorize()</span></code></a> for customization.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_ended">
+<code class="descname">session_ended</code><span class="sig-paren">(</span><em>session_id</em>, <em>cookie</em>, <em>session_cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_ended" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Should not be modified.</strong></p>
+<p>The <a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_ended" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.session_ended"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session_ended()</span></code></a> function is called by SPS directly. Should not be modified, see
+<a class="reference internal" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended" title="safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_session_ended()</span></code></a> for customization.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="safeguard.sessions.plugin.aa_plugin.AAPlugin._add_gateway_user">
+<code class="descname">_add_gateway_user</code><span class="sig-paren">(</span><em>verdict</em><span class="sig-paren">)</span><a class="headerlink" href="#safeguard.sessions.plugin.aa_plugin.AAPlugin._add_gateway_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>An ACCEPT verdict should return the username that was actually authenticated as gateway user. This function
+will use the actual self.username in the return value, unless already set by do_authenticate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>verdict</strong> – an ACCEPT verdict</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updated verdict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+      </div>
+    </div>
+<footer class="footer d-flex justify-content-between flex-wrap">
+    <div class="copyright">
+        <div>&copy; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 2.0.1 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.6.0.</div>
+    </div>
+    <div>
+        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
+    </div>
+</footer>
+  </body>
+</html>
