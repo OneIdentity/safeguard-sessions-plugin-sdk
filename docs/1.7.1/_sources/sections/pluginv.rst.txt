@@ -1,0 +1,96 @@
+.. _pluginv-label:
+
+pluginv
+=======
+
+The ``pluginv`` build script is available in the development environment after the environment is set up according to
+:ref:`gettingstarted-label` section. This section lists the main options and tasks provided by the pluginv script.
+
+Every command is to be executed in the virtual environment created by pipenv, that is after ``pipenv shell`` is invoked
+to activate the virtual environment.
+
+
+Version information
+-------------------
+
+To get Plugin SDK version and SPS version that first included this SDK, use the commands *(New in version 1.2.0)*
+
+.. code-block:: bash
+
+    pluginv version-sdk
+    pluginv version-sps
+
+Version 1.1.3 Plugin SDK had the command
+
+.. code-block:: bash
+
+    pluginv -V
+
+Snapshot build
+--------------
+
+To build a snapshot version of the plugin, use the command
+
+.. code-block:: bash
+
+    pluginv dist
+
+which checks the consistency of administrative data for the plugin, add the current time to the version in MANIFEST and
+create the plugin ZIP package. See the next section for details about the ZIP build.
+
+Release build
+-------------
+
+To build a release version of the plugin, use the command
+
+.. code-block:: bash
+
+    pluginv release
+
+which checks the consistency of administrative data for the plugin and create the plugin ZIP package. The ZIP package
+creation involves invoking several tools from the pipenv tool chain such as ``pipenv``, ``virtualenv`` and ``pip``.
+During the build a new virtual environment is created in the ``build`` directory while the final ZIP package is
+placed in ``dist`` directory. The name of the distributable ZIP package is the name of the plugin plus the version
+number followed by the zip extension.
+
+Run unit and integration tests
+------------------------------
+
+If you wrote tests for your plugin, you can use the following subcommands to run them. Refer to the
+:ref:`testing-label` section for further information.
+
+With the ``run-tests`` subcommand, you can run the tests replaying all the communication using the recorded cassettes,
+including the keyboard interactive inputs.
+
+.. code-block:: bash
+
+    pluginv run-tests
+
+With the ``run-interactive-tests`` subcommand, you can run the tests while communicating with the real services, not
+using the cassettes, and asking the user interactively when keyboard input is necessary.
+
+.. code-block:: bash
+
+    pluginv run-interactive-tests
+
+With the ``run-recording-tests`` subcommand, you can record the communication, including the keyboard interactive inputs.
+
+.. code-block:: bash
+
+    pluginv run-recording-tests
+
+Run test scenarios
+------------------
+
+*New in version 1.2.0.*
+
+If you want to test your AA plugin, use the ``run-scenario`` subcommand to run an authentication scenario of your choice.
+You can list the available scenarios with the ``--list-scenarios`` flag, and when you want to run it, can specify
+the scenario name with the ``--name`` parameter. If you don't specify a name, all the scenarios will run. The
+``--config-file`` parameter is the name of a pre-written config file the plugin will use.
+You can also specify target- and gateway username, which you can do with the ``--server-username`` and ``--gateway-username``
+options. It is the gateway username that should be authenticated by the AA plugin, its default is "gatewayuser".
+
+.. code-block:: bash
+
+    pluginv run-scenario --name=RdpWithGatewayAuth --config-file=config.ini --run-only-aa-steps
