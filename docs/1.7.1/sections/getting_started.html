@@ -473,6 +473,17 @@
 <li><p>working <a class="reference external" href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a> tool,</p></li>
 <li><p>working Python 3.6 interpreter,</p></li>
 </ul>
+<p>To build a python virtual environment, the following packages must be installed:</p>
+<ul class="simple">
+<li><p>libssl-dev</p></li>
+<li><p>libldap2-dev</p></li>
+<li><p>libsasl2-dev</p></li>
+<li><p>libffi-dev</p></li>
+</ul>
+<p>For instance, to install the packages on Ubuntu system, execute the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install libssl-dev libldap2-dev libsasl2-dev libffi-dev
+</pre></div>
+</div>
 <section id="starting-from-a-plugin-skeleton">
 <h2><span class="section-number">4.1. </span>Starting from a plugin skeleton<a class="headerlink" href="#starting-from-a-plugin-skeleton" title="Permalink to this headline">¶</a></h2>
 <p>There is a basic AA plugin skeleton on GitHub.com:

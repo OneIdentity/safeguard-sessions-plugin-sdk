@@ -8,6 +8,19 @@ To begin developing with the Plugin SDK the following components are required:
 * working `Pipenv <https://pipenv.readthedocs.io/en/latest/>`_ tool,
 * working Python 3.6 interpreter,
 
+To build a python virtual environment, the following packages must be installed:
+
+* libssl-dev
+* libldap2-dev
+* libsasl2-dev
+* libffi-dev
+
+For instance, to install the packages on Ubuntu system, execute the following command:
+
+.. code-block:: bash
+
+    apt-get install libssl-dev libldap2-dev libsasl2-dev libffi-dev
+
 Starting from a plugin skeleton
 -------------------------------
 
