@@ -1,0 +1,4 @@
+EndpointExtractor
+--------------------------
+.. automodule:: safeguard.sessions.plugin.endpoint_extractor
+   :members:

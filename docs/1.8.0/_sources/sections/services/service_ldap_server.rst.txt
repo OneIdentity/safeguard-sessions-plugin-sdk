@@ -1,0 +1,9 @@
+LDAPServer
+----------
+.. automodule:: safeguard.sessions.plugin.ldap_server
+   :members:
+
+Exceptions
+^^^^^^^^^^
+.. automodule:: safeguard.sessions.plugin.ldap_server_exceptions
+   :members:
