@@ -1,0 +1,5 @@
+AAPlugin
+--------
+.. automodule:: safeguard.sessions.plugin.aa_plugin
+    :members:
+    :private-members:

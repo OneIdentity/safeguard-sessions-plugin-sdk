@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>10. Testing &#8212; Safeguard for Privileged Sessions Plugin SDK 1.8.1 documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=5c69cfe2" />
+    <link rel="stylesheet" href="../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxbootstrap4.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=1166ed6b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="../_static/sphinxbootstrap4.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10.1.1. Fake services for testing" href="testing/fakes.html" />
+    <link rel="prev" title="9.10. EndpointExtractor" href="services/service_endpoint_extractor.html" />
+    <link rel="stylesheet" href="../_static/css/oi.css" type="text/css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84081903-18"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-84081903-18');
+    </script>
+     
+
+  </head><body>
+  <nav class="navbar navbar-expand-md  fixed-top navbar-dark bg-dark flex-wrap">
+    <button class="navbar-toggler ml-auto py-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+      <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+           <a class="navbar-brand py-1" href="../index.html">
+                  Safeguard for Privileged Sessions Plugin SDK
+          </a>
+          <span class="navbar-text navbar-version pb-0 pt-1"><b>1.8.1</b></span>
+          <ul class="navbar-nav mr-auto">
+          
+              <li class="nav-item dropdown d-none d-sm-block" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-8-1">2.1. Changes in version 1.8.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-8-0">2.2. Changes in version 1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-7-0">2.3. Changes in version 1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-6-1">2.4. Changes in version 1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-6-0">2.5. Changes in version 1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-4">2.6. Changes in version 1.5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-3">2.7. Changes in version 1.5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-2">2.8. Changes in version 1.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-1">2.9. Changes in version 1.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-0">2.10. Changes in version 1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-4">2.11. Changes in version 1.4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-3">2.12. Changes in version 1.4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-2">2.13. Changes in version 1.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-1">2.14. Changes in version 1.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-0">2.15. Changes in version 1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-3-1">2.16. Changes in version 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-3-0">2.17. Changes in version 1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-2-1">2.18. Changes in version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-2-0">2.19. Changes in version 1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-1-4">2.20. Changes in version 1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-1-3">2.21. Changes in version 1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-1-2">2.22. Changes in version 1.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">3. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">4. Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#starting-from-a-plugin-skeleton">4.1. Starting from a plugin skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#starting-from-scratch">4.2. Starting from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#preparing-the-python-environment">4.3. Preparing the python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#using-the-python-environment">4.4. Using the python environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pluginv.html">5. pluginv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#version-information">5.1. Version information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#snapshot-build">5.2. Snapshot build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#release-build">5.3. Release build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#run-unit-and-integration-tests">5.4. Run unit and integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#run-test-scenarios">5.5. Run test scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">6. AA plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_common_configuration.html">6.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_development.html">6.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#administrative-tasks">6.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#basic-functionality">6.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#pre-defined-attributes-on-self">6.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#asking-the-end-user">6.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#using-cookies">6.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#setting-gateway-user-and-groups">6.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#setting-additional-meta-data">6.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#avoiding-costly-calculations">6.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#adding-to-the-constructor">6.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#authentication-cache">6.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#altering-the-steps">6.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html">6.3. Plugin response</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons"><code class="docutils literal notranslate"><span class="pre">DenyReasons</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons.authentication_failure"><code class="docutils literal notranslate"><span class="pre">DenyReasons.authentication_failure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons.communication_error"><code class="docutils literal notranslate"><span class="pre">DenyReasons.communication_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons.backend_service_error"><code class="docutils literal notranslate"><span class="pre">DenyReasons.backend_service_error</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse"><code class="docutils literal notranslate"><span class="pre">AAResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.accept"><code class="docutils literal notranslate"><span class="pre">AAResponse.accept()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.deny"><code class="docutils literal notranslate"><span class="pre">AAResponse.deny()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.need_info"><code class="docutils literal notranslate"><span class="pre">AAResponse.need_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_additional_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_cookie()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_gateway_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_session_cookie"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_session_cookie()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_reason"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_reason()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html">6.4. Connection information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.connection_name"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.connection_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.client_ip"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.client_ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.client_port"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.client_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.client_hostname"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.client_hostname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_domain"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_groups"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_password"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_user"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_username"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.key_value_pairs"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.key_value_pairs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.protocol"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.protocol</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.session_id"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.session_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_domain"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_domain"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_ip"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_ip"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_host"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_host</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_server"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_server</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_port"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_port"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_hostname"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_hostname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_username"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_username"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_username</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html">6.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#aaplugin-way-of-working">6.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">6.5.2. AAPlugin methods and attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin"><code class="docutils literal notranslate"><span class="pre">AAPlugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.connection"><code class="docutils literal notranslate"><span class="pre">AAPlugin.connection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="docutils literal notranslate"><span class="pre">AAPlugin.cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie"><code class="docutils literal notranslate"><span class="pre">AAPlugin.session_cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.username"><code class="docutils literal notranslate"><span class="pre">AAPlugin.username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity"><code class="docutils literal notranslate"><span class="pre">AAPlugin.mfa_identity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_password"><code class="docutils literal notranslate"><span class="pre">AAPlugin.mfa_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="docutils literal notranslate"><span class="pre">AAPlugin.do_authenticate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="docutils literal notranslate"><span class="pre">AAPlugin.do_authorize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended"><code class="docutils literal notranslate"><span class="pre">AAPlugin.do_session_ended()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._authentication_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._post_successful_authentication_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._authorization_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._session_ended_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username"><code class="docutils literal notranslate"><span class="pre">AAPlugin._extract_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_explicit"><code class="docutils literal notranslate"><span class="pre">AAPlugin._map_username_explicit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_ldap"><code class="docutils literal notranslate"><span class="pre">AAPlugin._map_username_ldap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._transform_username"><code class="docutils literal notranslate"><span class="pre">AAPlugin._transform_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._check_username"><code class="docutils literal notranslate"><span class="pre">AAPlugin._check_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password"><code class="docutils literal notranslate"><span class="pre">AAPlugin._extract_mfa_password()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.authenticate"><code class="docutils literal notranslate"><span class="pre">AAPlugin.authenticate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.authorize"><code class="docutils literal notranslate"><span class="pre">AAPlugin.authorize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_ended"><code class="docutils literal notranslate"><span class="pre">AAPlugin.session_ended()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._add_gateway_user"><code class="docutils literal notranslate"><span class="pre">AAPlugin._add_gateway_user()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mfa_client.html">7. MFA Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient"><code class="docutils literal notranslate"><span class="pre">MFAClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient.push_authenticate"><code class="docutils literal notranslate"><span class="pre">MFAClient.push_authenticate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient.otp_authenticate"><code class="docutils literal notranslate"><span class="pre">MFAClient.otp_authenticate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient.execute_authenticate"><code class="docutils literal notranslate"><span class="pre">MFAClient.execute_authenticate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAAuthenticationFailure"><code class="docutils literal notranslate"><span class="pre">MFAAuthenticationFailure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFACommunicationError"><code class="docutils literal notranslate"><span class="pre">MFACommunicationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAServiceUnreachable"><code class="docutils literal notranslate"><span class="pre">MFAServiceUnreachable</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credentialstore_plugins.html">8. Credential Store plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_common_configuration.html">8.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html">8.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#administrative-tasks">8.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#basic-functionality">8.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#pre-defined-attributes-on-self">8.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#adding-to-the-constructor">8.2.4. Adding to the constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html">8.3. CredentialStorePlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-way-of-working">8.3.1. CredentialStorePlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-methods-and-attributes">8.3.2. CredentialStorePlugin methods and attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.RemoteAppInfo"><code class="docutils literal notranslate"><span class="pre">RemoteAppInfo</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.InvalidUsageException"><code class="docutils literal notranslate"><span class="pre">InvalidUsageException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.authentication_username"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.authentication_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.authentication_password"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.authentication_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.connection"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.connection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.cookie"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.session_cookie"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.session_cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.account"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.account</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.asset"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.asset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.remote_app_account"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.remote_app_account</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.remote_app_asset"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.remote_app_asset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_password_list"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_get_password_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_private_key_list"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_get_private_key_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_authentication_completed"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_authentication_completed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_check_in_credential"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_check_in_credential()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_session_ended"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_session_ended()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_remote_app_credentials"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_get_remote_app_credentials()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin._generate_accounts"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin._generate_accounts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin._generate_assets"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin._generate_assets()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">9. Plugin SDK services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="services/service_plugin_configuration.html">9.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_options"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_key"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_certificate"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_certificate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_ca_certificate"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_ca_certificate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getboolean"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getboolean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getint"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getfloat"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getfloat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getienum"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getienum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getlist"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getlist()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">9.1.1. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="docutils literal notranslate"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_logging.html">9.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#configuration-example">9.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#configuring-the-logger-service">9.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#acquiring-a-logger">9.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#usage-example">9.2.4. Usage example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#safeguard.sessions.plugin.logging.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#safeguard.sessions.plugin.logging.configure"><code class="docutils literal notranslate"><span class="pre">configure()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_credential_store.html">9.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_credential_store.html#configuration-example">9.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#acquiring-a-credentialstore">9.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore"><code class="docutils literal notranslate"><span class="pre">CredentialStore</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.from_config"><code class="docutils literal notranslate"><span class="pre">CredentialStore.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_all"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_credentials"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_credentials()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_passwords"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_passwords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_keys"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_certificates"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_certificates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">9.3.2. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store_exceptions.LocalCredentialStoreNotFound"><code class="docutils literal notranslate"><span class="pre">LocalCredentialStoreNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_ldap_server.html">9.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#configuration-example">9.4.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#acquiring-a-user-attribute">9.4.2. Acquiring a user attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="docutils literal notranslate"><span class="pre">LDAPServer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="docutils literal notranslate"><span class="pre">LDAPServer.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute"><code class="docutils literal notranslate"><span class="pre">LDAPServer.get_user_string_attribute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attributes"><code class="docutils literal notranslate"><span class="pre">LDAPServer.get_user_string_attributes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups"><code class="docutils literal notranslate"><span class="pre">LDAPServer.filter_user_groups()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">9.4.3. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="docutils literal notranslate"><span class="pre">LDAPOperationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="docutils literal notranslate"><span class="pre">LDAPUserNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_user_list.html">9.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_user_list.html#configuration-example">9.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#checking-whether-a-user-name-matches-a-user-list">9.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list.UserList"><code class="docutils literal notranslate"><span class="pre">UserList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list.UserList.from_config"><code class="docutils literal notranslate"><span class="pre">UserList.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list.UserList.check_user"><code class="docutils literal notranslate"><span class="pre">UserList.check_user()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">9.5.2. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound"><code class="docutils literal notranslate"><span class="pre">LocalUserListNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_host_resolver.html">9.6. HostResolver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_host_resolver.html#safeguard.sessions.plugin.host_resolver.HostResolver"><code class="docutils literal notranslate"><span class="pre">HostResolver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_host_resolver.html#safeguard.sessions.plugin.host_resolver.HostResolver.from_config"><code class="docutils literal notranslate"><span class="pre">HostResolver.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_host_resolver.html#safeguard.sessions.plugin.host_resolver.HostResolver.resolve_hosts_by_ip"><code class="docutils literal notranslate"><span class="pre">HostResolver.resolve_hosts_by_ip()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_base_exceptions.html">9.7. Base class for exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter"><code class="docutils literal notranslate"><span class="pre">PluginSDKExceptionFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter.append_variables"><code class="docutils literal notranslate"><span class="pre">PluginSDKExceptionFormatter.append_variables()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeError"><code class="docutils literal notranslate"><span class="pre">PluginSDKRuntimeError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeWarning"><code class="docutils literal notranslate"><span class="pre">PluginSDKRuntimeWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="docutils literal notranslate"><span class="pre">PluginSDKValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_requests_tls.html">9.8. Requests TLS Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_requests_tls.html#configuration-example">9.8.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_requests_tls.html#getting-a-session-object">9.8.2. Getting a Session object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_memory_cache.html">9.9. MemoryCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_memory_cache.html#configuration-example">9.9.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_memory_cache.html#setting-and-getting-values">9.9.2. Setting and getting values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache"><code class="docutils literal notranslate"><span class="pre">MemoryCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache.from_config"><code class="docutils literal notranslate"><span class="pre">MemoryCache.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache.set"><code class="docutils literal notranslate"><span class="pre">MemoryCache.set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache.get"><code class="docutils literal notranslate"><span class="pre">MemoryCache.get()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_endpoint_extractor.html">9.10. EndpointExtractor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointException"><code class="docutils literal notranslate"><span class="pre">EndpointException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor.base_url"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor.base_url</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor.extract_data_from_endpoint"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor.extract_data_from_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor.invoke_http_method"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor.invoke_http_method()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unit-tests">10.1. Unit tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-tests">10.2. Integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">11. Plugin base functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#cookie-property">11.1. cookie_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.cookie_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.cookie_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#session-cookie-property">11.2. session_cookie_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.session_cookie_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#lazy-property">11.3. lazy_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.lazy_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.lazy_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#named-cookie-property">11.4. named_cookie_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.named_cookie_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.named_cookie_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#pluginbase">11.5. PluginBase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase"><code class="docutils literal notranslate"><span class="pre">PluginBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.cookie"><code class="docutils literal notranslate"><span class="pre">PluginBase.cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.session_cookie"><code class="docutils literal notranslate"><span class="pre">PluginBase.session_cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.plugin_configuration"><code class="docutils literal notranslate"><span class="pre">PluginBase.plugin_configuration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.logger"><code class="docutils literal notranslate"><span class="pre">PluginBase.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_enabled"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_enabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_server"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_server</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_port"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_username"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_password"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.proxy_settings"><code class="docutils literal notranslate"><span class="pre">PluginBase.proxy_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.box_configuration"><code class="docutils literal notranslate"><span class="pre">PluginBase.box_configuration</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">12. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">13. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">14. Technical support resources</a></li>
+</ul>
+
+                  </ul>
+              </li>
+          </ul>
+          <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+             
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <!--<div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="../index.html">
+                      Safeguard for Privileged Sessions Plugin SDK
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>-->
+    </nav>
+  </div>
+
+    <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">Safeguard for Privileged Sessions Plugin SDK 1.8.1 documentation</a></li>
+            <li class="breadcrumb-item active"><span class="section-number">10. </span>Testing</li>
+        </ol>
+       <div>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="services/service_endpoint_extractor.html" title="Previous Chapter: 9.10. EndpointExtractor" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; 9.10. Endpoin...
+               </a>
+               <a href="testing/fakes.html" title="Next Chapter: 10.1.1. Fake services for testing" class="btn btn-primary" role="botton" accesskey="N">
+                   10.1.1. Fake ... &raquo;
+               </a>
+           </div>
+       </div>
+    </div>
+
+  <div class="main container-fluid">
+    <div class="row"> 
+      <div class="sphinxsidebar d-none d-md-block">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="history.html">1. History of releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#latest-release">1.1. Latest release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#previous-releases">1.2. Previous releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">2. Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-8-1">2.1. Changes in version 1.8.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-8-0">2.2. Changes in version 1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-7-0">2.3. Changes in version 1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-6-1">2.4. Changes in version 1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-6-0">2.5. Changes in version 1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-4">2.6. Changes in version 1.5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-3">2.7. Changes in version 1.5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-2">2.8. Changes in version 1.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-1">2.9. Changes in version 1.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-5-0">2.10. Changes in version 1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-4">2.11. Changes in version 1.4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-3">2.12. Changes in version 1.4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-2">2.13. Changes in version 1.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-1">2.14. Changes in version 1.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-4-0">2.15. Changes in version 1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-3-1">2.16. Changes in version 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-3-0">2.17. Changes in version 1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-2-1">2.18. Changes in version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-2-0">2.19. Changes in version 1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-1-4">2.20. Changes in version 1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-1-3">2.21. Changes in version 1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes-in-version-1-1-2">2.22. Changes in version 1.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">3. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">4. Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#starting-from-a-plugin-skeleton">4.1. Starting from a plugin skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#starting-from-scratch">4.2. Starting from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#preparing-the-python-environment">4.3. Preparing the python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#using-the-python-environment">4.4. Using the python environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pluginv.html">5. pluginv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#version-information">5.1. Version information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#snapshot-build">5.2. Snapshot build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#release-build">5.3. Release build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#run-unit-and-integration-tests">5.4. Run unit and integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginv.html#run-test-scenarios">5.5. Run test scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aa_plugins.html">6. AA plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_common_configuration.html">6.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_development.html">6.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#administrative-tasks">6.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#basic-functionality">6.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#pre-defined-attributes-on-self">6.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#asking-the-end-user">6.2.4. Asking the end-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#using-cookies">6.2.5. Using cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#setting-gateway-user-and-groups">6.2.6. Setting gateway user and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#setting-additional-meta-data">6.2.7. Setting additional meta data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#avoiding-costly-calculations">6.2.8. Avoiding costly calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#adding-to-the-constructor">6.2.9. Adding to the constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#authentication-cache">6.2.10. Authentication cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_development.html#altering-the-steps">6.2.11. Altering the steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html">6.3. Plugin response</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons"><code class="docutils literal notranslate"><span class="pre">DenyReasons</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons.authentication_failure"><code class="docutils literal notranslate"><span class="pre">DenyReasons.authentication_failure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons.communication_error"><code class="docutils literal notranslate"><span class="pre">DenyReasons.communication_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.DenyReasons.backend_service_error"><code class="docutils literal notranslate"><span class="pre">DenyReasons.backend_service_error</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse"><code class="docutils literal notranslate"><span class="pre">AAResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.accept"><code class="docutils literal notranslate"><span class="pre">AAResponse.accept()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.deny"><code class="docutils literal notranslate"><span class="pre">AAResponse.deny()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.need_info"><code class="docutils literal notranslate"><span class="pre">AAResponse.need_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_additional_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_cookie()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_gateway_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_session_cookie"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_session_cookie()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_plugin_response.html#safeguard.sessions.plugin.plugin_response.AAResponse.with_reason"><code class="docutils literal notranslate"><span class="pre">AAResponse.with_reason()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html">6.4. Connection information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.connection_name"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.connection_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.client_ip"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.client_ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.client_port"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.client_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.client_hostname"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.client_hostname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_domain"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_groups"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_password"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_user"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.gateway_username"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.gateway_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.key_value_pairs"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.key_value_pairs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.protocol"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.protocol</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.session_id"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.session_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_domain"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_domain"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_ip"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_ip"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_host"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_host</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_server"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_server</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_port"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_port"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_hostname"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_hostname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.server_username"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.server_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_connection_information.html#safeguard.sessions.plugin.connection_info.ConnectionInfo.target_username"><code class="docutils literal notranslate"><span class="pre">ConnectionInfo.target_username</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html">6.5. AAPlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#aaplugin-way-of-working">6.5.1. AAPlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#aaplugin-methods-and-attributes">6.5.2. AAPlugin methods and attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin"><code class="docutils literal notranslate"><span class="pre">AAPlugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.connection"><code class="docutils literal notranslate"><span class="pre">AAPlugin.connection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie"><code class="docutils literal notranslate"><span class="pre">AAPlugin.cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie"><code class="docutils literal notranslate"><span class="pre">AAPlugin.session_cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.username"><code class="docutils literal notranslate"><span class="pre">AAPlugin.username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity"><code class="docutils literal notranslate"><span class="pre">AAPlugin.mfa_identity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_password"><code class="docutils literal notranslate"><span class="pre">AAPlugin.mfa_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate"><code class="docutils literal notranslate"><span class="pre">AAPlugin.do_authenticate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize"><code class="docutils literal notranslate"><span class="pre">AAPlugin.do_authorize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended"><code class="docutils literal notranslate"><span class="pre">AAPlugin.do_session_ended()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._authentication_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._authentication_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._post_successful_authentication_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._post_successful_authentication_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._authorization_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._authorization_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._session_ended_steps"><code class="docutils literal notranslate"><span class="pre">AAPlugin._session_ended_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_username"><code class="docutils literal notranslate"><span class="pre">AAPlugin._extract_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_explicit"><code class="docutils literal notranslate"><span class="pre">AAPlugin._map_username_explicit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._map_username_ldap"><code class="docutils literal notranslate"><span class="pre">AAPlugin._map_username_ldap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._transform_username"><code class="docutils literal notranslate"><span class="pre">AAPlugin._transform_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._check_username"><code class="docutils literal notranslate"><span class="pre">AAPlugin._check_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._extract_mfa_password"><code class="docutils literal notranslate"><span class="pre">AAPlugin._extract_mfa_password()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.authenticate"><code class="docutils literal notranslate"><span class="pre">AAPlugin.authenticate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.authorize"><code class="docutils literal notranslate"><span class="pre">AAPlugin.authorize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin.session_ended"><code class="docutils literal notranslate"><span class="pre">AAPlugin.session_ended()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="aa_plugins/aa_plugin_aa_plugin.html#safeguard.sessions.plugin.aa_plugin.AAPlugin._add_gateway_user"><code class="docutils literal notranslate"><span class="pre">AAPlugin._add_gateway_user()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mfa_client.html">7. MFA Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient"><code class="docutils literal notranslate"><span class="pre">MFAClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient.push_authenticate"><code class="docutils literal notranslate"><span class="pre">MFAClient.push_authenticate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient.otp_authenticate"><code class="docutils literal notranslate"><span class="pre">MFAClient.otp_authenticate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAClient.execute_authenticate"><code class="docutils literal notranslate"><span class="pre">MFAClient.execute_authenticate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAAuthenticationFailure"><code class="docutils literal notranslate"><span class="pre">MFAAuthenticationFailure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFACommunicationError"><code class="docutils literal notranslate"><span class="pre">MFACommunicationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfa_client.html#safeguard.sessions.plugin.mfa_client.MFAServiceUnreachable"><code class="docutils literal notranslate"><span class="pre">MFAServiceUnreachable</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credentialstore_plugins.html">8. Credential Store plugin development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_common_configuration.html">8.1. Common configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html">8.2. Plugin development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#administrative-tasks">8.2.1. Administrative tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#basic-functionality">8.2.2. Basic functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#pre-defined-attributes-on-self">8.2.3. Pre-defined attributes on self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_development.html#adding-to-the-constructor">8.2.4. Adding to the constructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html">8.3. CredentialStorePlugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-way-of-working">8.3.1. CredentialStorePlugin way of working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#credentialstoreplugin-methods-and-attributes">8.3.2. CredentialStorePlugin methods and attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.RemoteAppInfo"><code class="docutils literal notranslate"><span class="pre">RemoteAppInfo</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.InvalidUsageException"><code class="docutils literal notranslate"><span class="pre">InvalidUsageException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.authentication_username"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.authentication_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.authentication_password"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.authentication_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.connection"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.connection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.cookie"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.session_cookie"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.session_cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.account"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.account</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.asset"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.asset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.remote_app_account"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.remote_app_account</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.remote_app_asset"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.remote_app_asset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_password_list"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_get_password_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_private_key_list"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_get_private_key_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_authentication_completed"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_authentication_completed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_check_in_credential"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_check_in_credential()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_session_ended"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_session_ended()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_remote_app_credentials"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin.do_get_remote_app_credentials()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin._generate_accounts"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin._generate_accounts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="credentialstore_plugins/credentialstore_plugin_credentialstore_plugin.html#safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin._generate_assets"><code class="docutils literal notranslate"><span class="pre">CredentialStorePlugin._generate_assets()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">9. Plugin SDK services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="services/service_plugin_configuration.html">9.1. PluginConfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_options"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_key"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_certificate"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_certificate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.get_ca_certificate"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.get_ca_certificate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getboolean"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getboolean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getint"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getfloat"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getfloat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getienum"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getienum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration.PluginConfiguration.getlist"><code class="docutils literal notranslate"><span class="pre">PluginConfiguration.getlist()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_plugin_configuration.html#module-safeguard.sessions.plugin.plugin_configuration_exceptions">9.1.1. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_plugin_configuration.html#safeguard.sessions.plugin.plugin_configuration_exceptions.RequiredConfigurationSettingNotFound"><code class="docutils literal notranslate"><span class="pre">RequiredConfigurationSettingNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_logging.html">9.2. Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#configuration-example">9.2.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#configuring-the-logger-service">9.2.2. Configuring the logger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#acquiring-a-logger">9.2.3. Acquiring a logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#usage-example">9.2.4. Usage example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#safeguard.sessions.plugin.logging.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_logging.html#safeguard.sessions.plugin.logging.configure"><code class="docutils literal notranslate"><span class="pre">configure()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_credential_store.html">9.3. CredentialStore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_credential_store.html#configuration-example">9.3.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#acquiring-a-credentialstore">9.3.1.1. Acquiring a CredentialStore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore"><code class="docutils literal notranslate"><span class="pre">CredentialStore</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.from_config"><code class="docutils literal notranslate"><span class="pre">CredentialStore.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_all"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_credentials"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_credentials()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_passwords"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_passwords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_keys"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store.CredentialStore.get_certificates"><code class="docutils literal notranslate"><span class="pre">CredentialStore.get_certificates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_credential_store.html#module-safeguard.sessions.plugin.credential_store_exceptions">9.3.2. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_credential_store.html#safeguard.sessions.plugin.credential_store_exceptions.LocalCredentialStoreNotFound"><code class="docutils literal notranslate"><span class="pre">LocalCredentialStoreNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_ldap_server.html">9.4. LDAPServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#configuration-example">9.4.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#acquiring-a-user-attribute">9.4.2. Acquiring a user attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer"><code class="docutils literal notranslate"><span class="pre">LDAPServer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.from_config"><code class="docutils literal notranslate"><span class="pre">LDAPServer.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attribute"><code class="docutils literal notranslate"><span class="pre">LDAPServer.get_user_string_attribute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.get_user_string_attributes"><code class="docutils literal notranslate"><span class="pre">LDAPServer.get_user_string_attributes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server.LDAPServer.filter_user_groups"><code class="docutils literal notranslate"><span class="pre">LDAPServer.filter_user_groups()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_ldap_server.html#module-safeguard.sessions.plugin.ldap_server_exceptions">9.4.3. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server_exceptions.LDAPOperationError"><code class="docutils literal notranslate"><span class="pre">LDAPOperationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_ldap_server.html#safeguard.sessions.plugin.ldap_server_exceptions.LDAPUserNotFound"><code class="docutils literal notranslate"><span class="pre">LDAPUserNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_user_list.html">9.5. UserList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_user_list.html#configuration-example">9.5.1. Configuration example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#checking-whether-a-user-name-matches-a-user-list">9.5.1.1. Checking whether a user name matches a User List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list.UserList"><code class="docutils literal notranslate"><span class="pre">UserList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list.UserList.from_config"><code class="docutils literal notranslate"><span class="pre">UserList.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list.UserList.check_user"><code class="docutils literal notranslate"><span class="pre">UserList.check_user()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_user_list.html#module-safeguard.sessions.plugin.user_list_exceptions">9.5.2. Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_user_list.html#safeguard.sessions.plugin.user_list_exceptions.LocalUserListNotFound"><code class="docutils literal notranslate"><span class="pre">LocalUserListNotFound</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_host_resolver.html">9.6. HostResolver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_host_resolver.html#safeguard.sessions.plugin.host_resolver.HostResolver"><code class="docutils literal notranslate"><span class="pre">HostResolver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_host_resolver.html#safeguard.sessions.plugin.host_resolver.HostResolver.from_config"><code class="docutils literal notranslate"><span class="pre">HostResolver.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_host_resolver.html#safeguard.sessions.plugin.host_resolver.HostResolver.resolve_hosts_by_ip"><code class="docutils literal notranslate"><span class="pre">HostResolver.resolve_hosts_by_ip()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_base_exceptions.html">9.7. Base class for exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter"><code class="docutils literal notranslate"><span class="pre">PluginSDKExceptionFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKExceptionFormatter.append_variables"><code class="docutils literal notranslate"><span class="pre">PluginSDKExceptionFormatter.append_variables()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeError"><code class="docutils literal notranslate"><span class="pre">PluginSDKRuntimeError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKRuntimeWarning"><code class="docutils literal notranslate"><span class="pre">PluginSDKRuntimeWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_base_exceptions.html#safeguard.sessions.plugin.exceptions.PluginSDKValueError"><code class="docutils literal notranslate"><span class="pre">PluginSDKValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_requests_tls.html">9.8. Requests TLS Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_requests_tls.html#configuration-example">9.8.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_requests_tls.html#getting-a-session-object">9.8.2. Getting a Session object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_memory_cache.html">9.9. MemoryCache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_memory_cache.html#configuration-example">9.9.1. Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_memory_cache.html#setting-and-getting-values">9.9.2. Setting and getting values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache"><code class="docutils literal notranslate"><span class="pre">MemoryCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache.from_config"><code class="docutils literal notranslate"><span class="pre">MemoryCache.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache.set"><code class="docutils literal notranslate"><span class="pre">MemoryCache.set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_memory_cache.html#safeguard.sessions.plugin.memory_cache.MemoryCache.get"><code class="docutils literal notranslate"><span class="pre">MemoryCache.get()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services/service_endpoint_extractor.html">9.10. EndpointExtractor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointException"><code class="docutils literal notranslate"><span class="pre">EndpointException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor.base_url"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor.base_url</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor.extract_data_from_endpoint"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor.extract_data_from_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="services/service_endpoint_extractor.html#safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor.invoke_http_method"><code class="docutils literal notranslate"><span class="pre">EndpointExtractor.invoke_http_method()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unit-tests">10.1. Unit tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-tests">10.2. Integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugin_base.html">11. Plugin base functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#cookie-property">11.1. cookie_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.cookie_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.cookie_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#session-cookie-property">11.2. session_cookie_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.session_cookie_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.session_cookie_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#lazy-property">11.3. lazy_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.lazy_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.lazy_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#named-cookie-property">11.4. named_cookie_property</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.named_cookie_property"><code class="docutils literal notranslate"><span class="pre">plugin_base.named_cookie_property()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_base.html#pluginbase">11.5. PluginBase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase"><code class="docutils literal notranslate"><span class="pre">PluginBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.cookie"><code class="docutils literal notranslate"><span class="pre">PluginBase.cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.session_cookie"><code class="docutils literal notranslate"><span class="pre">PluginBase.session_cookie</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.plugin_configuration"><code class="docutils literal notranslate"><span class="pre">PluginBase.plugin_configuration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.logger"><code class="docutils literal notranslate"><span class="pre">PluginBase.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_enabled"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_enabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_server"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_server</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_port"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_username"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.https_proxy_password"><code class="docutils literal notranslate"><span class="pre">PluginBase.https_proxy_password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.proxy_settings"><code class="docutils literal notranslate"><span class="pre">PluginBase.proxy_settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugin_base.html#safeguard.sessions.plugin.plugin_base.PluginBase.box_configuration"><code class="docutils literal notranslate"><span class="pre">PluginBase.box_configuration</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">12. About us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#contacting-us">13. Contacting us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#technical-support-resources">14. Technical support resources</a></li>
+</ul>
+
+              </div>
+            
+          
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="services/service_endpoint_extractor.html"
+                          title="previous chapter"><span class="section-number">9.10. </span>EndpointExtractor</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="testing/fakes.html"
+                          title="next chapter"><span class="section-number">10.1.1. </span>Fake services for testing</a></p>
+  </div>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="../search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled text-right">
+    <li><a href="../_sources/sections/testing.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
+
+      <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <section id="testing">
+<span id="testing-label"></span><h1><span class="section-number">10. </span>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h1>
+<section id="unit-tests">
+<h2><span class="section-number">10.1. </span>Unit tests<a class="headerlink" href="#unit-tests" title="Link to this heading">¶</a></h2>
+<p>We encourage you to write automatic tests for your plugins. For unit testing, we recommend using pytest, and its mock
+module. These modules are already pre-installed in the pipenv environment if you followed the <a class="reference internal" href="getting_started.html#gettingstarted-label"><span class="std std-ref">Getting started</span></a>
+guide. Write the tests by usual means, and use the <a class="reference internal" href="pluginv.html#pluginv-label"><span class="std std-ref">pluginv</span></a> tool to run them.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pluginv<span class="w"> </span>run-tests
+</pre></div>
+</div>
+<p>Refer to the pytest official documentation on how to write tests.</p>
+<p><a class="reference external" href="https://docs.pytest.org/en/latest/contents.html">PyTest documentation</a></p>
+<p><a class="reference external" href="https://pypi.org/project/pytest-mock/">PyTest Mock project</a></p>
+<p>To ease the testing, we provide fake services, with which you can fake out the services provided by SPS, and test your
+plugin without a real SPS.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testing/fakes.html">10.1.1. Fake services for testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing/fakes/fake_credential_store.html">10.1.1.1. CredentialStore data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/fakes/fake_credential_store.html#example-usage-with-pytest-and-monkeypatch">10.1.1.1.1. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/fakes/fake_ldap_server.html">10.1.1.2. LDAPServer data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/fakes/fake_ldap_server.html#example-usage-with-pytest-and-monkeypatch">10.1.1.2.1. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/fakes/fake_user_list.html">10.1.1.3. UserList data injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/fakes/fake_user_list.html#example-usage-with-pytest-and-monkeypatch">10.1.1.3.1. Example usage with pytest and monkeypatch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="integration-tests">
+<h2><span class="section-number">10.2. </span>Integration tests<a class="headerlink" href="#integration-tests" title="Link to this heading">¶</a></h2>
+<p>If your plugin uses external services (2FA for example), it is beneficial to write integration tests. For this, we
+recommend using the <a class="reference external" href="https://vcrpy.readthedocs.io/en/latest/">vcrpy</a> module (pre-installed in the pipenv environment),
+with which you can record the communication (HTTP requests and responses) between your plugin and the external service,
+and later <code class="docutils literal notranslate"><span class="pre">vcrpy</span></code> can replay it without needing to access the service. Using this, your tests will be fast,
+deterministic, and can be run offline. Of course this test won’t detect if the external service has had incompatible
+changes, so you may want to re-record the communication regularly.</p>
+<p>You don’t need to use the <code class="docutils literal notranslate"><span class="pre">vcr</span></code> module directly, the <a class="reference internal" href="pluginv.html#pluginv-label"><span class="std std-ref">pluginv</span></a> tool handles it automatically. All you need
+to do is to use either the urllib or the requests library for HTTP communication. Then if you run the tests using the
+<code class="docutils literal notranslate"><span class="pre">pluginv</span> <span class="pre">run-recording-tests</span></code> command, the communication will be recorded automatically, and will be put into YAML
+files in a folder named <code class="docutils literal notranslate"><span class="pre">cassettes</span></code>. After this recording is done, every time you run the tests using the
+<code class="docutils literal notranslate"><span class="pre">pluginv</span> <span class="pre">run-tests</span></code> command, <code class="docutils literal notranslate"><span class="pre">vcr</span></code> will replay the recorded communication from the YAML files.</p>
+<p>For example, put this code into a file, with a name starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_vcr_example</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://httpbin.org/&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span>
+    <span class="k">assert</span> <span class="s1">&#39;A simple HTTP Request &amp;amp; Response Service.&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then use <a class="reference internal" href="pluginv.html#pluginv-label"><span class="std std-ref">pluginv</span></a> to run it, and record the HTTP requests and responses</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pluginv<span class="w"> </span>run-recording-tests
+</pre></div>
+</div>
+<p>Notice how slow the test run was. You will also notice that a new <code class="docutils literal notranslate"><span class="pre">cassettes</span></code> directory will show up with a YAML file
+in it. After the recording, all you have to do is run the tests the usual way. This time it will run much faster, as
+<code class="docutils literal notranslate"><span class="pre">vcr</span></code> will replay the previously recorded communication, without sending requests to the real service.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pluginv<span class="w"> </span>run-tests
+</pre></div>
+</div>
+<p>If your plugin uses keyboard interactive input, and you want to test that also, you can use the
+<code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.interactive</span></code> decorator (to mark the tests) along with the <code class="docutils literal notranslate"><span class="pre">interactive</span></code> fixture (to ask for the input).
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">interactive</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_interactive_input</span><span class="p">(</span><span class="n">interactive</span><span class="p">):</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">interactive</span><span class="o">.</span><span class="n">askforinput</span><span class="p">(</span><span class="s1">&#39;Please provide your password&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">password</span> <span class="o">==</span> <span class="s1">&#39;secret&#39;</span>
+</pre></div>
+</div>
+<p>The benefit of this is that you can record the keyboard inputs and replay them using the method described above, so you
+don’t always need to enter the input interactively. However, if you want to run the tests and provide the inputs by
+hand, you can use the following subcommand. Note that in this case, the tests will communicate with the real services,
+the cassettes won’t be replayed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pluginv<span class="w"> </span>run-interactive-tests
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+      </div>
+    </div>
+<footer class="footer d-flex justify-content-between flex-wrap">
+    <div class="copyright">
+        <div>&copy; Copyright 2019, One Identity LLC. ALL RIGHTS RESERVED.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 8.1.3 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.6.0.</div>
+    </div>
+    <div>
+        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
+    </div>
+</footer>
+  </body>
+</html>
