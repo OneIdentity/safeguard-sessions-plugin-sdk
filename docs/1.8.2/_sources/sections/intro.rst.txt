@@ -1,0 +1,12 @@
+Introduction
+============
+
+The One Identity Safeguard for Privileged Sessions Plugin Software Development Kit (Plugin SDK) provides base classes
+and services to enable rapid development of Python 3 plugins for the Safeguard for Privileged Sessions product.
+The Plugin SDK helps implement the requirements stated in the documents
+
+* Creating custom Authentication and Authorization plugins developer's guide,
+* Creating custom Credential Store plugins developer's guide.
+
+The documents above are part of the `One Identity technical documentation \
+<https://support.oneidentity.com/one-identity-safeguard-for-privileged-sessions/technical-documents>`_.

@@ -1,0 +1,4 @@
+Plugin response
+---------------
+.. automodule:: safeguard.sessions.plugin.plugin_response
+    :members:

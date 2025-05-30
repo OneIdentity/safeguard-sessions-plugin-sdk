@@ -1,0 +1,249 @@
+Plugin development
+------------------
+
+Follow the steps in :ref:`gettingstarted-label` to set up the correct Python environment. There are administrative
+steps bellow to describe the plugin. After adding some code to the plugin, the directory can be packaged in a ZIP file
+and uploaded to SPS.
+
+Administrative tasks
+^^^^^^^^^^^^^^^^^^^^
+
+Update the following files with information correct for your plugin:
+
+``MANIFEST``: plugin name, descriptions, etc. For details consult the *Creating custom Authentication and Authorization
+plugins* developer's guide. To determine the api version, see the :ref:`gettingstarted-label`.
+
+``Pipfile``: describes what additional Python3 PIP packages to package in the eventual plugin and also what packages to
+use at development time. Note that the Plugin SDK should *not* be listed in the [packages] section, as the Plugin SDK
+is pre-installed on Safeguard for Privileges Sessions. There are other pre-installed python packages on the system,
+consult the developer's guide for more information.
+
+Basic functionality
+^^^^^^^^^^^^^^^^^^^
+
+In the ``lib/plugin.py`` file, there is a simple skeleton code. The methods
+:meth:`AAPlugin.do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>`,
+:meth:`AAPlugin.do_authorize <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize>` and
+:meth:`AAPlugin.do_session_ended <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended>` are called by the
+AAPlugin base class after common
+functionality is executed and parameters of the plugin invocation are pre-processed. All information about the
+connection and pre-processing will be presented as attributes on ``self`` in these functions.
+
+The expected return values are defined in the technical document *Creating custom Authentication and Authorization
+plugins*. For simplicity one can use :class:`AAResponse <safeguard.sessions.plugin.plugin_response.AAResponse>` class
+to create the return value.
+
+.. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
+
+    from safeguard.sessions.plugin import AAPlugin, AAResponse
+
+    class Plugin(AAPlugin):
+        def do_authenticate(self):
+            # To get a configuration value:
+            config_value = self.plugin_configuration.get('section', 'option')
+
+            # To log something:
+            self.logger.debug("This is a debug message")
+
+            # To access connection information
+            session_id = self.connection.session_id
+
+            return AAResponse.accept('the reason to accept')
+
+        def do_authorize(self):
+            return AAResponse.accept('the reason to accept')
+
+        def do_session_ended(self):
+            pass
+
+
+Pre-defined attributes on self
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On top of attributes defined by :ref:`pluginbase-section-label`, such as
+:py:attr:`self.plugin_configuration <safeguard.sessions.plugin.plugin_base.PluginBase.plugin_configuration>` and
+:py:attr:`self.logger <safeguard.sessions.plugin.plugin_base.PluginBase.logger>`
+the following attributes are available in all the above methods, except where otherwise noted:
+
+:class:`self.connection <safeguard.sessions.plugin.connection_info.ConnectionInfo>` which is a read-only object to show
+a record of the SPS connection that is being processed. For example to find out the protocol used in the connection,
+write ``self.connection.protocol``. Note: only 'session_id' is available in
+:meth:`do_session_ended <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_session_ended>` method.
+Also 'target' related values may not be available in
+:meth:`do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>`
+method due to protocol/environmental reasons.
+
+:py:attr:`self.username <safeguard.sessions.plugin.aa_plugin.AAPlugin.username>` contains the effective (gateway) user
+name for this connection.
+
+:py:attr:`self.mfa_identity <safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_identity>` contains the identity to be
+used when contacting the MFA service.
+
+:py:attr:`self.mfa_password <safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_password>` contains the password acquired
+from the user to be used in multi factor authentication.
+:py:attr:`self.mfa_password <safeguard.sessions.plugin.aa_plugin.AAPlugin.mfa_password>` may contain empty string to
+indicate that the user requires push notification.
+Note: only available in :meth:`do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>` method.
+
+
+Asking the end-user
+^^^^^^^^^^^^^^^^^^^
+
+If the plugin needs extra information such as reponse to a challenge question, then the
+:meth:`AAPlugin.do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>`
+method should return a value created by
+:meth:`AAResponse.need_info <safeguard.sessions.plugin.plugin_response.AAResponse.need_info>` function.
+
+.. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
+
+    from safeguard.sessions.plugin import AAPlugin, AAResponse
+
+    class Plugin(AAPlugin):
+        def do_authenticate(self):
+            if 'magic' not in self.connection.key_value_pairs:
+                return AAResponse.need_info("What's the magic word?", "magic")
+
+            if self.connection.key_value_pairs['magic'] == "please":
+                return AAResponse.accept()
+            else:
+                return AAResponse.deny()
+
+
+Using cookies
+^^^^^^^^^^^^^
+
+It is possible to directly read and write :py:attr:`self.cookie <safeguard.sessions.plugin.aa_plugin.AAPlugin.cookie>`
+dictionary. The contents will be retained between invocations of the plugin.
+
+It is also possible to add a cookie value on the fly when returning with a verdict from
+:meth:`AAPlugin.do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>`
+or :meth:`AAPlugin.do_authorize <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authorize>` by using the
+:meth:`AAResponse.with_cookie <safeguard.sessions.plugin.plugin_response.AAResponse.with_cookie>` method:
+
+.. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
+
+    from safeguard.sessions.plugin import AAPlugin, AAResponse
+
+    class Plugin(AAPlugin):
+        def do_authenticate(self):
+            return AAResponse.accept().with_cookie(dict(somekey='somevalue'))
+
+
+A more sophisticated way is to define attributes with the
+:meth:`@cookie_property <safeguard.sessions.plugin.plugin_base.cookie_property>` decorator.
+
+The same things apply to :py:attr:`self.session_cookie <safeguard.sessions.plugin.aa_plugin.AAPlugin.session_cookie>`.
+
+
+Setting gateway user and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+AAPlugin shall set the gateway user and gateway groups automatically in case
+:py:attr:`self.username <safeguard.sessions.plugin.aa_plugin.AAPlugin.username>` is different from
+:class:`self.connection <safeguard.sessions.plugin.connection_info.ConnectionInfo>`.gateway_user. In other words,
+if AAPlugin detects that the authenticated user is different from what SPS thinks is the gateway user, then AAPlugin
+overwrites the SPS gateway user.
+
+In order to modify the gateway user and groups of the session from
+:meth:`AAPlugin.do_authenticate <safeguard.sessions.plugin.aa_plugin.AAPlugin.do_authenticate>`, use the
+:meth:`AAResponse.with_gateway_user <safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user>` method.
+Using :meth:`AAResponse.with_gateway_user <safeguard.sessions.plugin.plugin_response.AAResponse.with_gateway_user>`
+method overwrites the automatic gateway user setting.
+
+.. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
+
+    from safeguard.sessions.plugin import AAPlugin, AAResponse
+
+    class Plugin(AAPlugin):
+        def do_authenticate(self):
+            return AAResponse.accept().with_gateway_user('some-user')
+
+Setting additional meta data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to set the additional meta data which is stored beside the session, use
+:meth:`AAResponse.with_additional_metadata \
+<safeguard.sessions.plugin.plugin_response.AAResponse.with_additional_metadata>` method.
+
+.. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
+
+    from safeguard.sessions.plugin import AAPlugin, AAResponse
+
+    class Plugin(AAPlugin):
+        def do_authenticate(self):
+            return AAResponse.accept().with_additional_metadata('my data')
+
+Avoiding costly calculations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To avoid redoing costly calculations or communication with external systems, it is advisable to store results of
+such calculations in attributes decorated with
+:meth:`@cookie_property <safeguard.sessions.plugin.plugin_base.cookie_property>` decorator. This might be necessary if
+the plugin returns "need info" to SPS, thus starting a new instance and execution of the plugin when the reply arrives.
+
+Adding to the constructor
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To enhance the class constructor, one may overload the
+:meth:`__init__ <safeguard.sessions.plugin.aa_plugin.AAPlugin>` function
+and add new functionality. Do keep the original call to ``super().__init__`` at the top.
+Note that the configuration parameter is the raw string representation of the plugin configuration, which will be
+turned into
+:py:attr:`self.plugin_configuration <safeguard.sessions.plugin.plugin_base.PluginBase.plugin_configuration>` by the
+base class.
+
+.. code-block:: python
+
+    #!/usr/bin/env pluginwrapper3
+
+    from safeguard.sessions.plugin import AAPlugin
+
+    class Plugin(AAPlugin):
+        def __init__(self, configuration):
+            super().__init__(configuration)
+            # your setup code
+
+Authentication cache
+^^^^^^^^^^^^^^^^^^^^
+
+There is an authentication cache implemented, which allows bypassing the multi factor authentication if the client IP
+address and gateway username matches the previous login inside a certain time frame. This is inherently unsafe as the
+IP address can be spoofed and the attacker only needs to get the gateway password of the user.
+
+.. code-block:: ini
+
+    [authentication_cache]
+    ; hard_timeout=90
+    ; soft_timeout=15
+    ; reuse_limit=0
+
+Here ``hard_timeout`` is the maximum number of seconds that the cache is valid for. The ``soft_timeout`` can be
+set to force re-authentication if the user does not reuse the cache quickly enough. And finally reuse limit is the
+number of times the cache can be reused. The default for ``reuse_limit`` is 0, which means that the authentication
+cache is turned off. In the example, if reuse limit is for example 10, and the user successfully authenticated with
+multi factor authentication, then the next 10 authentication are bypassed in the next 90 seconds, provided that
+there is no gap bigger than 15 seconds between them.
+
+Altering the steps
+^^^^^^^^^^^^^^^^^^
+The calls from SPS will be translated to discrete steps by
+:class:`AAPlugin <safeguard.sessions.plugin.aa_plugin.AAPlugin>`. It is possible to alter the list of
+steps. For example to add ``self.mystep`` before :meth:`do_authenticate`, which is the last step:
+
+.. literalinclude:: ../../../../src/safeguard/sessions/plugin/tests/unit/test_aa_plugin.py
+    :pyobject: test_inserting_authentication_step_before_do_authenticate.MyPlugin
+
+For example to add a step called ``self.mystep`` before ``self._transform_username``:
+
+.. literalinclude:: ../../../../src/safeguard/sessions/plugin/tests/unit/test_aa_plugin.py
+    :pyobject: test_inserting_authentication_step_at_a_name.MyPlugin
