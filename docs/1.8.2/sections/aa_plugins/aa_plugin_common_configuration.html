@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=5c69cfe2" />
     <link rel="stylesheet" href="../../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sphinxbootstrap4.css" type="text/css" />
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script src="../../_static/documentation_options.js?v=269e6701"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -910,6 +912,203 @@
   <section id="common-configuration-options">
 <span id="aa-plugin-config-label"></span><h1><span class="section-number">6.1. </span>Common configuration options<a class="headerlink" href="#common-configuration-options" title="Link to this heading">¶</a></h1>
 <p>The common AA plugin functionality can be configured by the following configuration options.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###### Common plugin options ######</span>
+<span class="c1"># To enable or change a parameter, uncomment its line by removing the &#39;;&#39;</span>
+<span class="c1"># character and replacing the right side of &#39;=&#39; with the desired value.</span>
+<span class="c1"># If the parameter has the following structure</span>
+<span class="c1"># ; name=&lt;value&gt;</span>
+<span class="c1"># then the related option is turned off until you replace &#39;&lt;value&gt;&#39;.</span>
+<span class="c1">#</span>
+<span class="c1"># If the parameter has the following structure</span>
+<span class="c1"># ; name=value</span>
+<span class="c1"># then the related option is is automatically turned on with the default value</span>
+<span class="c1"># of &#39;value&#39;.</span>
+<span class="c1">#</span>
+<span class="c1"># To handle sensitive data, you can use a local Credential Store to retrieve</span>
+<span class="c1"># parameters from.</span>
+<span class="c1"># Enter the name of the local Credential Store (Policies &gt; Credential Store) as</span>
+<span class="c1"># the value of the &#39;name&#39; parameter in section [credential_store]. To retrieve a</span>
+<span class="c1"># parameter from this Credential Store, type the $ character as the value of</span>
+<span class="c1"># a parameter in this configuration file. To use the $ character as value,</span>
+<span class="c1"># type $$ instead. For more information, read the &quot;Store sensitive plugin data</span>
+<span class="c1"># securely&quot; section in the Tutorial document.</span>
+
+<span class="k">[credential_store]</span>
+<span class="c1"># Name of the local credential store configured in SPS for hosting sensitive</span>
+<span class="c1"># configuration data. For more information, read the &quot;Store sensitive</span>
+<span class="c1"># plugin data securely&quot; section in the Tutorial document.</span>
+<span class="c1">; name=&lt;name-of-credential-store-policy-that-hosts-sensitive-data&gt;</span>
+
+<span class="k">[logging]</span>
+<span class="c1"># To configure the log level, enter one of the following values:</span>
+<span class="c1"># &#39;debug&#39;, &#39;info&#39;, &#39;warning&#39;, &#39;error&#39;, &#39;critical&#39;</span>
+<span class="c1">; log_level=info</span>
+
+<span class="k">[https-proxy]</span>
+<span class="c1"># To set the HTTPS proxy environment for the plugin, configure the following.</span>
+<span class="c1">; enabled=yes</span>
+<span class="c1">; server=&lt;proxy-server-name-or-ip&gt;</span>
+<span class="c1">; port=3128</span>
+<span class="c1">; username=&lt;proxy-server-username&gt;</span>
+<span class="c1">; password=&lt;proxy-server-password&gt;</span>
+
+<span class="k">[tls]</span>
+<span class="c1"># Set to &#39;no&#39; to disable TLS completely</span>
+<span class="c1"># Default is &#39;yes&#39;</span>
+<span class="c1">; enabled = yes</span>
+
+<span class="c1"># Set this option to enable client side verification. Certificate from the</span>
+<span class="c1"># server will be checked with this CA. If the value of the option is `$[&lt;name&gt;]`</span>
+<span class="c1"># the certificates are retrieved from the trusted CA list configured on the SPS,</span>
+<span class="c1"># identified by the name. When the certificate is given in the configuration, it</span>
+<span class="c1"># should be in PEM format and all the new lines must be indented with one</span>
+<span class="c1"># whitespace. If it is a chain, put the certificates right after each other.</span>
+<span class="c1">; ca_cert = &lt;ca-certificate-chain&gt;</span>
+<span class="c1">; ca_cert = $[&lt;trusted_ca_list_name&gt;]</span>
+
+<span class="c1"># Client certificate, set this if verification is enabled on server side</span>
+<span class="c1"># If the value of the option is `$` the certificate identified by the section</span>
+<span class="c1"># and option pair is retrieved from the configured credential store. When the</span>
+<span class="c1"># certificate and private key is given in the configuration it should be in</span>
+<span class="c1"># PEM format and all the new lines must be indented with one whitespace. Note</span>
+<span class="c1"># that encrypted keys are not supported.</span>
+<span class="c1">; client_cert = &lt;client-certificate-and-key&gt;</span>
+
+<span class="k">[auth]</span>
+<span class="c1"># To override the prompt when using 2FA/MFA, enter the new prompt below.</span>
+<span class="c1">; prompt=Press Enter for push notification or type one-time password:</span>
+
+<span class="c1"># For better security, you can hide the characters (OTP or password) that the</span>
+<span class="c1"># user types after the prompt.</span>
+<span class="c1"># To hide the characters, set &#39;disable_echo&#39; to &#39;yes&#39;.</span>
+<span class="c1">; disable_echo=no</span>
+
+<span class="c1"># Interactive protocols parameter enables prompting for one time password in the</span>
+<span class="c1"># listed protocols. In other protocols the plugin assumes push notification.</span>
+<span class="c1">; interactive_protocols=rdp,ssh,telnet</span>
+
+<span class="k">[connection_limit by=client_ip_gateway_user]</span>
+<span class="c1"># To limit the number of parallel sessions the gateway user can start from a</span>
+<span class="c1"># given client IP address, configure &#39;limit&#39;. For an unlimited number of</span>
+<span class="c1"># sessions, type &#39;0&#39;.</span>
+<span class="c1">; limit=0</span>
+
+<span class="k">[authentication_cache]</span>
+<span class="c1"># CAUTION: Do not configure this section unless you know exactly what you are</span>
+<span class="c1"># doing. For more information, read the &quot;[authentication_cache]&quot; section in the</span>
+<span class="c1"># Tutorial document.</span>
+<span class="c1">; hard_timeout=90</span>
+<span class="c1">; soft_timeout=15</span>
+<span class="c1">; reuse_limit=0</span>
+
+<span class="k">[ignore_upn_suffix_for_rdp]</span>
+<span class="c1"># To ignore the suffix part of UPN usernames set &#39;ignore&#39; to &#39;true&#39;, otherwise</span>
+<span class="c1"># set it to &#39;false&#39;. The default behaviour of the AA plugin is to ignore the suffix.</span>
+<span class="c1">; ignore=&lt;true-or-false&gt;</span>
+
+<span class="c1">######[WHITELIST]######</span>
+<span class="c1"># The [whitelist source=user_list] and [whitelist source=ldap_server_group]</span>
+<span class="c1"># sections allow configuring authentication whitelists based on a User List</span>
+<span class="c1"># policy or an LDAP Server policy. These two sections are independent, any of</span>
+<span class="c1"># the two can be configured and can allow the user to bypass 2FA/MFA</span>
+<span class="c1"># authentication.</span>
+
+<span class="k">[whitelist source=user_list]</span>
+<span class="c1"># The [whitelist source=user_list] section allows whitelisting users based on a</span>
+<span class="c1"># User List policy configured in SPS (Policies &gt; User Lists). To enable this</span>
+<span class="c1"># whitelist, configure one of the use cases below.</span>
+<span class="c1"># IMPORTANT: the user names are compared to the User List in a case-sensitive</span>
+<span class="c1"># manner.</span>
+
+<span class="c1"># Use case #1: To allow specific users to connect without providing 2FA/MFA</span>
+<span class="c1"># credentials, the User List policy should have the following settings:</span>
+<span class="c1"># Set &#39;Allow&#39; to &#39;No user&#39; and list the users in the &#39;Except&#39; list. Then type</span>
+<span class="c1"># the name of this User List policy as the value of the &#39;name&#39; parameter here.</span>
+<span class="c1">; name=&lt;name-of-user-list-policy&gt;</span>
+
+<span class="c1"># Use case #2: To enforce 2FA/MFA authentication for selected users, the User</span>
+<span class="c1"># List policy should have the following settings: Set &#39;Allow&#39; to &#39;All users&#39; and</span>
+<span class="c1"># list the users in the &#39;Except&#39; list. Then type the name of this User List</span>
+<span class="c1"># policy as the value of the &#39;name&#39; parameter here.</span>
+<span class="c1">; name=&lt;name-of-user-list-policy&gt;</span>
+
+<span class="k">[whitelist source=ldap_server_group]</span>
+<span class="c1"># The [whitelist source=ldap_server_group] section allows whitelisting users</span>
+<span class="c1"># based on LDAP Server group membership, To enable this whitelist, configure one</span>
+<span class="c1"># of the use cases below.</span>
+<span class="c1"># IMPORTANT: the user names and groups are compared in LDAP in a</span>
+<span class="c1"># case-insensitive manner.</span>
+
+<span class="c1"># Use case #1: To allow members of specific LDAP/AD group(s) to connect without</span>
+<span class="c1"># providing 2FA/MFA credentials, type the names of these LDAP/AD groups as</span>
+<span class="c1"># values of the &#39;except&#39; parameter and set the &#39;allow&#39; parameter to &#39;no_user&#39;:</span>
+<span class="c1">; allow=no_user</span>
+<span class="c1">; except=&lt;group-1&gt;,&lt;group-2&gt;,...</span>
+
+<span class="c1"># Use case #2: To enforce 2FA/MFA authentication only on members of specific</span>
+<span class="c1"># LDAP/AD groups, type the names of these LDAP/AD groups as values of the</span>
+<span class="c1"># &#39;except&#39; parameter and set the &#39;allow&#39; parameter to &#39;all_users&#39;.</span>
+<span class="c1">; allow=all_users</span>
+<span class="c1">; except=&lt;group-1&gt;,&lt;group-2&gt;,...</span>
+
+<span class="c1">######[USERMAPPING]######</span>
+<span class="c1"># Usually the gateway user and the external 2FA/MFA identity are different.</span>
+<span class="c1"># Because the authentication is based on the 2FA/MFA identity, to be able to</span>
+<span class="c1"># authenticate with the gateway user, you will have to map these two to each</span>
+<span class="c1"># other. The following methods are possible: explicit and LDAP server.</span>
+<span class="c1">#</span>
+<span class="c1"># The explicit method has priority over the LDAP server method.</span>
+<span class="c1"># If there is no [USERMAPPING] and no [username_transform], then the 2FA/MFA</span>
+<span class="c1"># identity will be the same as the gateway user name.</span>
+
+<span class="k">[usermapping source=explicit]</span>
+<span class="c1"># To map the gateway user name to an external 2FA/MFA identity, configure the</span>
+<span class="c1"># following name-value pairs.</span>
+<span class="c1"># NOTE: Type the user names in lowercase.</span>
+<span class="c1">; &lt;user-name-1&gt;=&lt;id-1&gt;</span>
+<span class="c1">; &lt;user-name-2&gt;=&lt;id-2&gt;</span>
+
+<span class="k">[usermapping source=ldap_server]</span>
+<span class="c1"># To map the gateway user name (that is in LDAP/AD and has a non-empty UTF8</span>
+<span class="c1"># attribute string) to an external 2FA/MFA identity, configure the</span>
+<span class="c1"># &#39;user_attribute&#39; parameter the following way:</span>
+<span class="c1"># It must be an LDAP/AD user attribute that contains the external identity.</span>
+<span class="c1"># Example: description, cn, mail. For a complete list consult</span>
+<span class="c1"># https://docs.microsoft.com/en-gb/windows/desktop/ADSchema/c-user.</span>
+<span class="c1"># IMPORTANT: you must configure the name of the LDAP/AD server policy in</span>
+<span class="c1"># the [ldap_server] section.</span>
+<span class="c1">; user_attribute=description</span>
+
+<span class="k">[username_transform]</span>
+<span class="c1"># If the 2FA/MFA service requires the use of domain name in the external</span>
+<span class="c1"># 2FA/MFA identity, configure the &#39;append_domain&#39; parameter. This will append</span>
+<span class="c1"># the domain name after the external 2FA/MFA identity with a &#39;@&#39; character.</span>
+<span class="c1"># For example, if &#39;append_domain&#39; is set to &#39;foobar.com&#39;, then &#39;@foobar.com&#39;</span>
+<span class="c1"># will be appended to the external identity.</span>
+<span class="c1"># If you have configured [USERMAPPING], the [username_transform] process will</span>
+<span class="c1"># run after the [usermapping] process.</span>
+<span class="c1">; append_domain=&lt;domain-without-at-sign&gt;</span>
+
+<span class="k">[ldap_server]</span>
+<span class="c1"># Required if you have configured [whitelist source=ldap_server_group] or</span>
+<span class="c1"># [usermapping source=ldap_server].</span>
+<span class="c1"># The name of the LDAP server policy (Policies &gt; LDAP Servers).</span>
+<span class="c1">; name=&lt;name-of-LDAP-server-policy&gt;</span>
+
+<span class="k">[question_1]</span>
+<span class="c1"># IMPORTANT: To configure this optional section, contact our Support Team.</span>
+<span class="c1"># To request additional information from the user (for example, ticket number)</span>
+<span class="c1"># define one or more [question_] section (for example, [question_1],</span>
+<span class="c1"># [question_2]). The user input will be stored under the value of &#39;key&#39; in the</span>
+<span class="c1"># &#39;questions&#39; section of the session cookie.</span>
+<span class="c1">; prompt=&lt;prompt-to-show-to-the-user&gt;</span>
+<span class="c1">; key=&lt;target-key-for-the-answer&gt;</span>
+
+<span class="c1"># For better security, you can hide the characters that the user types after the</span>
+<span class="c1"># prompt. To hide the characters, set &#39;disable_echo&#39; to &#39;yes&#39;.</span>
+<span class="c1">; disable_echo=yes</span>
+</pre></div>
+</div>
 <p><em>New in version 1.8.0.</em> AA plugin can be configured to ignore the suffix part of UPN usernames in RDP connections</p>
 <p><em>New in version 1.4.0.</em> HTTPS proxy configuration can be overridden from plugin config, and
 password can be stored in a credential store.</p>
