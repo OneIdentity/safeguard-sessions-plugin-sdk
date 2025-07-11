@@ -1,0 +1,156 @@
+Changelog
+=========
+
+Changes in version 1.8.3
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Revert release changes in 1.8.2
+
+Changes in version 1.8.2
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Update pipfile package versions to match OS upgraded SPS versions
+* Change plugin-SDK python version to 3.12
+
+Changes in version 1.8.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Follow-up on pipenv changes affecting requirements.txt file generation, ensuring compatibility with pipenv 2022.08.13 or newer when using the `pluginv dist` and `pluginv release` commands
+
+Changes in version 1.8.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Introduce new AA plugin configuration option to ignore the suffix part of UPN usernames in RDP connections
+
+Changes in version 1.7.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Introduce new plugin hook for RemoteApp Credential Injection :py:meth:`do_get_remote_app_credentials <safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.do_get_remote_app_credentials>`
+
+Changes in version 1.6.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Update pipfile package versions to match OS upgraded SPS versions
+* Change plugin-SDK python version to 3.8
+* Remove dn_check and dns_lookup from :py:func:`_create_trusted_ca <safeguard.sessions.plugin.box_configuration_settings._create_trusted_ca>`
+
+Changes in version 1.6.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Add user-visible deny reasons to :py:meth:`deny <safeguard.sessions.plugin.plugin_response.AAResponse>`.
+* Use deny reasons in :class:`MFAClient <safeguard.sessions.plugin.mfa_client.MFAClient>`. When authentication fails for well defined reasons MFAClient will send a deny reason to the end user
+* `pluginv run-scenario <pluginv.html>`__ task now handles the NEEDINFO verdict in authorization hook. The task's ``selftest`` option includes NEEDINFO verdict in both authentication and authorization hooks.
+* Introduce :py:attr:`authentication_username <safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.authentication_username>` and :py:attr:`authentication_password <safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin.authentication_password>` attributes in :class:`CredentialStorePlugin <safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin>` base class
+* Introduce :class:`EndpointExtractor <safeguard.sessions.plugin.endpoint_extractor.EndpointExtractor>` utility class which can be used to make HTTP requests to an endpoint and then extract data from the responses.
+* Introduce asset and account generation customization options :py:func:`_generate_assets <safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin._generate_assets>` and :py:func:`_generate_accounts <safeguard.sessions.plugin.credentialstore_plugin.CredentialStorePlugin._generate_accounts>`.
+  The following options can be configured in the :ref:`cred_store_common_config`
+
+  * asset generator methods
+  * domain suffix for assets
+  * domain asset mapping
+  * account prefix and suffix
+
+* Follow up change in SPS REST API.
+
+Changes in version 1.5.4
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix an issue in pluginv where run-scenario task used outdated authentication parameters.
+
+Introduce server-username parameter to reflect parameter name change.
+
+Deprecate target-username parameter.
+
+Changes in version 1.5.3
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix an issue where an AA plugin would ask interactively for the one time password, even on non interactive protocol
+such as MS SQL.
+
+Changes in version 1.5.2
+^^^^^^^^^^^^^^^^^^^^^^^^
+Enhance error handling in MANIFEST file processing.
+
+Changes in version 1.5.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix calculation of legacy target_ip, target_host, target_server parameters.
+
+Changes in version 1.5.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+Changes in plugin hook parameters available through
+:class:`self.connection <safeguard.sessions.plugin.connection_info.ConnectionInfo>`. The parameters staring with
+**target_** are deprecated, use **server_** from now on. There are two new parameters
+:py:meth:`client_hostname <safeguard.sessions.plugin.connection_info.ConnectionInfo.client_hostname>` and
+:py:meth:`server_hostname <safeguard.sessions.plugin.connection_info.ConnectionInfo.server_hostname>` that contain the
+name of the client and server if DNS could resolve it from the ip address
+:py:meth:`client_ip <safeguard.sessions.plugin.connection_info.ConnectionInfo.client_ip>` and
+:py:meth:`server_ip <safeguard.sessions.plugin.connection_info.ConnectionInfo.server_ip>` otherwise **None**.
+
+Changes in version 1.4.4
+^^^^^^^^^^^^^^^^^^^^^^^^
+If an AA plugin is used as first factor in SPS, allow setting a gateway user to authenticate via the "gu" key value.
+
+For example in RDP protocol when AA plugin is first factor, this allows setting gateway user by providing
+MYDOMAIN\\gu~gwuser%Administrator.
+
+Changes in version 1.4.3
+^^^^^^^^^^^^^^^^^^^^^^^^
+The plugin ZIP handling is now emitting errors that are consistent with the SPS REST API.
+
+Changes in version 1.4.2
+^^^^^^^^^^^^^^^^^^^^^^^^
+Revise administrative information of Plugin SDK for public release on pypi.org.
+
+Changes in version 1.4.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Warn user when pluginv dist/release generates zipfile that exceeds 20MB.
+
+Do not allow to package plugin with Plugin SDK as a runtime dependency.
+
+Changes in version 1.4.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+LDAPService has new method get_user_string_attributes to fetch multiple LDAP attributes at the same time.
+
+HTTPS proxy configuration can be overridden from plugin config, and password can be stored in a credential store. Also,
+the name of the section is changed to https-proxy (but https_proxy is also supported for backward compatibility).
+
+Allow signing CA plugin type to be built, tested, etc with pluginv script.
+
+Add MemoryCache service for using a local non-persistent Redis for cache.
+
+Do not remove metadata from python libraries bundled with a plugin by pluginv, unless requested by the developer.
+
+Fix pluginv run-recording-tests not printing interactive questions.
+
+Changes in version 1.3.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix issue with the pluginv packaging task where the generated default.cfg doesn't get packaged
+
+Changes in version 1.3.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix issue with BoxConfiguration overhead vs. HTTPS proxy settings.
+
+Add get_ca_certificates function to PluginConfiguration to have means to configure CA certificate chains.
+
+Add RequestsTLS class, which can instantiate Session objects from the requests library, preconfigured
+with TLS settings.
+
+If default.cfg of a plugin does not exist, let pluginv create it from default.cfg.plugin and plugin type defaults.
+
+Changes in version 1.2.1
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix issue in testing plugins outside SPS.
+
+Changes in version 1.2.0
+^^^^^^^^^^^^^^^^^^^^^^^^
+Make it possible to configure SSH private key directly in plugin configuration, instead of via credential store -
+strictly for testing purposes.
+
+Add version-sdk and version-sps task to pluginv script to generate version information for plugin release.
+
+Add CredentialStorePlugin base class for credential store plugins.
+
+Changes in version 1.1.4
+^^^^^^^^^^^^^^^^^^^^^^^^
+Fix plugin distribution build on systems where Python2 is the default.
+
+Changes in version 1.1.3
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add pluginv script to the Plugin SDK for supporting design and build tasks.
+
+Changes in version 1.1.2
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Initial release.

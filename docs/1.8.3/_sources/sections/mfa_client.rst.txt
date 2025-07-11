@@ -1,0 +1,4 @@
+MFA Client
+----------
+.. automodule:: safeguard.sessions.plugin.mfa_client
+    :members:
