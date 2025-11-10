@@ -1,0 +1,4 @@
+MemoryCache
+-----------
+.. automodule:: safeguard.sessions.plugin.memory_cache
+   :members:

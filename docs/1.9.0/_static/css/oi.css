@@ -1,0 +1,74 @@
+/*
+ * Copyright 2025 One Identity LLC.
+ * ALL RIGHTS RESERVED.
+ */
+
+code.descname {
+   font-size: larger;
+}
+
+.btn-primary, .bg-dark {
+    background-color: #05AADB !important;
+}
+
+body {
+    color: #162c36;
+    font-style: normal;
+    font-weight: 400;
+    font-family: Source Sans Pro,"Helvetica Neue",sans-serif;
+    font-size: 1em;
+    line-height: 24px;
+}
+
+a {
+    color: #05AADB;
+}
+
+div.sphinxsidebar > div.sphinxsidebarwrapper a.reference.current, .nav-pills .nav-link.active {
+    color: #162c36;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #4C4C4C;
+}
+
+h1, div.sphinxsidebar > div.sphinxsidebarwrapper h4 {
+    font-size: 20pt;
+    line-height: 23pt;
+    padding: 0px 0px 0px 0px;
+}
+
+h2 {
+    font-size: 18pt;
+    line-height: 21pt;
+}
+
+h3 {
+    font-size: 16pt;
+    line-height: 19pt;
+}
+
+h4 {
+    font-size: 14pt;
+    line-height: 17pt;
+}
+
+h5 {
+    margin-bottom: 1em;
+    mc-heading-level: 0;
+    line-height: 14pt;
+    font-size: 12pt;
+}
+
+h6 {
+    margin-bottom: 1em;
+    mc-heading-level: 0;
+    line-height: 12pt;
+    font-size: 11pt;
+}
+
+#navbar-pages > ul {
+    width: calc(200% + 200px);
+}

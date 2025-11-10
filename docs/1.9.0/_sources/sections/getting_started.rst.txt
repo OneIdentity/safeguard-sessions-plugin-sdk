@@ -1,0 +1,86 @@
+.. _gettingstarted-label:
+
+Getting started
+===============
+
+To begin developing with the Plugin SDK the following components are required:
+
+* working `Pipenv <https://pipenv.readthedocs.io/en/latest/>`_ tool,
+* working Python 3.12 interpreter,
+
+To build a python virtual environment, the following packages must be installed:
+
+* libssl-dev
+* libldap2-dev
+* libsasl2-dev
+* libffi-dev
+
+For instance, to install the packages on Ubuntu system, execute the following command:
+
+.. code-block:: bash
+
+    apt-get install libssl-dev libldap2-dev libsasl2-dev libffi-dev
+
+Starting from a plugin skeleton
+-------------------------------
+
+There is a basic AA plugin skeleton on GitHub.com:
+`https://github.com/OneIdentity/safeguard-sessions-plugin-skeleton-aa \
+<https://github.com/OneIdentity/safeguard-sessions-plugin-skeleton-aa>`_ that can be used as a starting point for the
+next steps.
+
+Starting from scratch
+---------------------
+
+If you prefer to start from scratch, create a Pipfile that contains at least these lines:
+
+.. code-block:: ini
+
+    [packages]
+
+    [dev-packages]
+    oneidentity-safeguard-sessions-plugin-sdk = "*"
+
+    [requires]
+    python_version = "3.12"
+
+Preparing the python environment
+--------------------------------
+
+Build a python virtual environment which will be used to develop and test the plugin:
+
+.. code-block:: bash
+
+    pipenv install -d
+
+This will install the latest version of the Plugin SDK in the virtual environment. If you want to support a previous
+version of the SDK with your plugin (because you want to use it on an older version of SPS for example), then write
+that version into the Pipfile. You should only designate the major and minor versions, this way you will receive the
+bugfixes, but no breaking changes. The fixed version should be the same as in the ``api`` field of the MANIFEST file.
+
+.. code-block:: ini
+
+    [dev-packages]
+    oneidentity-safeguard-sessions-plugin-sdk = "~=1.4.0"
+
+To find out what version of the SDK is present in the virtual environment, use the pluginv tool.
+
+.. code-block:: bash
+
+    pipenv run pluginv version-sdk
+
+Using the python environment
+----------------------------
+
+Create the necessary ``MANIFEST`` file for the plugin and add a source file, for example ``main.py``. In the ``api``
+field of the MANIFEST, write the version which is in the Pipfile, if you fixed it, or which has been installed in the
+environment (see previous section).
+
+The code in main.py is now usable together with the Plugin SDK inside the virtual environment. To build a snapshot
+plugin ZIP package, execute the following commands:
+
+.. code-block:: bash
+
+    pipenv run pluginv dist
+
+The resulting file will be in the ``dist`` directory, ready for upload to a Safeguard for Privileged Sessions appliance.
